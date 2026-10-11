@@ -451,7 +451,7 @@ const RAW=[
  ["top","fighter","S","Arthur,Zuka,Florentino,Volkath"],["top","fighter","B","Ryoma,Maloch,Triệu Vân,Airi,Yena,Veres,Qi,Bijan"],
  ["top","fighter","C","Lữ Bố,Omen,Richter,Errol,Allain,Edras,Biron,Bolt Baron"],
  ["top","fighter","D","Skud,Kil'Groth,Superman,Amily,Charlotte,Astrid,Wonder Woman,Rourke,Dextra,Tachi,Yan"],
- ["top","fighter","-","Tamyn"],
+ ["jg","fighter","-","Tamyn"],
  ["mid","support","-","Annette,Rouie"],
  ["jg","fighter","B","Zephys"],
  ["jg","assassin","S","Sinestrea,Billow"],["jg","assassin","A","Butterfly,Murad,Ngộ Không,Nakroth,Paine"],["jg","assassin","B","Zill,Quillen,Kaine,Enzo"],

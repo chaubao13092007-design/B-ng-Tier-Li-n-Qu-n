@@ -420,11 +420,11 @@ ITEMS: Giày Kiên Cường | Thương Xuyên Phá | Thương Khung Kiếm | Ph�
 RUNES: Đỏ Tỉ lệ chí mạng x2 | Đỏ Công vật lý-Xuyên giáp x8 | Tím Công vật lý-Tốc chạy x10 | Xanh Công vật lý-Xuyên giáp x10
 SPELL: Tốc Biến
 
-## tamyn@top
+## tamyn@jg
 SRC: https://aov-builds.com/tuong/tamyn/
-ITEMS: Giày Thuật Sĩ | Thương Longinus | Kiếm Fafnir | Chùy Băng Sương | Giáp Cuồng Nộ | Thương Khung Kiếm
+ITEMS: Kiếm Truy Hồn | Giày Thuật Sĩ | Phức Hợp Kiếm | Thương Longinus | Giáp Cuồng Nộ | Thương Khung Kiếm
 RUNES: Đỏ Tốc đánh-Máu-Giáp x10 | Tím Tốc đánh-Tốc chạy x10 | Xanh Công vật lý-Xuyên giáp x10
-SPELL: Tốc Biến
+SPELL: Trừng Trị
 
 ## edras@top
 SRC: https://aov-builds.com/tuong/edras/
