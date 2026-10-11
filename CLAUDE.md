@@ -26,6 +26,7 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   `compile.py` dừng nếu tên đồ/ngọc/phép lạ, ngọc mỗi màu không đủ 10 viên, build `@jg` thiếu đồ rừng (Kiếm Truy Hồn, Gươm Loki,
   Rìu Leviathan, Cung Bão Tố) hoặc Trừng Trị, build đi đường có đồ rừng. `check.js` báo ô tướng nào chưa có build hoặc Trợ thủ thiếu đồ trợ thủ.
   Khi thêm tướng hoặc đường phụ mới phải thêm build `@<đường>` vào `vn.txt`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
+  Phép có dấu `*` trong `vn.txt` (ví dụ `Trừng Trị*` của Taara đi Tà Thần) là phương án chủ web thêm, không có ở trang nguồn — giữ nguyên khi cập nhật.
   `tools/builds/raw.txt` là build cũ của ROV META (server Thái), không còn hiện trên web.
 - Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 

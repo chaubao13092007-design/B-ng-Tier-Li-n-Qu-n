@@ -2,7 +2,8 @@
 # Khoá: <key>@<đường> (top, jg, mid, ad, sp). Build ở đây thay cho build ROV META (raw.txt) khi tướng đi đúng đường đó.
 # ITEMS: tên đồ bản Việt. Đồ rừng cấp 2 (Đao Truy Kích, Rìu Gnoll, Gươm Hiến Tế, Cung Gió Lốc) được hiện bằng món nâng cấp cuối.
 # RUNES: <Đỏ|Tím|Xanh> <chỉ số như nguồn ghi> x<số viên>
-# SPELL: phép bổ trợ, nhiều phép cách nhau bằng " / "
+# SPELL: phép bổ trợ, nhiều phép cách nhau bằng " / ". Thêm * sau tên phép = phương án chủ web thêm, không có ở trang nguồn
+#   (chỉ cách này mới cho phép Trừng Trị ở build đi đường).
 # Tham khảo video: "Nailiu Và Giáo Án Airi Đi Rừng…", "Nailiu Cầm Zuka Đi Rừng… Mùa S1-2026" (YouTube) — chỉ đọc được tiêu đề.
 
 # ===== Rừng: mọi tướng hiện ở cột Rừng, kể cả đường phụ =====
@@ -853,7 +854,8 @@ NOTE: Nguồn không tách bảng ngọc riêng cho đường Tà Thần, ở đ
 SRC: https://aov-builds.com/tuong/taara/
 ITEMS: Giày Kiên Cường | Áo Choàng Thần Ra | Giáp Thống Khổ | Giáp Gaia | Khiên Thất Truyền | Phù Chú Trường Sinh
 RUNES: Đỏ Tốc đánh-Máu-Giáp x10 | Tím Máu-Hồi máu-Tốc chạy x10 | Xanh Máu tối đa-Giảm hồi chiêu x10
-SPELL: Tốc Hành / Bộc Phá
+SPELL: Tốc Hành / Bộc Phá / Trừng Trị*
+NOTE: Trừng Trị là phương án thêm, trang nguồn chỉ ghi Tốc Hành và Bộc Phá.
 
 ## wiro@top
 SRC: https://aov-builds.com/tuong/wiro/

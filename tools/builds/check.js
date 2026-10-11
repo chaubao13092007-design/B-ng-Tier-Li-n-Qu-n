@@ -8,7 +8,7 @@ for(const h of HEROES){const b=BUILDS[h.key+'@'+h.lane];const f=[];
   else{const cats=b.i.map(i=>BITEM[i]?BITEM[i][1]:'??'),jg=cats.includes('jg'),pun=b.s.includes('punish');
     if(cats.includes('??'))f.push('đồ lạ');if(b.r.some(([a])=>!BARC[a]))f.push('ngọc lạ');if(b.s.some(s=>!BSPELL[s]))f.push('phép lạ');
     if(h.lane==='jg'&&!(jg&&pun))f.push('đi rừng thiếu đồ rừng hoặc Trừng Trị');
-    if(h.lane!=='jg'&&(jg||pun))f.push('đi đường mà có đồ rừng/Trừng Trị');
+    if(h.lane!=='jg'&&(jg||(pun&&!(b.o||[]).includes('punish'))))f.push('đi đường mà có đồ rừng/Trừng Trị');
     if(h.lane==='sp'&&b.i.length&&!cats.includes('sup'))f.push('trợ thủ thiếu đồ trợ thủ');
     if(h.lane!=='sp'&&cats.includes('sup'))f.push('đi đường mà có đồ trợ thủ')}
   if(f.length){bad++;console.log(h.id,'→',f.join('; '))}}

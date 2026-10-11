@@ -200,7 +200,7 @@ function buildHTML(h){
       const tip=jg?`${vi} (${en}) · đồ rừng, cần Trừng Trị`:cat==="sup"?`${vi} (${en}) · đồ trợ thủ`:`${vi} (${en})`;
       return `<li class="bi${jg?" jg":""}" title="${tip}"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${jg?"<em>Đồ rừng</em>":cat==="sup"?"<em>Đồ trợ thủ</em>":""}</li>`}).join("")}</ol>`;
   const ar=b.r.map(([a,n])=>{const [c,t]=BARC[a];return `<li><img src="b/a-${a}.webp" alt="" loading="lazy" width="30" height="30"><span><b>Ngọc ${COLVI[c]} ×${n}</b>${t}</span></li>`}).join("");
-  const sp=b.s.map(s=>`<li title="${BSPELL[s][1]}"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><b>${BSPELL[s][0]}</b></li>`).join("");
+  const sp=b.s.map(s=>`<li title="${BSPELL[s][1]}"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><span><b>${BSPELL[s][0]}</b>${(b.o||[]).includes(s)?"<em>Phương án thêm</em>":""}</span></li>`).join("");
   return `<section class="bld" aria-label="${title}">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
     <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ${b.s.length>1?" (chọn một)":""}</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
 }

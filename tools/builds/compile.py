@@ -111,17 +111,19 @@ for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
         if not aid: warn.append((bid,'rune?',r.strip()));continue
         runes.append([aid,int(m.group(3))]);used_a.add(aid)
     for c in ('red','purple','teal'): assert sum(n for a,n in runes if a.startswith(c))==10,(bid,c,'phải đủ 10 viên')
-    sp=[]
+    sp=[];own=[]
     for s in f['SPELL'].split(' / '):
-        t=VITAL.get(strip(s))
+        mark=s.strip().endswith('*');t=VITAL.get(strip(s.strip().rstrip('*')))
         if not t: warn.append((bid,'spell?',s));continue
         sp.append(t);used_t.add(t)
+        if mark: own.append(t)
     b={'i':items,'r':runes,'s':sp,'l':f['SRC']}
+    if own: b['o']=own
     if f.get('NOTE'):b['n']=f['NOTE']
     # luật game: đồ rừng chỉ mua được khi mang Trừng Trị; đi đường thì không mang đồ rừng
     jg=[i for i in items if EQ[i]['categoryId']=='jungling']
     if lane=='jg': assert jg and sp==['punish'],(bid,'rừng phải có đồ rừng + Trừng Trị')
-    else: assert not jg and 'punish' not in sp,(bid,'đi đường không có đồ rừng')
+    else: assert not jg and ('punish' not in sp or 'punish' in own),(bid,'đi đường không có đồ rừng; Trừng Trị chỉ khi chủ web thêm (*)')
     if lane=='sp' and not any(EQ[i]['categoryId']=='support' for i in items): warn.append((bid,'trợ thủ thiếu đồ trợ thủ'))
     assert bid not in B,(bid,'trùng')
     B[bid]=b
