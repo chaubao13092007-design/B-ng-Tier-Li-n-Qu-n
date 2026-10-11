@@ -96,7 +96,7 @@ a{color:inherit}
 .hero h1 em{display:block;font-style:normal;font-weight:300;font-size:.34em;letter-spacing:.62em;margin-top:.9em;color:#e7cf9a;padding-left:.62em}
 .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:0 clamp(20px,4vw,56px) 26px;margin-top:auto}
 .hero-sub{margin:0;max-width:40ch;color:var(--h-muted);font-size:13.5px;text-align:left}
-.hero-sub button{background:none;border:0;padding:0;margin-left:4px;color:#fff;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);cursor:pointer}
+.hero-about{background:none;border:0;padding:0;color:#fff;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);cursor:pointer}
 .scrollcue{display:flex;align-items:center;gap:14px;font:400 10.5px var(--f-display);letter-spacing:.3em;text-transform:uppercase;color:var(--h-muted);text-decoration:none}
 .scrollcue span{position:relative;width:1px;height:46px;background:rgba(255,255,255,.2);overflow:hidden}
 .scrollcue span::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:#fff}
@@ -531,7 +531,7 @@ a{color:inherit}
 .hrow small{color:var(--muted)}
 .foot{font-size:11.5px;color:var(--muted);letter-spacing:.18em}
 /* Vùng bấm đủ lớn */
-.hero-sub button{display:inline-flex;align-items:center;min-height:36px;padding:0 2px;margin-left:6px}
+.hero-about{display:inline-flex;align-items:center;min-height:40px;padding:0 2px}
 .hero-links a{padding:10px 0}
 /* Viền focus rõ khi dùng bàn phím */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -576,6 +576,105 @@ html.lock{overflow:hidden}
 .sec-acts .cta[aria-busy="true"]{opacity:.6;pointer-events:none}
 .modal .mtop #mshare svg{width:15px;height:15px}
 @media (max-width:719px){.sec-r{max-width:none;width:100%}.sec-acts{width:100%}.sec-acts .cta{flex:1;justify-content:center;padding:12px 10px;font-size:10.5px;letter-spacing:.14em}}
+
+/* ===== Điện thoại: tinh chỉnh lần 2 ===== */
+.mb{display:none}
+.hero-acts{display:flex;align-items:center;gap:22px;margin-top:10px}
+.hero-go,.fveil,.pickbar{display:none}
+@media (max-width:719px){
+  html{-webkit-tap-highlight-color:transparent}
+  .dk{display:none}.mb{display:inline}
+  /* Hero vừa một màn hình: chữ ở trên, thiên hà ở giữa, nút ở dưới */
+  .hero{min-height:max(580px,100vh);min-height:max(580px,100svh)}
+  .hero-nav{padding:12px 16px}
+  .theme{width:44px;height:44px}
+  .hero-c{flex:none;padding:30px 16px 0;gap:16px}
+  .hero .over span{display:block}
+  .hero .over .sep{display:none}
+  .hero .over{line-height:1.8}
+  .hero-foot{padding:0 16px 20px}
+  .hero-l{width:100%}
+  .hero-sub{max-width:none;color:rgba(243,242,239,.86);text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 22px rgba(0,0,0,.85)}
+  .hero-acts{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;margin-top:16px}
+  .hero-go{display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;background:#f3f2ef;color:#000;text-decoration:none;font:500 12px var(--f-display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+  .hero-go i{width:1px;height:14px;background:currentColor;position:relative}
+  .hero-go i::after{content:"";position:absolute;left:-3px;bottom:0;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
+  .hero-about{justify-content:center;min-height:48px;border:1px solid rgba(255,255,255,.4);padding:0 10px;font-size:12px;letter-spacing:.12em;background:rgba(0,0,0,.4);white-space:nowrap}
+  .hero-stats>div{padding:12px 16px}
+  .hero-stats dd{font-size:1.55rem}
+  .hero-stats dt{font-size:12px;letter-spacing:.14em}
+  /* Sân khấu */
+  .stage-pp{width:44px;height:44px;right:16px;top:16px}
+  .runners button{min-height:44px;padding:4px 12px 4px 4px}
+  .runners img{width:34px;height:34px}
+  .runners small{font-size:12px}
+  .tabs button{min-height:52px;letter-spacing:.08em}
+  /* Thanh dính: cuộn xuống thì thu gọn, chỉ giữ hàng chọn đường */
+  .bar{transition:transform .35s var(--ease)}
+  .bar.compact{transform:translate3d(0,calc(-1 * var(--r1h,56px)),0)}
+  #ftoggle{height:44px}
+  .seg button{min-width:44px}
+  .search input{font-size:16px;height:44px}
+  .slide .cta{font-size:12px}
+  .ls-b .lg{font-size:12px;height:22px}
+  .box p>a{display:inline-block;padding:11px 0;margin:-11px 0}
+  .lanes-m button{font-size:12px;letter-spacing:.08em;min-height:52px}
+  .ic{height:44px}
+  .fhead .btn{height:44px}
+  .filters.open{overscroll-behavior:contain}
+  .fveil{display:block;position:fixed;inset:0;z-index:14;background:rgba(0,0,0,.55)}
+  /* Chú giải: tier đã ghi ở đầu mỗi hàng, chỉ giữ ký hiệu trên thẻ, xếp 2 cột */
+  .legend-strip{padding:14px 0}
+  .ls-t{display:none}
+  .ls-b{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin:0;padding:0;overflow:visible;font-size:13px}
+  .ls-b span{white-space:nowrap}
+  /* Nút tải ảnh / chia sẻ, thanh tự xếp */
+  .sec-acts .long,.minebar .long{display:none}
+  .sec-acts .cta{font-size:12px;min-height:48px}
+  .minebar{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px}
+  .minebar p{grid-column:1/-1;min-width:0}
+  .minebar .btn{height:44px;font-size:12px;letter-spacing:.1em;padding:0 8px}
+  /* Thẻ tướng */
+  .por .secl{font-size:11px;font-weight:500;letter-spacing:.14em;line-height:17px}
+  .por .bdg{font-size:12px;line-height:20px}
+  .card:active .por{transform:scale(.95);transition:transform .15s}
+  /* Hộp chi tiết dạng tấm: có thanh kéo, vuốt xuống để đóng, vuốt ngang để đổi tướng */
+  .modal{touch-action:pan-y;overscroll-behavior:contain}
+  .modal::before{content:"";position:absolute;left:50%;top:8px;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:rgba(255,255,255,.6);z-index:4;box-shadow:0 0 6px rgba(0,0,0,.5)}
+  .modal .mtop{top:18px;right:12px}
+  .modal .mtop button{width:44px;height:44px}
+  .modal .tags{gap:6px;margin:14px 0 20px}
+  .tag{font-size:12px;padding:5px 9px}
+  .bds{gap:16px}
+  .bd{grid-template-columns:1fr;row-gap:7px}
+  .bd span{grid-row:auto;font-size:12.5px;color:var(--muted)}
+  .modal .other button{min-height:40px}
+  /* Danh sách thay đổi + nguồn */
+  .log li{grid-template-columns:1fr;gap:4px}
+  .log li button{position:relative}
+  .log li button::after{content:"";position:absolute;inset:-12px -8px}
+  .box li>a:only-child{display:block;padding:11px 0}
+  .foot{font-size:12px;letter-spacing:.12em}
+  .totop{width:48px;height:48px}
+  body.picking .totop{display:none}
+  /* Thanh báo đang chọn tướng (chế độ Tự xếp) */
+  .pickbar{display:flex;align-items:center;gap:12px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:8;background:var(--fg);color:var(--bg);padding:6px 6px 6px 16px;font-size:13.5px;line-height:1.4;box-shadow:var(--shadow)}
+  .pickbar span{flex:1;min-width:0}
+  .pickbar .btn{height:44px;border-color:color-mix(in srgb,var(--bg) 35%,transparent);color:var(--bg)}
+  body.picking .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+.veil.nav{animation:none}
+@media (prefers-reduced-motion:reduce){.bar{transition:none}}
+@media (max-width:719px) and (prefers-reduced-motion:no-preference){
+  .fveil:not([hidden]){animation:fade .3s var(--ease)}
+  .pickbar:not([hidden]){animation:up .4s var(--ease)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .modal.from-r{animation:sideR .45s var(--ease)}
+  .modal.from-l{animation:sideL .45s var(--ease)}
+  @keyframes sideR{from{opacity:.3;transform:translateX(48px)}}
+  @keyframes sideL{from{opacity:.3;transform:translateX(-48px)}}
+}
 </style>
 
 <div class="sprog" aria-hidden="true"><i id="sprog"></i></div>
@@ -593,11 +692,14 @@ html.lock{overflow:hidden}
       <button class="theme" id="themeBtn" aria-label="Đổi giao diện sáng/tối" title="Đổi giao diện sáng/tối"></button>
     </div>
     <div class="hero-c">
-      <div class="over">Mùa S4 2026 · Bản Vết Nứt Thời Không</div>
+      <div class="over"><span>Mùa S4 2026</span><span class="sep"> · </span><span>Bản Vết Nứt Thời Không</span></div>
       <h1>Meta Liên Quân<em>trong chuyển động</em></h1>
     </div>
     <div class="hero-foot">
-      <p class="hero-sub">Mỗi hạt sáng là một lượt chọn hoặc cấm ở ĐTDV mùa Đông. Rê chuột hoặc chạm để khuấy động.<button id="aboutBtn" aria-expanded="false" aria-controls="about">Cách đọc bảng</button></p>
+      <div class="hero-l">
+        <p class="hero-sub">Mỗi hạt sáng là một lượt chọn hoặc cấm ở ĐTDV mùa Đông. <span class="dk">Rê chuột hoặc chạm</span><span class="mb">Chạm vào thiên hà</span> để khuấy động.</p>
+        <div class="hero-acts"><a class="hero-go" href="#boardTitle">Xem bảng tier<i aria-hidden="true"></i></a><button class="hero-about" id="aboutBtn" aria-expanded="false" aria-controls="about">Cách đọc bảng</button></div>
+      </div>
       <a class="scrollcue" href="#spotTitle"><span></span>Khám phá</a>
     </div>
     <dl class="hero-stats">
@@ -642,10 +744,11 @@ html.lock{overflow:hidden}
   <section class="stage" id="stage" aria-roledescription="trình chiếu" aria-label="Tướng mạnh nhất mỗi đường"></section>
 
   <section class="sec" aria-labelledby="boardTitle">
-    <div class="sec-h"><div><span class="over">Toàn bộ</span><h2 id="boardTitle">Bảng tier theo đường</h2></div><div class="sec-r"><p>Bấm vào tướng để xem điểm từng nguồn. Trên máy tính, rê chuột để xem nhanh.</p>
-      <div class="sec-acts"><button class="cta" id="dlImg" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Tải ảnh tier list</button><button class="cta" id="sharePage" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg>Chia sẻ</button></div></div></div>
+    <div class="sec-h"><div><span class="over">Toàn bộ</span><h2 id="boardTitle">Bảng tier theo đường</h2></div><div class="sec-r"><p>Bấm vào tướng để xem điểm từng nguồn.<span class="dk"> Trên máy tính, rê chuột để xem nhanh.</span><span class="mb"> Vuốt ngang trên bảng để đổi đường.</span></p>
+      <div class="sec-acts"><button class="cta" id="dlImg" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Tải ảnh<span class="long"> tier list</span></button><button class="cta" id="sharePage" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg>Chia sẻ</button></div></div></div>
   </section>
 
+  <div class="boardwrap">
   <div class="bar" id="bar">
     <div class="row1">
       <div class="seg" role="group" aria-label="Chế độ">
@@ -672,14 +775,15 @@ html.lock{overflow:hidden}
 
   <div class="minebar" id="minebar" hidden>
     <p id="minehint">Bấm chọn một tướng, rồi bấm vào hàng tier muốn đặt. Trên máy tính có thể kéo thả. Bảng tự lưu trên trình duyệt này.</p>
-    <button class="btn" id="dlMine" type="button">Tải ảnh tier list của tôi</button>
-    <button class="btn" id="copy">Sao chép tier list</button>
-    <button class="btn" id="rmeta">Lấy lại bảng Meta</button>
-    <button class="btn" id="rclear">Đưa hết về Chưa xếp</button>
+    <button class="btn" id="dlMine" type="button">Tải ảnh<span class="long"> tier list của tôi</span></button>
+    <button class="btn" id="copy">Sao chép<span class="long"> tier list</span></button>
+    <button class="btn" id="rmeta">Lấy lại<span class="long"> bảng</span> Meta</button>
+    <button class="btn" id="rclear"><span class="long">Đưa hết </span>về Chưa xếp</button>
   </div>
 
   <div class="scroller"><div class="board" id="board" aria-live="polite"></div></div>
   <noscript><p style="padding:40px 0;color:var(--muted)">Bật JavaScript để xem bảng tier.</p></noscript>
+  </div>
 
   <div class="band" id="band" aria-hidden="true">
     <div class="band-row r1">Meta Liên Quân · Mùa S4 2026 · Meta Liên Quân · Mùa S4 2026 · Meta Liên Quân · Mùa S4 2026 ·</div>
@@ -725,9 +829,11 @@ html.lock{overflow:hidden}
   <footer class="foot"><span>Bảng Tier Liên Quân · Mùa S4 2026</span><span>Dữ liệu cập nhật 11/10/2026</span></footer>
 </div>
 
+<div class="fveil" id="fveil" hidden></div>
+<div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610110717"></script>
-<script src="assets/app.js?v=202610110717"></script>
+<script src="assets/data.js?v=202610111439"></script>
+<script src="assets/app.js?v=202610111439"></script>
 </body>
 </html>

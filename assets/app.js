@@ -32,9 +32,13 @@ function buildFilters(){
   mk("f-class","cls",CLASSES,(b,k,v)=>{b.innerHTML=ICON[k]+v});
   mk("f-trend","trend",{up:"↑ Tăng",down:"↓ Giảm",mix:"⇄ Điều chỉnh",new:"Làm lại"},(b,k,v)=>{b.textContent=v});
   $("lanesM").innerHTML=Object.entries(LANES).map(([k,v])=>`<button data-l="${k}" style="--lc:var(--l-${k})" aria-pressed="${k===mLane}"><i></i>${v}</button>`).join("");
-  $("lanesM").onclick=e=>{const b=e.target.closest("button");if(!b)return;mLane=b.dataset.l;store("lq-mlane",mLane);
-    $("lanesM").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.l===mLane));draw()};
+  $("lanesM").onclick=e=>{const b=e.target.closest("button");if(b)setLane(b.dataset.l)};
 }
+function setLane(l){if(!LANES[l]||l===mLane)return;mLane=l;store("lq-mlane",mLane);
+  $("lanesM").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.l===mLane));
+  const top=$("board").getBoundingClientRect().top,lim=$("bar").offsetHeight;
+  if(top<lim-2)scrollTo({top:scrollY+top-lim-4,behavior:"auto"});
+  draw()}
 function activeCount(){return F.cls.size+F.trend.size+(mq.matches?0:F.lane.size)+(q?1:0)}
 function syncFilterUI(){const n=activeCount();$("fcount").hidden=!(F.cls.size+F.trend.size);$("fcount").textContent=F.cls.size+F.trend.size;$("freset").hidden=!n}
 function match(h){return (!F.cls.size||F.cls.has(h.cls))&&(!F.trend.size||F.trend.has(h.trend))&&(!q||slug(h.name).includes(slug(q)))}
@@ -60,8 +64,8 @@ function render(){
       <span>${elsewhere.length?"Có kết quả ở đường khác:":"Thử bỏ bớt bộ lọc hoặc đổi từ khoá tìm kiếm."}</span>
       ${elsewhere.length?`<div class="empty-go">${elsewhere.map(([l,n])=>`<button class="btn" data-lane="${l}"><span class="lanebar" style="background:var(--l-${l})"></span>${LANES[l]} · ${n}</button>`).join("")}</div>`:""}
       <button class="btn${elsewhere.length?" ghost":""}" id="emptyReset">Xoá lọc</button></div>`;
-    $("emptyReset").onclick=resetFilters;
-    board.querySelectorAll("[data-lane]").forEach(bt=>bt.onclick=()=>{mLane=bt.dataset.lane;store("lq-mlane",mLane);$("lanesM").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.l===mLane));draw()});
+    $("emptyReset").onclick=resetFilters;syncPick();
+    board.querySelectorAll("[data-lane]").forEach(bt=>bt.onclick=()=>setLane(bt.dataset.lane));
     return}
   let html=`<div class="hrow"><div></div>${lanes.map(l=>`<div style="--lc:var(--l-${l})"><span class="lanebar" style="background:var(--l-${l})"></span>${LANES[l]} <small>${list.filter(h=>h.lane===l).length}</small></div>`).join("")}</div>`;
   const rows=mode==="mine"?[...TIERS,"X"]:TIERS;
@@ -76,8 +80,11 @@ function render(){
     html+=`</div>`;
   });
   board.innerHTML=html;
-  observeRows();
+  observeRows();syncPick();
 }
+function syncPick(){const on=mode==="mine"&&!!selected,h=on&&HEROES.find(x=>x.id===selected);
+  $("pickbar").hidden=!on;document.body.classList.toggle("picking",on&&mq.matches);
+  if(h)$("pickTxt").innerHTML=`Đã chọn <b>${h.name}</b> · chạm hàng tier để đặt`}
 function resetFilters(){Object.values(F).forEach(s=>s.clear());q="";$("q").value="";document.querySelectorAll(".filters [aria-pressed]").forEach(b=>b.setAttribute("aria-pressed","false"));draw()}
 
 /* Tương tác bảng */
@@ -95,6 +102,12 @@ $("board").addEventListener("click",e=>{
 $("board").addEventListener("dragstart",e=>{const c=e.target.closest(".card");if(c){e.dataTransfer.setData("text/plain",c.dataset.id);hideTip()}});
 $("board").addEventListener("dragover",e=>{if(mode==="mine"&&e.target.closest(".trow"))e.preventDefault()});
 $("board").addEventListener("drop",e=>{const row=e.target.closest(".trow");if(row){e.preventDefault();place(e.dataTransfer.getData("text/plain"),row.dataset.t)}});
+(function swipeLanes(){let x0=null,y0=0,t0=0;const b=$("board");
+  b.addEventListener("touchstart",e=>{x0=null;if(!mq.matches||e.touches.length>1)return;const t=e.touches[0];if(t.clientX<24||t.clientX>innerWidth-24)return;x0=t.clientX;y0=t.clientY;t0=Date.now()},{passive:true});
+  b.addEventListener("touchend",e=>{if(x0==null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+    if(Date.now()-t0>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*2)return;
+    const ks=Object.keys(LANES),n=ks[(ks.indexOf(mLane)+(dx<0?1:ks.length-1))%ks.length];setLane(n);toast("Đường "+LANES[n])},{passive:true});
+})();
 function place(id,t){if(!id)return;const h=HEROES.find(x=>x.id===id);mine[id]=t;store("lq-mine2",mine);selected=null;draw();
   $("minehint").textContent="Bấm chọn một tướng, rồi bấm vào hàng tier muốn đặt. Trên máy tính có thể kéo thả. Bảng tự lưu trên trình duyệt này.";
   if(h)toast(`${h.name} → ${t==="X"?"Chưa xếp":"tier "+t}`)}
@@ -134,12 +147,12 @@ function breakdown(h){
 }
 let lastFocus=null;
 function visibleOrder(){return [...document.querySelectorAll("#board .card")].map(c=>c.dataset.id)}
-function openModal(id){
+function openModal(id,dir){
   const h=HEROES.find(x=>x.id===id);if(!h)return;const b=TR[h.trend];
-  if(!$("veil"))lastFocus=document.activeElement;
+  const nav=!!$("veil");if(!nav)lastFocus=document.activeElement;
   const others=HEROES.filter(x=>x.key===h.key&&x.id!==h.id);
   const order=visibleOrder(),i=order.indexOf(id);
-  $("modalRoot").innerHTML=`<div class="veil" id="veil"><div class="modal" role="dialog" aria-modal="true" aria-label="${h.name}">
+  $("modalRoot").innerHTML=`<div class="veil${nav?" nav":""}" id="veil"><div class="modal${dir>0?" from-r":dir<0?" from-l":""}" role="dialog" aria-modal="true" aria-label="${h.name}">
     <div class="mtop"><button id="mshare" aria-label="Chia sẻ tướng này" title="Chia sẻ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg></button><button id="mprev" aria-label="Tướng trước" ${i<=0?"disabled":""}>‹</button><button id="mnext" aria-label="Tướng sau" ${i<0||i>=order.length-1?"disabled":""}>›</button><button id="mx" aria-label="Đóng">×</button></div>
     <div class="m-ban${splOf(h)?"":" noimg"}">${splOf(h)?`<img src="${splOf(h)}" alt="" decoding="async">`:""}</div>
     <div class="m-body"><div class="card" data-t="${h.tier}">${portrait(h)}</div>
@@ -151,8 +164,9 @@ function openModal(id){
     </div></div></div></div>`;
   document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
   $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
-  const close=()=>{setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);lastFocus&&lastFocus.focus&&lastFocus.focus()};
-  const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n)}};
+  const close=()=>{setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);
+    const back=document.querySelector(`#board .card[data-id="${id}"]`)||lastFocus;back&&back.focus&&back.focus(mq.matches?{preventScroll:true}:undefined)};
+  const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n,d)}};
   const key=e=>{if(e.key==="Escape")close();else if(e.key==="ArrowLeft")go(-1);else if(e.key==="ArrowRight")go(1);
     else if(e.key==="Tab"){const f=[...$("modalRoot").querySelectorAll("button:not(:disabled)")];if(!f.length)return;const first=f[0],last=f[f.length-1];
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}};
@@ -160,7 +174,16 @@ function openModal(id){
   $("veil").onclick=e=>{if(e.target.id==="veil")close()};$("mx").onclick=close;
   $("mprev").onclick=()=>go(-1);$("mnext").onclick=()=>go(1);
   $("modalRoot").querySelectorAll("[data-go]").forEach(bt=>bt.onclick=()=>{document.removeEventListener("keydown",key);openModal(bt.dataset.go)});
-  fitNames($("modalRoot"));$("mx").focus();
+  fitNames($("modalRoot"));$("mx").focus({preventScroll:true});
+  /* Điện thoại: vuốt xuống để đóng, vuốt ngang để sang tướng trước/sau */
+  const md=$("modalRoot").querySelector(".modal");let x0=null,y0=0,dy=0,drag=false,horiz=false;
+  md.addEventListener("touchstart",e=>{if(!mq.matches||e.touches.length>1){x0=null;return}const t=e.touches[0];x0=t.clientX;y0=t.clientY;dy=0;drag=false;horiz=false},{passive:true});
+  md.addEventListener("touchmove",e=>{if(x0==null)return;const t=e.touches[0],ddx=t.clientX-x0,ddy=t.clientY-y0;
+    if(!drag&&!horiz){if(Math.abs(ddx)>14&&Math.abs(ddx)>Math.abs(ddy)*1.5)horiz=true;else if(ddy>10&&md.scrollTop<=0)drag=true;else if(Math.abs(ddy)>10){x0=null;return}}
+    if(drag){dy=Math.max(0,ddy);md.style.transition="none";md.style.transform=`translate3d(0,${dy}px,0)`;if(e.cancelable)e.preventDefault()}},{passive:false});
+  md.addEventListener("touchend",e=>{if(x0==null)return;const ddx=e.changedTouches[0].clientX-x0;x0=null;
+    if(drag){md.style.transition="transform .3s cubic-bezier(.22,.8,.18,1)";if(dy>110){md.style.transform="translate3d(0,100%,0)";$("veil").style.transition="opacity .3s";$("veil").style.opacity="0";setTimeout(close,260)}else md.style.transform=""}
+    else if(horiz&&Math.abs(ddx)>60)go(ddx<0?1:-1)},{passive:true});
 }
 
 /* Chế độ, tìm kiếm, phím tắt */
@@ -171,13 +194,14 @@ $("q").onkeydown=e=>{if(e.key==="Escape"){e.target.value="";q="";draw();e.target
   else if(e.key==="Enter"){const first=document.querySelector("#board .card");if(first&&mode==="meta"){openModal(first.dataset.id)}}};
 document.addEventListener("keydown",e=>{if(e.key==="/"&&!$("veil")&&document.activeElement.tagName!=="INPUT"){e.preventDefault();$("q").focus()}});
 $("freset").onclick=resetFilters;
-function setSheet(o){$("filters").classList.toggle("open",o);$("ftoggle").setAttribute("aria-expanded",o);if(o&&mq.matches)$("fdone").focus();else if(!o)$("ftoggle").focus()}
+function setSheet(o){$("filters").classList.toggle("open",o);$("ftoggle").setAttribute("aria-expanded",o);$("fveil").hidden=!(o&&mq.matches);if(o&&mq.matches)$("fdone").focus();else if(!o)$("ftoggle").focus()}
 $("ftoggle").onclick=()=>setSheet(!$("filters").classList.contains("open"));
-$("fdone").onclick=()=>setSheet(false);$("fclear").onclick=()=>{resetFilters()};
+$("fdone").onclick=()=>setSheet(false);$("fveil").onclick=()=>setSheet(false);$("fclear").onclick=()=>{resetFilters()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("filters").classList.contains("open")&&!$("veil")&&mq.matches)setSheet(false)});
 $("aboutBtn").onclick=()=>{const a=$("about");a.hidden=!a.hidden;$("aboutBtn").setAttribute("aria-expanded",!a.hidden);$("aboutBtn").textContent=a.hidden?"Cách đọc bảng":"Ẩn hướng dẫn";if(!a.hidden)a.scrollIntoView({behavior:reduce.matches?"auto":"smooth",block:"start"})};
 function toast(s){const t=$("toast");t.textContent=s;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,1800)}
 $("rmeta").onclick=()=>{mine=freshMine();store("lq-mine2",mine);draw();toast("Đã lấy lại bảng Meta")};
+$("pickX").onclick=()=>{selected=null;draw();$("minehint").textContent="Bấm chọn một tướng, rồi bấm vào hàng tier muốn đặt. Trên máy tính có thể kéo thả. Bảng tự lưu trên trình duyệt này."};
 $("rclear").onclick=()=>{HEROES.forEach(h=>mine[h.id]="X");store("lq-mine2",mine);draw();toast("Đã đưa hết về Chưa xếp")};
 $("copy").onclick=()=>{
   const txt="Tier list Liên Quân của tôi\n"+Object.entries(LANES).map(([l,ln])=>`[${ln}]\n`+TIERS.map(t=>`${t}: ${HEROES.filter(h=>h.lane===l&&mine[h.id]===t).map(h=>h.name).join(", ")||"—"}`).join("\n")).join("\n\n");
@@ -185,7 +209,7 @@ $("copy").onclick=()=>{
 };
 
 /* Thanh dính: đo chiều cao để tiêu đề cột dính ngay bên dưới */
-function measure(){document.documentElement.style.setProperty("--barh",$("bar").offsetHeight+"px")}
+function measure(){document.documentElement.style.setProperty("--barh",$("bar").offsetHeight+"px");$("bar").style.setProperty("--r1h",$("bar").querySelector(".row1").offsetHeight+"px")}
 try{new ResizeObserver(measure).observe($("bar"))}catch(e){addEventListener("resize",measure)}
 const sentinel=document.createElement("div");$("bar").before(sentinel);
 try{new IntersectionObserver(([en])=>$("bar").classList.toggle("stuck",!en.isIntersecting)).observe(sentinel)}catch(e){}
@@ -218,6 +242,10 @@ function buildStage(){
   const st=$("stage");st.innerHTML=slides+tabs+pp;st.style.setProperty("--dur",DUR+"ms");
   try{new IntersectionObserver(([en],o)=>{if(en.isIntersecting){loadSlide(1);o.disconnect()}},{rootMargin:"300px"}).observe(st)}catch(e){loadSlide(1)}
   st.onclick=e=>{if(e.target.closest("#stagePP")){userPaused=!userPaused;paintPP();userPaused?pauseStage(true):(sPaused=false,$("stage").classList.remove("paused"),sLeft=DUR,schedule());return}const o=e.target.closest("[data-open]");if(o)return openModal(o.dataset.open);const t=e.target.closest("[data-i]");if(t)goSlide(+t.dataset.i,true)};
+  let sx=null,sy=0;
+  st.addEventListener("touchstart",e=>{const t=e.touches[0];sx=(e.touches.length>1||t.clientX<24||t.clientX>innerWidth-24)?null:t.clientX;sy=t.clientY},{passive:true});
+  st.addEventListener("touchend",e=>{if(sx==null)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;sx=null;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)goSlide((sIdx+(dx<0?1:4))%5,true)},{passive:true});
   st.onkeydown=e=>{if(e.target.closest(".tabs")&&(e.key==="ArrowRight"||e.key==="ArrowLeft")){e.preventDefault();goSlide((sIdx+(e.key==="ArrowRight"?1:4))%5,true);st.querySelectorAll(".tabs button")[sIdx].focus()}};
   if(!reduce.matches){st.addEventListener("pointerenter",()=>pauseStage(true));st.addEventListener("pointerleave",()=>pauseStage(false));
     st.addEventListener("focusin",()=>pauseStage(true));st.addEventListener("focusout",()=>pauseStage(false));
@@ -293,8 +321,11 @@ paintTheme();
   at("aR",1,0);at("aT",1,1);at("aY",1,2);at("aS",1,3);at("aC",3,4);at("aA",1,7);
   const U=n=>gl.getUniformLocation(pr,n);const uOff=U("uOff"),uTime=U("uTime"),uTilt=U("uTilt"),uAsp=U("uAsp"),uDpr=U("uDpr"),uMouse=U("uMouse"),uStir=U("uStir"),uZoom=U("uZoom");
   gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE);gl.clearColor(0,0,0,0);
-  let W=0,H=0,dpr=1;
-  function size(){dpr=Math.min(devicePixelRatio||1,1.5);const r=cv.getBoundingClientRect();W=Math.max(1,r.width*dpr|0);H=Math.max(1,r.height*dpr|0);cv.width=W;cv.height=H;gl.viewport(0,0,W,H)}
+  let W=0,H=0,dpr=1,gOff=small?-0.12:-0.36;
+  const hc=hero.querySelector(".hero-c"),hf=hero.querySelector(".hero-foot");
+  function center(){if(!small)return;const h=hero.offsetHeight||1,a=hc.offsetTop+hc.offsetHeight,b=hf.offsetTop;gOff=b-a>60?1-2*((a+b)/2/h):-0.12}
+  try{const ro=new ResizeObserver(center);ro.observe(hc);ro.observe(hf)}catch(e){}
+  function size(){center();dpr=Math.min(devicePixelRatio||1,1.5);const r=cv.getBoundingClientRect();W=Math.max(1,r.width*dpr|0);H=Math.max(1,r.height*dpr|0);cv.width=W;cv.height=H;gl.viewport(0,0,W,H)}
   size();try{new ResizeObserver(size).observe(cv)}catch(e){addEventListener("resize",size)}
   let mx=9,my=9,tmx=9,tmy=9,stir=0,tstir=0,t=0,last=performance.now(),visible=true,spin=1;
   function setPt(cx,cy){const r=cv.getBoundingClientRect();tmx=((cx-r.left)/r.width)*2-1;tmy=-(((cy-r.top)/r.height)*2-1);tstir=1;spin=Math.min(spin+0.08,3)}
@@ -308,7 +339,7 @@ paintTheme();
     const sc=Math.min(1,Math.max(0,scrollY/ (hero.offsetHeight||1)));
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(uTime,t);gl.uniform1f(uTilt,0.36+sc*0.55+Math.max(-1,Math.min(1,my))*0.05*stir);gl.uniform1f(uAsp,W/H);gl.uniform1f(uDpr,dpr);
-    gl.uniform1f(uOff,small?-0.12:-0.36);gl.uniform2f(uMouse,mx,my);gl.uniform1f(uStir,stir);gl.uniform1f(uZoom,(small?0.56:0.95)*(1+sc*0.25));
+    gl.uniform1f(uOff,gOff);gl.uniform2f(uMouse,mx,my);gl.uniform1f(uStir,stir);gl.uniform1f(uZoom,(small?0.56:0.95)*(1+sc*0.25));
     gl.drawArrays(gl.POINTS,0,N);
   }
   if(reduce.matches){frame(performance.now());addEventListener("resize",()=>frame(performance.now()));return}
@@ -343,13 +374,20 @@ if(revIO)document.querySelectorAll(".sec-h,.legend-strip,.filters,.box").forEach
   const vis={hero:true,stage:false,band:false};
   try{const io=new IntersectionObserver(es=>es.forEach(en=>{vis[en.target.dataset.fx]=en.isIntersecting}),{rootMargin:"100px"});
     hero.dataset.fx="hero";stage.dataset.fx="stage";band.dataset.fx="band";[hero,stage,band].forEach(el=>io.observe(el))}catch(e){vis.stage=vis.band=true}
-  let ticking=false,maxS=1,vh=innerHeight;
+  let ticking=false,maxS=1,vh=innerHeight,lastY=scrollY,acc=0,dirUp=false,stickY=0;
+  const barEl=$("bar"),qEl=$("q"),filt=$("filters");
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
-  const measureDoc=()=>{vh=innerHeight;maxS=Math.max(1,root.scrollHeight-vh)};
+  const measureDoc=()=>{vh=innerHeight;maxS=Math.max(1,root.scrollHeight-vh);stickY=sentinel.getBoundingClientRect().top+scrollY};
   function update(){ticking=false;
     const y=scrollY,pp=clamp(y/maxS);
     bar.style.transform=`scaleX(${pp.toFixed(4)})`;ring.style.strokeDashoffset=(125.7*(1-pp)).toFixed(1);
-    const showTop=y>vh*0.9;if(totop.hidden===showTop)totop.hidden=!showTop;
+    const dy=y-lastY;lastY=y;if(dy&&Math.sign(dy)!==Math.sign(acc))acc=0;acc+=dy;if(acc<-12)dirUp=true;else if(acc>12)dirUp=false;
+    const m=mq.matches;
+    // Điện thoại: chỉ hiện nút lên đầu trang khi đang cuộn ngược lên và không che sân khấu
+    const showTop=m?dirUp&&y>vh*1.5&&!vis.stage&&!document.body.classList.contains("picking"):y>vh*0.9;if(totop.hidden===showTop)totop.hidden=!showTop;
+    // Điện thoại: cuộn xuống trong bảng thì ẩn hàng chế độ/tìm/lọc, cuộn lên thì hiện lại
+    const cp=m&&!dirUp&&y>stickY+160&&document.activeElement!==qEl&&!filt.classList.contains("open");
+    if(barEl.classList.contains("compact")!==cp)barEl.classList.toggle("compact",cp);
     if(reduce.matches)return;
     if(vis.hero){const hp=clamp(y/((hero.offsetHeight||1)*0.75));
       heroC.style.transform=`translate3d(0,${(-140*hp).toFixed(1)}px,0)`;heroC.style.opacity=(1-hp*1.5).toFixed(3);
