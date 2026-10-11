@@ -484,7 +484,7 @@ function score(k,vn,lane){const parts=[];if(VNS[vn])parts.push([VNS[vn],.1]);
   const m=SRC.rm[k];if(m)parts.push([RMS[m],.2]);
   return parts.reduce((s,[v,w])=>s+v*w,0)/parts.reduce((s,[,w])=>s+w,0)}
 // Điều chỉnh thủ công của người biên tập (ưu tiên cao nhất)
-const MANUAL={preyta:"A",darcy:"A",zuka:"B",nakroth:"A",airi:"A","arthur-sp":"B",krizzix:"A",chaugnar:"B",taara:"A",qi:"A",yena:"A","billow-top":"B","marja-top":"A","annette-mid":"S","rouie-mid":"S"};
+const MANUAL={preyta:"A",aoi:"B",darcy:"A",zuka:"B",nakroth:"A",airi:"A","arthur-sp":"B",krizzix:"A",chaugnar:"B",taara:"A",qi:"A",yena:"A","billow-top":"B","marja-top":"A","annette-mid":"S","rouie-mid":"S"};
 const toTier=s=>s>=4.2?"S":s>=3.5?"A":s>=2.7?"B":s>=2?"C":"D";
 // Lớp tướng theo phân loại chính thức trên lienquan.garena.vn
 const CLASSFIX={airi:"assassin",chaugnar:"support",cresht:"tank",zill:"mage",xeniel:"support",ata:"fighter",boltbaron:"mage",arum:"tank",bright:"marksman",roxie:"fighter",lumburr:"tank",ormarr:"fighter",theflash:"mage",arduin:"fighter",sephera:"support"};
