@@ -28,6 +28,8 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   Khi thêm tướng hoặc đường phụ mới phải thêm build `@<đường>` vào `vn.txt`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
   Phép có dấu `*` trong `vn.txt` (ví dụ `Trừng Trị*` của Taara đi Tà Thần) là phương án chủ web thêm, không có ở trang nguồn — giữ nguyên khi cập nhật.
   `tools/builds/raw.txt` là build cũ của ROV META (server Thái), không còn hiện trên web.
+- Danh sách "Chỉnh tay của người biên tập" và "Đường phụ" trong mục Cách xếp và nguồn được `assets/app.js` tự sinh từ `MANUAL`/`SECONDARY`, không cần sửa chữ trong `index.html`.
+- Kiểu hover chỉ đặt trong `@media (hover:hover)` để điện thoại không bị dính trạng thái sau khi chạm. Thanh dính và hàng tên đường dùng nền đặc `var(--bg)`.
 - Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 
 ## Dữ liệu trong `assets/data.js`

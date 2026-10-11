@@ -80,7 +80,9 @@ function setLane(l){if(!LANES[l]||l===mLane)return;mLane=l;store("lq-mlane",mLan
   if(top<lim-2)scrollTo({top:scrollY+top-lim-4,behavior:"auto"});
   draw()}
 function activeCount(){return F.cls.size+F.trend.size+(mq.matches?0:F.lane.size)+(q?1:0)}
-function syncFilterUI(){const n=activeCount();$("fcount").hidden=!(F.cls.size+F.trend.size);$("fcount").textContent=F.cls.size+F.trend.size;$("freset").hidden=!n}
+function syncFilterUI(shown){const n=activeCount();$("fcount").hidden=!(F.cls.size+F.trend.size);$("fcount").textContent=F.cls.size+F.trend.size;$("freset").hidden=!n;
+  // Nút đóng bảng lọc trên điện thoại báo luôn số tướng sẽ hiện
+  if(shown!=null)$("fdone").textContent=shown?`Xem ${shown} tướng`:"Đóng"}
 function match(h){return (!F.cls.size||F.cls.has(h.cls))&&(!F.trend.size||F.trend.has(h.trend))&&(!q||slug(h.name).includes(slug(q)))}
 
 /* Vẽ bảng */
@@ -97,7 +99,7 @@ function render(){
   const lanes=mq.matches?[mLane]:Object.keys(LANES).filter(l=>!F.lane.size||F.lane.has(l));
   const board=$("board");board.style.setProperty("--cols",lanes.length);board.style.setProperty("--minw",(lanes.length*172+84)+"px");
   const list=HEROES.filter(h=>lanes.includes(h.lane)&&match(h));
-  syncFilterUI();
+  syncFilterUI(list.length);
   if(!list.length){
     const elsewhere=mq.matches?Object.keys(LANES).filter(l=>l!==mLane).map(l=>[l,HEROES.filter(h=>h.lane===l&&match(h)).length]).filter(x=>x[1]):[];
     board.innerHTML=`<div class="empty"><b>${elsewhere.length?"Đường này không có tướng khớp":"Không có tướng nào khớp"}</b>
@@ -115,7 +117,7 @@ function render(){
     html+=`<div class="trow${mode==="mine"&&selected?" target":""}" data-t="${t}"><div class="tl" aria-label="Tier ${t==="X"?"chưa xếp":t}, ${inTier.length} tướng"><span class="L">${t==="X"?"–":t}</span><small>${t==="X"?"Chưa xếp":TNAME[t]}</small><em>${TDESC[t]}</em><span class="cnt">${inTier.length} tướng</span></div>`;
     lanes.forEach(l=>{
       const items=inTier.filter(h=>h.lane===l);
-      html+=`<div class="cell" data-t="${t}">${items.map(h=>`<button class="card${selected===h.id?" sel":""}${q?" hit":""}" data-id="${h.id}" data-t="${tierOf(h)}" style="${vtOn?`view-transition-name:c-${h.id.replace(/[^a-z0-9-]/g,"")};`:""}--d:${(h.score*7)%4}" aria-label="${h.name}, ${LANES[h.lane]}${h.sec?" (đường phụ)":""}, tier ${tierOf(h)}" ${mode==="mine"?'draggable="true"':""}>${portrait(h).replace('</div>',tierOf(h)==="S"?'<span class="sweep"></span></div>':'</div>')}<span class="nm">${h.name}</span></button>`).join("")||'<span class="none" aria-hidden="true">—</span>'}</div>`;
+      html+=`<div class="cell" data-t="${t}">${items.map(h=>`<button class="card${selected===h.id?" sel":""}${q?" hit":""}${h.name.length>10?" ln":""}" data-id="${h.id}" data-t="${tierOf(h)}" style="${vtOn?`view-transition-name:c-${h.id.replace(/[^a-z0-9-]/g,"")};`:""}--d:${(h.score*7)%4}" aria-label="${h.name}, ${LANES[h.lane]}${h.sec?" (đường phụ)":""}, tier ${tierOf(h)}" ${mode==="mine"?'draggable="true"':""}>${portrait(h).replace('</div>',tierOf(h)==="S"?'<span class="sweep"></span></div>':'</div>')}<span class="nm">${h.name}</span></button>`).join("")||'<span class="none" aria-hidden="true">—</span>'}</div>`;
     });
     html+=`</div>`;
   });
@@ -252,7 +254,9 @@ function setMode(m){if(m!==mode)track("doi_che_do",{che_do:m==="mine"?"tu_xep":"
 $("m-meta").onclick=()=>setMode("meta");$("m-mine").onclick=()=>setMode("mine");
 $("q").oninput=e=>{q=e.target.value.trim();draw()};
 $("q").onkeydown=e=>{if(e.key==="Escape"){e.target.value="";q="";draw();e.target.blur()}
-  else if(e.key==="Enter"){const first=document.querySelector("#board .card");if(first&&mode==="meta"){openModal(first.dataset.id)}}};
+  else if(e.key==="Enter"){const first=document.querySelector("#board .card");if(first&&mode==="meta"){openModal(first.dataset.id)}}
+  // Mũi tên xuống: nhảy thẳng tới thẻ tướng đầu tiên, khỏi phải Tab qua cả dãy nút lọc
+  else if(e.key==="ArrowDown"){const first=document.querySelector("#board .card");if(first){e.preventDefault();first.focus()}}};
 document.addEventListener("keydown",e=>{if(e.key==="/"&&!$("veil")&&document.activeElement.tagName!=="INPUT"){e.preventDefault();$("q").focus()}});
 $("freset").onclick=resetFilters;
 function setSheet(o){$("filters").classList.toggle("open",o);$("ftoggle").setAttribute("aria-expanded",o);$("fveil").hidden=!(o&&mq.matches);if(o&&mq.matches)$("fdone").focus();else if(!o)$("ftoggle").focus()}
@@ -417,6 +421,12 @@ function fitOne(el){el.style.fontSize="";const max=el.parentElement.clientWidth;
 function fitNames(root){(root||document).querySelectorAll(".slide-c h3,.modal h3").forEach(fitOne)}
 addEventListener("resize",()=>fitNames());
 
+/* Cách xếp: danh sách chỉnh tay và đường phụ lấy thẳng từ dữ liệu */
+(function notes(){const ord=Object.keys(LANES),by=(a,b)=>ord.indexOf(a.lane)-ord.indexOf(b.lane)||a.name.localeCompare(b.name,"vi");
+  const man=ord.map(l=>[l,HEROES.filter(h=>h.floor==="manual"&&h.lane===l).sort(by).map(h=>`${h.name} ${h.tier}${h.sec?" (phụ)":""}`)]).filter(x=>x[1].length).map(([l,n])=>`${LANES[l]}: ${n.join(", ")}`);
+  const ml=$("manualList");if(ml)ml.textContent=man.join("; ")||"chưa có";
+  const sec=ord.map(l=>[l,HEROES.filter(h=>h.sec&&h.lane===l).sort(by).map(h=>h.name)]).filter(x=>x[1].length).map(([l,n])=>`${LANES[l]}: ${n.join(", ")}`);
+  const sl=$("secList");if(sl)sl.textContent=sec.join("; ")})();
 /* Chú giải luôn hiện */
 $("legendStrip").innerHTML=`<div class="ls-t">${TIERS.map(t=>`<span class="ls-tier" style="--tc:var(--t-${t.toLowerCase()})"><b>${t}</b>${TNAME[t]}</span>`).join("")}</div>
   <div class="ls-b"><span><i class="lg up">↑</i>Tăng sức mạnh</span><span><i class="lg down">↓</i>Giảm sức mạnh</span><span><i class="lg new">MỚI</i>Làm lại</span><span><i class="lg sec">PHỤ</i>Đường phụ</span></div>`;

@@ -35,7 +35,7 @@
 /* Layout: hero toàn màn hình (thiên hà) → sân khấu "mạnh nhất mỗi đường" kiểu trình chiếu → thanh công cụ dính → lưới tier × đường.
    Tinh thần xe sang: đen tuyền, chữ in hoa giãn rộng, góc vuông, đường kẻ mảnh, chuyển động chậm */
 :root{
-  --bg:#000; --bg-2:#08080a; --surface:#0c0c0e; --surface-2:#141417; --fg:#f3f2ef; --muted:#9b9a9f; --faint:#66656b;
+  --bg:#000; --bg-2:#08080a; --surface:#0c0c0e; --surface-2:#141417; --fg:#f3f2ef; --muted:#9b9a9f; --faint:#7d7c82;
   --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.26); --accent:#d9b56c; --accent-2:#8fd3c6;
   --t-s:#d9b56c; --t-a:#b9a9ff; --t-b:#86d0c3; --t-c:#8ea3cc; --t-d:#7a797f;
   --l-top:#e8805f; --l-jg:#5cc496; --l-mid:#a597ff; --l-ad:#e9b766; --l-sp:#6fb6ee;
@@ -45,23 +45,24 @@
   color-scheme:dark;
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
-  --bg:#f2f1ed; --bg-2:#ebe9e4; --surface:#ffffff; --surface-2:#f6f5f2; --fg:#0b0b0c; --muted:#5f5e63; --faint:#8c8b90;
-  --line:rgba(10,10,12,.12); --line-2:rgba(10,10,12,.28); --accent:#8f6a1e; --accent-2:#1d7f72;
+  --bg:#f2f1ed; --bg-2:#ebe9e4; --surface:#ffffff; --surface-2:#f6f5f2; --fg:#0b0b0c; --muted:#5f5e63; --faint:#6a696f;
+  --line:rgba(10,10,12,.12); --line-2:rgba(10,10,12,.28); --accent:#7f5d17; --accent-2:#1d7f72;
   --t-s:#9c7420; --t-a:#6a52d6; --t-b:#1d7f72; --t-c:#3e5e9e; --t-d:#6f6e74;
   --l-top:#c4553a; --l-jg:#1f8a5a; --l-mid:#6550d4; --l-ad:#b27a1c; --l-sp:#2b7ec2;
-  --up:#1f8a52; --down:#c93a2c; --new:#8f6a1e; --veil:rgba(20,20,24,.4); --shadow:0 30px 80px -24px rgba(20,20,24,.35); color-scheme:light}}
+  --up:#17703f; --down:#c93a2c; --new:#7f5d17; --veil:rgba(20,20,24,.4); --shadow:0 30px 80px -24px rgba(20,20,24,.35); color-scheme:light}}
 :root[data-theme="light"]{
-  --bg:#f2f1ed; --bg-2:#ebe9e4; --surface:#ffffff; --surface-2:#f6f5f2; --fg:#0b0b0c; --muted:#5f5e63; --faint:#8c8b90;
-  --line:rgba(10,10,12,.12); --line-2:rgba(10,10,12,.28); --accent:#8f6a1e; --accent-2:#1d7f72;
+  --bg:#f2f1ed; --bg-2:#ebe9e4; --surface:#ffffff; --surface-2:#f6f5f2; --fg:#0b0b0c; --muted:#5f5e63; --faint:#6a696f;
+  --line:rgba(10,10,12,.12); --line-2:rgba(10,10,12,.28); --accent:#7f5d17; --accent-2:#1d7f72;
   --t-s:#9c7420; --t-a:#6a52d6; --t-b:#1d7f72; --t-c:#3e5e9e; --t-d:#6f6e74;
   --l-top:#c4553a; --l-jg:#1f8a5a; --l-mid:#6550d4; --l-ad:#b27a1c; --l-sp:#2b7ec2;
-  --up:#1f8a52; --down:#c93a2c; --new:#8f6a1e; --veil:rgba(20,20,24,.4); --shadow:0 30px 80px -24px rgba(20,20,24,.35); color-scheme:light}
+  --up:#17703f; --down:#c93a2c; --new:#7f5d17; --veil:rgba(20,20,24,.4); --shadow:0 30px 80px -24px rgba(20,20,24,.35); color-scheme:light}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-padding-top:calc(var(--barh) + 20px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6;padding-inline:20px;padding-block:0 0;overflow-x:clip;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column}
+#main{display:flex;flex-direction:column;min-width:0}
 button{font-family:inherit;color:inherit}
 a{color:inherit}
 :focus-visible{outline:1px solid var(--fg);outline-offset:4px}
@@ -70,10 +71,10 @@ a{color:inherit}
 .skip:focus{top:12px}
 .over{font:400 11px var(--f-display);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
 .cta{display:inline-flex;align-items:center;gap:14px;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;background:none;border:1px solid var(--line-2);color:var(--fg);padding:14px 22px;cursor:pointer;text-decoration:none;transition:background .4s var(--ease),color .4s var(--ease),border-color .4s}
-.cta:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+@media (hover:hover){.cta:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}}
 .cta i{width:22px;height:1px;background:currentColor;position:relative;transition:width .4s var(--ease)}
 .cta i::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
-.cta:hover i{width:34px}
+@media (hover:hover){.cta:hover i{width:34px}}
 
 /* ===== Hero ===== */
 .hero{position:relative;isolation:isolate;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);min-height:clamp(600px,92vh,960px);display:flex;flex-direction:column;
@@ -85,11 +86,11 @@ a{color:inherit}
 .brand{font:400 12px var(--f-display);letter-spacing:.42em;text-transform:uppercase;white-space:nowrap}
 .hero-links{display:flex;gap:clamp(16px,3vw,40px)}
 .hero-links a{font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;text-decoration:none;color:var(--h-muted);transition:color .3s}
-.hero-links a:hover{color:#fff}
+@media (hover:hover){.hero-links a:hover{color:#fff}}
 .theme{justify-self:end;width:40px;height:40px;border:1px solid var(--line-2);background:none;cursor:pointer;display:grid;place-items:center;color:var(--fg);transition:background .3s,color .3s}
 .theme svg{width:16px;height:16px}
 .hero .theme{border-color:var(--h-line);color:#f3f2ef}
-.hero .theme:hover{background:#f3f2ef;color:#000}
+@media (hover:hover){.hero .theme:hover{background:#f3f2ef;color:#000}}
 .hero-c{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(36px,9vh,110px) 20px 0;gap:22px}
 .hero .over{color:var(--h-muted)}
 .hero h1{margin:0;font-family:var(--f-display);font-weight:200;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(2rem,6.4vw,5.6rem);line-height:1.02;text-wrap:balance}
@@ -140,22 +141,22 @@ a{color:inherit}
 .slide-meta .tier b{color:#e7cf9a}
 .slide-acts{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .slide .cta{border-color:rgba(255,255,255,.4);color:#fff}
-.slide .cta:hover{background:#fff;color:#000}
+@media (hover:hover){.slide .cta:hover{background:#fff;color:#000}}
 .runners{display:flex;gap:10px}
 .runners button{white-space:nowrap;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);color:#fff;padding:5px 14px 5px 5px;cursor:pointer;font:400 10.5px var(--f-display);letter-spacing:.14em;text-transform:uppercase;transition:border-color .3s,background .3s}
-.runners button:hover{border-color:#fff;background:rgba(0,0,0,.6)}
+@media (hover:hover){.runners button:hover{border-color:#fff;background:rgba(0,0,0,.6)}}
 .runners img{width:30px;height:30px;object-fit:cover}
 .runners small{color:rgba(255,255,255,.55);margin-right:2px}
 .tabs{position:absolute;z-index:2;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.16);background:linear-gradient(0deg,rgba(0,0,0,.6),rgba(0,0,0,.2))}
 .tabs button{position:relative;background:none;border:0;border-left:1px solid rgba(255,255,255,.1);color:rgba(243,242,239,.55);padding:20px clamp(10px,2vw,28px) 22px;text-align:left;cursor:pointer;font:400 11px var(--f-display);letter-spacing:.22em;text-transform:uppercase;transition:color .3s}
 .tabs button:first-child{border-left:0}
 .tabs button b{display:block;font:300 14px var(--f-body);letter-spacing:.02em;text-transform:none;color:rgba(243,242,239,.85);margin-top:6px;white-space:nowrap}
-.tabs button[aria-selected="true"],.tabs button:hover{color:#fff}
+.tabs button[aria-selected="true"]{color:#fff}@media (hover:hover){.tabs button:hover{color:#fff}}
 .tabs button .pg{position:absolute;left:0;top:-1px;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left}
 .tabs button[aria-selected="true"] .pg{transform:scaleX(1)}
 
 /* ===== Thanh công cụ ===== */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;width:100vw;margin-left:calc(50% - 50vw);padding:0 max(20px,calc((100vw - 1320px)/2));border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 96%,transparent)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;width:100vw;margin-left:calc(50% - 50vw);padding:0 max(20px,calc((100vw - 1320px)/2));border-bottom:1px solid var(--line);background:var(--bg)}
 .row1{display:flex;gap:28px;align-items:stretch;min-height:60px;flex-wrap:wrap}
 .seg{display:flex;gap:28px}
 .seg button{position:relative;border:0;background:none;padding:0;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;color:var(--muted);cursor:pointer;white-space:nowrap}
@@ -169,15 +170,15 @@ a{color:inherit}
 .search input:focus{outline:none;border-bottom-color:var(--fg)}
 .search kbd{position:absolute;right:0;font:400 10px var(--f-display);color:var(--muted);border:1px solid var(--line-2);padding:0 6px;line-height:18px}
 .btn{align-self:center;height:40px;padding:0 18px;border:1px solid var(--line-2);background:none;cursor:pointer;font:400 11px var(--f-display);letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;transition:background .3s,color .3s}
-.btn:hover{background:var(--fg);color:var(--bg)}
+@media (hover:hover){.btn:hover{background:var(--fg);color:var(--bg)}}
 .btn .n{background:var(--fg);color:var(--bg);font:500 10px var(--f-body);min-width:18px;height:18px;display:inline-grid;place-items:center;padding:0 4px}
 .btn.ghost{border-color:transparent;color:var(--muted)}
-.btn.ghost:hover{background:none;color:var(--fg)}
+@media (hover:hover){.btn.ghost:hover{background:none;color:var(--fg)}}
 .filters{display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;padding:22px 0 6px}
 .fgroup{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .fgroup>span{font:400 10.5px var(--f-display);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-right:10px}
 .ic{height:34px;padding:0 14px;border:1px solid var(--line);background:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--muted);font:400 13px var(--f-body);transition:background .3s,color .3s,border-color .3s}
-.ic:hover{color:var(--fg);border-color:var(--line-2)}
+@media (hover:hover){.ic:hover{color:var(--fg);border-color:var(--line-2)}}
 .ic svg{width:14px;height:14px;flex:none}
 .ic[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .ic .d{width:7px;height:7px;border-radius:50%;flex:none}
@@ -194,7 +195,7 @@ a{color:inherit}
 @media (min-width:1000px){.scroller{overflow:visible}}
 .board{min-width:var(--minw,860px)}
 .hrow,.trow{display:grid;grid-template-columns:120px repeat(var(--cols),minmax(0,1fr))}
-.hrow{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--barh));z-index:3;background:color-mix(in srgb,var(--bg) 97%,transparent);border-bottom:1px solid var(--line)}
+.hrow{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--barh));z-index:3;background:var(--bg);border-bottom:1px solid var(--line)}
 .hrow>div{padding:16px 16px;font:400 11px var(--f-display);letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:10px;min-width:0}
 .hrow small{color:var(--faint);font:400 11px var(--f-body);letter-spacing:0}
 .lanebar{width:6px;height:6px;border-radius:50%;flex:none}
@@ -210,7 +211,7 @@ a{color:inherit}
 .tl .cnt{font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
 .cell{padding:22px 14px;border-left:1px solid var(--line);display:flex;flex-wrap:wrap;gap:20px 12px;align-content:flex-start;min-width:0}
 .trow.target .cell{cursor:copy;background:color-mix(in srgb,var(--fg) 4%,transparent)}
-.trow.target:hover .cell{background:color-mix(in srgb,var(--fg) 8%,transparent)}
+@media (hover:hover){.trow.target:hover .cell{background:color-mix(in srgb,var(--fg) 8%,transparent)}}
 .none{color:var(--faint);font-size:12px;opacity:.5}
 .empty{padding:64px 16px;text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .empty b{font:300 1.3rem var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
@@ -258,12 +259,12 @@ a{color:inherit}
 .modal p{margin:0;color:var(--muted);font-size:14px}
 .modal .mtop{position:absolute;right:14px;top:14px;display:flex;gap:6px;z-index:3}
 .modal .mtop button{width:38px;height:38px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:grid;place-items:center;color:#fff;font-size:16px;transition:background .3s,color .3s}
-.modal .mtop button:hover:not(:disabled){background:#fff;color:#000}
+@media (hover:hover){.modal .mtop button:hover:not(:disabled){background:#fff;color:#000}}
 .modal .mtop button:disabled{opacity:.3;cursor:default}
 .modal .other{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;align-items:center}
 .modal .other span{font:400 10px var(--f-display);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-right:4px}
 .modal .other button{white-space:nowrap;border:1px solid var(--line-2);background:none;padding:6px 12px;font:400 10px var(--f-display);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .3s,color .3s}
-.modal .other button:hover{background:var(--fg);color:var(--bg)}
+@media (hover:hover){.modal .other button:hover{background:var(--fg);color:var(--bg)}}
 .modal .other button i{width:6px;height:6px;border-radius:50%;background:var(--lc)}
 .bds{display:flex;flex-direction:column;gap:12px;margin:0 0 20px}
 .bd{display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto auto;column-gap:16px;row-gap:6px;align-items:center}
@@ -490,14 +491,12 @@ a{color:inherit}
   .sec-h.in .over{animation:up .8s var(--ease) both}
   .sec-h.in p{animation:up .9s .15s var(--ease) both}
   @keyframes mask{from{clip-path:inset(0 -.2em 100% -.2em);transform:translateY(40%)}to{clip-path:inset(-.7em -.2em -.3em -.2em);transform:none}}
-  /* Hàng tier: nhãn trượt vào, thẻ bật lên lần lượt */
+  /* Hàng tier: nhãn trượt vào; thẻ tướng hiện ngay để đọc được liền */
   .trow.in .tl{animation:slideL .8s var(--ease) both}
   .trow.in .tl::before{animation:barY .9s var(--ease) both}
-  .trow.in .card{animation:pop2 .7s var(--ease) both;animation-delay:calc(var(--k,0) * 45ms + 120ms)}
   @keyframes slideL{from{opacity:.2;transform:translateX(-24px)}}
   @keyframes barY{from{transform:scaleY(0)}}
   .tl::before{transform-origin:top}
-  @keyframes pop2{from{opacity:.15;transform:translateY(22px) scale(.92)}}
   .legend-strip.in>*{animation:up .8s var(--ease) both}
   .legend-strip.in>*:nth-child(2){animation-delay:.12s}
   .filters.in .fgroup{animation:up .7s var(--ease) both}
@@ -541,7 +540,7 @@ a{color:inherit}
 html.lock{overflow:hidden}
 /* Nút tạm dừng trình chiếu */
 .stage-pp{position:absolute;z-index:3;right:clamp(16px,3vw,40px);top:clamp(16px,3vw,32px);width:42px;height:42px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.6);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .3s,color .3s}
-.stage-pp:hover{background:#fff;color:#000}
+@media (hover:hover){.stage-pp:hover{background:#fff;color:#000}}
 .stage-pp svg{width:14px;height:14px}
 /* Bộ lọc mở trên điện thoại: nằm trong vùng dính */
 .fhead{display:none}
@@ -580,7 +579,11 @@ html.lock{overflow:hidden}
 /* ===== Điện thoại: tinh chỉnh lần 2 ===== */
 .mb{display:none}
 .hero-acts{display:flex;align-items:center;gap:22px;margin-top:10px}
-.hero-go,.fveil,.pickbar{display:none}
+.fveil,.pickbar{display:none}
+.hero-go{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0 22px;background:#f3f2ef;color:#000;text-decoration:none;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;white-space:nowrap;transition:background .3s}
+.hero-go i{width:1px;height:14px;background:currentColor;position:relative}
+.hero-go i::after{content:"";position:absolute;left:-3px;bottom:0;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
+@media (hover:hover){.hero-go:hover{background:#fff}}
 @media (max-width:719px){
   html{-webkit-tap-highlight-color:transparent}
   .dk{display:none}.mb{display:inline}
@@ -642,7 +645,8 @@ html.lock{overflow:hidden}
   .card:active .por{transform:scale(.95);transition:transform .15s}
   /* Luôn đủ 3 thẻ mỗi hàng: máy hẹp thì thu ảnh lại một chút */
   .hrow,.trow{grid-template-columns:var(--tlw,78px) 1fr}
-  .card{--sz:min(70px,calc((100vw - var(--tlw,78px) - 68px) / 3))}
+  .card{--sz:min(88px,calc((100vw - var(--tlw,78px) - 68px) / 3));width:var(--sz)}
+  .card .nm{max-width:calc(var(--sz) + 8px)}.card.ln .nm{font-size:clamp(9.5px,calc(var(--sz) * .134),10.5px);letter-spacing:0}
   /* Hộp chi tiết dạng tấm: có thanh kéo, vuốt xuống để đóng, vuốt ngang để đổi tướng */
   .modal{touch-action:pan-y;overscroll-behavior:contain}
   .modal::before{content:"";position:absolute;left:50%;top:8px;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:rgba(255,255,255,.6);z-index:4;box-shadow:0 0 6px rgba(0,0,0,.5)}
@@ -656,7 +660,7 @@ html.lock{overflow:hidden}
   .modal .other button{min-height:40px}
   /* Danh sách thay đổi + nguồn */
   .log li{grid-template-columns:1fr;gap:4px}
-  .log li button{position:relative}
+  .log li button{position:relative;padding:7px 0;margin:-7px 0;min-width:28px;text-align:left}
   .log li button::after{content:"";position:absolute;inset:-12px -8px}
   .box li>a:only-child{display:block;padding:11px 0}
   .foot{font-size:12px;letter-spacing:.12em}
@@ -695,7 +699,7 @@ html.lock{overflow:hidden}
 .bi-n{font-size:12.5px;line-height:1.3;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .bi em{font-style:normal;font-size:11.5px;line-height:1.2;color:var(--accent)}
 
-.bi.jg .bi-ic{border-color:var(--l-jg)}.bi.jg em{color:var(--l-jg)}
+.bi.jg .bi-ic{border-color:var(--l-jg)}.bi.jg em{color:color-mix(in srgb,var(--l-jg) 75%,var(--fg))}
 .bld-row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px 28px}
 .bld-row h5{margin:0 0 10px;font:500 12.5px var(--f-body);color:var(--muted)}
 .bld-ar,.bld-sp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
@@ -727,6 +731,7 @@ html.lock{overflow:hidden}
 <body>
 <a class="skip" href="#boardTitle">Tới bảng tier</a>
 <div class="wrap">
+<main id="main">
   <header class="hero" id="hero">
     <canvas id="galaxy" aria-hidden="true"></canvas>
     <div class="hero-nav">
@@ -850,7 +855,8 @@ html.lock{overflow:hidden}
         <li><b>Tier xếp theo từng đường:</b> tướng chỉ so với các tướng cùng đường. Top 12% của đường là S, 12–32% là A, 32–57% là B, 57–80% là C, còn lại là D. Thẻ đường phụ bị trừ 0,4 điểm khi so và tối đa tier A, vì số liệu giải không tách theo đường.</li>
         <li>Ở đường chính, tướng được chọn ở ĐTDV từ 30% số trận trở lên (tỉ lệ thắng ≥ 45%) xếp S, từ 20% trở lên tối thiểu A. Tướng có pick + cấm từ 75% số trận trở lên luôn xếp S, từ 55% trở lên tối thiểu A.</li>
         <li>Trong mỗi ô, tướng được chọn nhiều trận ở ĐTDV đứng trước.</li>
-        <li>Preyta và D'Arcy được người biên tập xếp thủ công vào tier A. Annette và Rouie được thêm vào đường Giữa, tier S. Zuka và Nakroth được đổi tier cho nhau (Zuka B, Nakroth A). Airi được nâng lên A. Arthur được thêm vào Trợ thủ, tier B. Krizzix lên A, Chaugnar lên B. Taara, Qi, Yena lên A. Billow ở Tà Thần xuống B. Marja có thêm đường phụ Tà Thần, tier A. Y'bneth và Omega chỉ xếp ở Trợ thủ.</li>
+        <li id="manualNote"><b>Chỉnh tay của người biên tập</b> (luôn giữ khi cập nhật số liệu): <span id="manualList"></span>.</li>
+        <li id="secNote"><b>Đường phụ:</b> <span id="secList"></span>.</li>
         <li>Mỗi tướng có một đường chính. Tướng thường được đưa sang đường khác có thêm thẻ "Phụ" ở cột đó. Danh sách đường phụ dựa trên lối chơi phổ biến, chưa có số liệu theo đường.</li>
         <li>Lớp tướng (biểu tượng góc thẻ) theo phân loại chính thức của Garena.</li>
         <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng, lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Khi nguồn có nhiều build cho cùng một đường, bảng lấy build nguồn ghi đầu tiên. Tên đồ bản Việt theo dữ liệu AoV-IndeX. Mỗi bảng có link tới trang gốc.</li>
@@ -874,6 +880,7 @@ html.lock{overflow:hidden}
   </div>
 
   <button class="totop" id="totop" aria-label="Lên đầu trang" hidden><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" class="tr"/><circle cx="22" cy="22" r="20" class="pr" id="topRing"/></svg><span>↑</span></button>
+</main>
   <footer class="foot"><span>Bảng Tier Liên Quân · Mùa S4 2026</span><span>Dữ liệu cập nhật 11/10/2026</span></footer>
 </div>
 
@@ -881,8 +888,8 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610120120"></script>
-<script src="assets/builds.js?v=202610120120"></script>
-<script src="assets/app.js?v=202610120120"></script>
+<script src="assets/data.js?v=202610120140"></script>
+<script src="assets/builds.js?v=202610120140"></script>
+<script src="assets/app.js?v=202610120140"></script>
 </body>
 </html>
