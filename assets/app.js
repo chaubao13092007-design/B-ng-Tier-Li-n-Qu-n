@@ -149,7 +149,7 @@ function openModal(id){
       <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
       ${others.length?`<div class="other"><span>Còn đi:</span>${others.map(x=>`<button data-go="${x.id}" style="--lc:var(--l-${x.lane})"><i></i>${LANES[x.lane]}${x.sec?" (phụ)":""} · ${x.tier}</button>`).join("")}</div>`:""}
     </div></div></div></div>`;
-  document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);
+  document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
   $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
   const close=()=>{setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);lastFocus&&lastFocus.focus&&lastFocus.focus()};
   const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n)}};
@@ -164,7 +164,7 @@ function openModal(id){
 }
 
 /* Chế độ, tìm kiếm, phím tắt */
-function setMode(m){mode=m;selected=null;store("lq-mode",m);$("m-meta").setAttribute("aria-pressed",m==="meta");$("m-mine").setAttribute("aria-pressed",m==="mine");$("minebar").hidden=m!=="mine";hideTip();draw()}
+function setMode(m){if(m!==mode)track("doi_che_do",{che_do:m==="mine"?"tu_xep":"meta"});mode=m;selected=null;store("lq-mode",m);$("m-meta").setAttribute("aria-pressed",m==="meta");$("m-mine").setAttribute("aria-pressed",m==="mine");$("minebar").hidden=m!=="mine";hideTip();draw()}
 $("m-meta").onclick=()=>setMode("meta");$("m-mine").onclick=()=>setMode("mine");
 $("q").oninput=e=>{q=e.target.value.trim();draw()};
 $("q").onkeydown=e=>{if(e.key==="Escape"){e.target.value="";q="";draw();e.target.blur()}
@@ -367,10 +367,13 @@ if(revIO)document.querySelectorAll(".sec-h,.legend-strip,.filters,.box").forEach
   totop.onclick=()=>scrollTo({top:0,behavior:reduce.matches?"auto":"smooth"});
 })();
 
+/* ===== Đo lường (Google Analytics) ===== */
+function track(name,params){try{window.gtag&&gtag("event",name,params||{})}catch(e){}}
+
 /* ===== Chia sẻ, link riêng từng tướng ===== */
 function pageUrl(){return location.origin+location.pathname}
 function setHash(hh){try{history.replaceState(null,"",hh?"#"+hh:pageUrl())}catch(e){}}
-async function shareLink(title,text,url){
+async function shareLink(title,text,url){track("chia_se",{link:url.includes("#tuong-")?"tuong":"trang"});
   if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e&&e.name==="AbortError")return}}
   try{await navigator.clipboard.writeText(url);toast("Đã sao chép link")}catch(e){toast(url)}
 }
@@ -382,7 +385,7 @@ addEventListener("hashchange",()=>{if(!$("veil"))openFromHash()});
 const TCOL={S:"#d9b56c",A:"#b9a9ff",B:"#86d0c3",C:"#8ea3cc",D:"#7a797f"};
 const LCOL={top:"#e8805f",jg:"#5cc496",mid:"#a597ff",ad:"#e9b766",sp:"#6fb6ee"};
 const loadImg=src=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=src});
-async function exportImage(which){
+async function exportImage(which){track("tai_anh",{bang:which==="mine"?"tu_xep":"meta"});
   const btn=which==="mine"?$("dlMine"):$("dlImg");btn.setAttribute("aria-busy","true");toast("Đang tạo ảnh…");
   try{
     try{await Promise.all([document.fonts.load('200 48px "Lexend Exa"'),document.fonts.load('500 14px "Be Vietnam Pro"')])}catch(e){}

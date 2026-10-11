@@ -15,6 +15,7 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - `manifest.webmanifest`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — cài web như ứng dụng trên điện thoại.
 - `sw.js` — bộ nhớ đệm: ảnh lưu lâu, trang và dữ liệu luôn lấy bản mới. **Nếu thay ảnh trong `p/` hoặc `s/` mà giữ nguyên tên tệp, tăng `V` trong `sw.js`.**
 - `404.html` — trang báo link sai.
+- Google Analytics `G-5WRPCM36GN` gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 
 ## Dữ liệu trong `assets/data.js`
