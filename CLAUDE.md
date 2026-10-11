@@ -12,6 +12,10 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   chỉ giữ a–z (Triệu Vân → `trieuvan`, D'Arcy → `darcy`, Flowborn có `flowborn-mid` và `flowborn-ad`).
   Nguồn ảnh: https://github.com/AoV-IndeX/avix-assets (`heroes/avatars`, `heroes/splashes`).
 - `og.jpg` ảnh xem trước khi chia sẻ, `favicon.svg`, `robots.txt`, `sitemap.xml`.
+- `manifest.webmanifest`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — cài web như ứng dụng trên điện thoại.
+- `sw.js` — bộ nhớ đệm: ảnh lưu lâu, trang và dữ liệu luôn lấy bản mới. **Nếu thay ảnh trong `p/` hoặc `s/` mà giữ nguyên tên tệp, tăng `V` trong `sw.js`.**
+- `404.html` — trang báo link sai.
+- Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 
 ## Dữ liệu trong `assets/data.js`
 - `SRC.aog` — ĐTDV mùa hiện tại, mỗi tướng: `[tỉ lệ thắng %, pick % số trận, cấm % số trận, số pick, số cấm]`.

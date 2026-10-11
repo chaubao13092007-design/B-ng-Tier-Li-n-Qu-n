@@ -140,7 +140,7 @@ function openModal(id){
   const others=HEROES.filter(x=>x.key===h.key&&x.id!==h.id);
   const order=visibleOrder(),i=order.indexOf(id);
   $("modalRoot").innerHTML=`<div class="veil" id="veil"><div class="modal" role="dialog" aria-modal="true" aria-label="${h.name}">
-    <div class="mtop"><button id="mprev" aria-label="Tướng trước" ${i<=0?"disabled":""}>‹</button><button id="mnext" aria-label="Tướng sau" ${i<0||i>=order.length-1?"disabled":""}>›</button><button id="mx" aria-label="Đóng">×</button></div>
+    <div class="mtop"><button id="mshare" aria-label="Chia sẻ tướng này" title="Chia sẻ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg></button><button id="mprev" aria-label="Tướng trước" ${i<=0?"disabled":""}>‹</button><button id="mnext" aria-label="Tướng sau" ${i<0||i>=order.length-1?"disabled":""}>›</button><button id="mx" aria-label="Đóng">×</button></div>
     <div class="m-ban${splOf(h)?"":" noimg"}">${splOf(h)?`<img src="${splOf(h)}" alt="" decoding="async">`:""}</div>
     <div class="m-body"><div class="card" data-t="${h.tier}">${portrait(h)}</div>
     <div><h3>${h.name}</h3>
@@ -149,8 +149,9 @@ function openModal(id){
       <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
       ${others.length?`<div class="other"><span>Còn đi:</span>${others.map(x=>`<button data-go="${x.id}" style="--lc:var(--l-${x.lane})"><i></i>${LANES[x.lane]}${x.sec?" (phụ)":""} · ${x.tier}</button>`).join("")}</div>`:""}
     </div></div></div></div>`;
-  document.documentElement.classList.add("lock");hideTip();
-  const close=()=>{$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);lastFocus&&lastFocus.focus&&lastFocus.focus()};
+  document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);
+  $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
+  const close=()=>{setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);lastFocus&&lastFocus.focus&&lastFocus.focus()};
   const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n)}};
   const key=e=>{if(e.key==="Escape")close();else if(e.key==="ArrowLeft")go(-1);else if(e.key==="ArrowRight")go(1);
     else if(e.key==="Tab"){const f=[...$("modalRoot").querySelectorAll("button:not(:disabled)")];if(!f.length)return;const first=f[0],last=f[f.length-1];
@@ -365,5 +366,66 @@ if(revIO)document.querySelectorAll(".sec-h,.legend-strip,.filters,.box").forEach
   measureDoc();update();
   totop.onclick=()=>scrollTo({top:0,behavior:reduce.matches?"auto":"smooth"});
 })();
+
+/* ===== Chia sẻ, link riêng từng tướng ===== */
+function pageUrl(){return location.origin+location.pathname}
+function setHash(hh){try{history.replaceState(null,"",hh?"#"+hh:pageUrl())}catch(e){}}
+async function shareLink(title,text,url){
+  if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e&&e.name==="AbortError")return}}
+  try{await navigator.clipboard.writeText(url);toast("Đã sao chép link")}catch(e){toast(url)}
+}
+$("sharePage").onclick=()=>shareLink("Bảng Tier Liên Quân","Tier list tướng Liên Quân theo từng đường, chấm điểm từ số liệu ĐTDV và giải đấu",pageUrl());
+function openFromHash(){const m=location.hash.match(/^#tuong-(.+)$/);if(m&&HEROES.some(h=>h.id===m[1]))openModal(m[1])}
+addEventListener("hashchange",()=>{if(!$("veil"))openFromHash()});
+
+/* ===== Xuất ảnh tier list ===== */
+const TCOL={S:"#d9b56c",A:"#b9a9ff",B:"#86d0c3",C:"#8ea3cc",D:"#7a797f"};
+const LCOL={top:"#e8805f",jg:"#5cc496",mid:"#a597ff",ad:"#e9b766",sp:"#6fb6ee"};
+const loadImg=src=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=src});
+async function exportImage(which){
+  const btn=which==="mine"?$("dlMine"):$("dlImg");btn.setAttribute("aria-busy","true");toast("Đang tạo ảnh…");
+  try{
+    try{await Promise.all([document.fonts.load('200 48px "Lexend Exa"'),document.fonts.load('500 14px "Be Vietnam Pro"')])}catch(e){}
+    const tierOfX=h=>which==="mine"?mine[h.id]:h.tier;
+    const lanes=Object.keys(LANES),W=1680,PAD=56,LBL=130,CW=Math.floor((W-PAD*2-LBL)/5),CARD=80,GAP=10,NAMEH=22,PER=Math.max(1,Math.floor((CW-20+GAP)/(CARD+GAP)));
+    const rowsH={};TIERS.forEach(t=>{const mx=Math.max(1,...lanes.map(l=>Math.ceil(HEROES.filter(h=>h.lane===l&&tierOfX(h)===t).length/PER)));rowsH[t]=mx*(CARD+NAMEH+GAP)+28});
+    const HEAD=210,LANEH=56,FOOT=86,H=HEAD+LANEH+TIERS.reduce((s,t)=>s+rowsH[t]+12,0)+FOOT;
+    const cv=document.createElement("canvas"),sc=2;cv.width=W*sc;cv.height=H*sc;const c=cv.getContext("2d");c.scale(sc,sc);
+    const disp='"Lexend Exa","Be Vietnam Pro",sans-serif',body='"Be Vietnam Pro",system-ui,sans-serif';
+    c.fillStyle="#000";c.fillRect(0,0,W,H);
+    const g=c.createRadialGradient(W*.15,0,10,W*.15,0,W*.6);g.addColorStop(0,"rgba(165,151,255,.16)");g.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=g;c.fillRect(0,0,W,H*.5);
+    const spaced=(t,x,y,sp)=>{for(const ch of t){c.fillText(ch,x,y);x+=c.measureText(ch).width+sp}return x};
+    c.fillStyle="rgba(243,242,239,.6)";c.font=`400 15px ${disp}`;spaced(which==="mine"?"TIER LIST CỦA TÔI":"MÙA S4 2026 · BẢN VẾT NỨT THỜI KHÔNG",PAD,78,4.5);
+    c.fillStyle="#f3f2ef";c.font=`200 58px ${disp}`;const x2=spaced("BẢNG TIER ",PAD,150,6);c.fillStyle="#e7cf9a";spaced("LIÊN QUÂN",x2,150,6);
+    c.fillStyle="rgba(243,242,239,.55)";c.font=`400 15px ${body}`;c.textAlign="right";c.fillText(which==="mine"?"Tự xếp trên Bảng Tier Liên Quân":"Gộp số liệu ĐTDV mùa Đông, giải RoV, rank cộng đồng",W-PAD,150);c.textAlign="left";
+    let y=HEAD;c.strokeStyle="rgba(255,255,255,.14)";c.lineWidth=1;
+    lanes.forEach((l,i)=>{const x=PAD+LBL+i*CW+16;c.fillStyle=LCOL[l];c.beginPath();c.arc(x+5,y+26,5,0,7);c.fill();c.fillStyle="#f3f2ef";c.font=`400 14px ${disp}`;spaced(LANES[l].toUpperCase(),x+20,y+31,3);c.fillStyle=LCOL[l];c.fillRect(PAD+LBL+i*CW,y+LANEH-2,CW,2)});
+    y+=LANEH+8;
+    const needed=[...new Set(HEROES.filter(h=>TIERS.includes(tierOfX(h))).map(imgOf))];const imgs={};await Promise.all(needed.map(async s=>imgs[s]=await loadImg(s)));
+    for(const t of TIERS){const rh=rowsH[t];
+      c.fillStyle="rgba(255,255,255,.035)";c.fillRect(PAD,y,W-PAD*2,rh);c.strokeRect(PAD+.5,y+.5,W-PAD*2-1,rh-1);
+      c.fillStyle=TCOL[t]+"2a";c.fillRect(PAD,y,LBL,rh);c.fillStyle=TCOL[t];c.fillRect(PAD,y,4,rh);
+      c.font=`200 64px ${disp}`;c.fillText(t,PAD+24,y+76);c.fillStyle="#f3f2ef";c.font=`500 15px ${body}`;c.fillText(TNAME[t],PAD+24,y+104);
+      lanes.forEach((l,i)=>{const x0=PAD+LBL+i*CW;if(i)c.fillStyle="rgba(255,255,255,.1)",c.fillRect(x0,y,1,rh);
+        HEROES.filter(h=>h.lane===l&&tierOfX(h)===t).forEach((h,k)=>{const cx=x0+14+(k%PER)*(CARD+GAP),cy=y+14+Math.floor(k/PER)*(CARD+NAMEH+GAP);
+          const im=imgs[imgOf(h)];if(im)c.drawImage(im,cx,cy,CARD,CARD);else{c.fillStyle=LCOL[l];c.fillRect(cx,cy,CARD,CARD)}
+          c.strokeStyle=TCOL[t];c.lineWidth=t==="S"?2:1.5;c.strokeRect(cx+.75,cy+.75,CARD-1.5,CARD-1.5);c.lineWidth=1;c.strokeStyle="rgba(255,255,255,.14)";
+          if(h.sec){c.fillStyle="rgba(0,0,0,.72)";c.fillRect(cx,cy+CARD-16,CARD,16);c.fillStyle="#fff";c.font=`500 9px ${disp}`;c.textAlign="center";c.fillText("PHỤ",cx+CARD/2,cy+CARD-5);c.textAlign="left"}
+          c.fillStyle="#f3f2ef";c.font=`500 12.5px ${body}`;let nm=h.name;while(c.measureText(nm).width>CARD+GAP-2&&nm.length>3)nm=nm.slice(0,-2)+"…";c.fillText(nm,cx,cy+CARD+16)})});
+      y+=rh+12}
+    c.fillStyle="rgba(243,242,239,.55)";c.font=`400 14px ${disp}`;spaced("TIERLQ.GITHUB.IO",PAD,H-38,2.5);
+    c.textAlign="right";c.font=`400 14px ${body}`;const upd=(document.querySelector(".foot")?.textContent.match(/\d{1,2}\/\d{1,2}\/\d{4}/)||[""])[0];c.fillText(upd?"Cập nhật "+upd:"",W-PAD,H-38);c.textAlign="left";
+    const blob=await new Promise(r=>cv.toBlob(r,"image/jpeg",0.9));const name=which==="mine"?"tier-list-cua-toi.jpg":"bang-tier-lien-quan.jpg";
+    const file=new File([blob],name,{type:"image/jpeg"});
+    if(mq.matches&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:"Bảng Tier Liên Quân"});toast("Đã tạo ảnh");return}catch(e){if(e&&e.name==="AbortError")return}}
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);toast("Đã tải ảnh "+name);
+  }catch(e){toast("Không tạo được ảnh, thử lại sau")}finally{btn.removeAttribute("aria-busy")}
+}
+$("dlImg").onclick=()=>exportImage(mode);
+$("dlMine").onclick=()=>exportImage("mine");
+
+/* ===== Cài như ứng dụng + dùng khi mạng yếu ===== */
+if("serviceWorker" in navigator&&location.protocol==="https:")addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 buildFilters();buildStage();paintPP();setMode(mode);measure();
+openFromHash();
 requestAnimationFrame(()=>fitNames());document.fonts&&document.fonts.ready.then(()=>fitNames());

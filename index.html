@@ -6,6 +6,11 @@
 <meta name="description" content="Tier list tướng Liên Quân mùa S4 2026 theo từng đường, chấm điểm từ số liệu ĐTDV mùa Đông, giải RoV, rank cộng đồng và báo game. Có ảnh tướng, lọc theo lớp và chế độ tự xếp.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tier LQ">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Bảng Tier Liên Quân","alternateName":"Tier list Liên Quân Mobile","url":"https://tierlq.github.io/","inLanguage":"vi","description":"Tier list tướng Liên Quân mùa S4 2026 theo từng đường, chấm điểm từ số liệu ĐTDV mùa Đông, giải RoV, rank cộng đồng và báo game."}</script>
 <link rel="canonical" href="https://tierlq.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bảng Tier Liên Quân">
@@ -305,7 +310,7 @@ a{color:inherit}
   .slide-c{left:16px;right:16px;bottom:96px}
   .slide-meta{gap:18px}
   .runners{flex-wrap:wrap}
-  .tabs button{padding:14px 6px 16px;font-size:9px;letter-spacing:.12em;text-align:center}
+  .tabs button{padding:14px 2px 16px;font-size:9px;letter-spacing:.06em;text-align:center;white-space:nowrap}
   .tabs button b{display:none}
   .bar{padding:0 16px}
   .row1{gap:16px;min-height:56px;flex-wrap:nowrap}
@@ -560,6 +565,14 @@ html.lock{overflow:hidden}
 .trow{content-visibility:auto;contain-intrinsic-size:auto 420px}
 .band{contain:layout paint}
 .hero canvas{contain:strict}
+
+/* Nút tải ảnh / chia sẻ */
+.sec-r{display:flex;flex-direction:column;gap:16px;align-items:flex-start;max-width:46ch}
+.sec-acts{display:flex;gap:10px;flex-wrap:wrap}
+.sec-acts .cta{padding:12px 18px;gap:10px}
+.sec-acts .cta[aria-busy="true"]{opacity:.6;pointer-events:none}
+.modal .mtop #mshare svg{width:15px;height:15px}
+@media (max-width:719px){.sec-r{max-width:none;width:100%}.sec-acts{width:100%}.sec-acts .cta{flex:1;justify-content:center;padding:12px 10px;font-size:10.5px;letter-spacing:.14em}}
 </style>
 
 <div class="sprog" aria-hidden="true"><i id="sprog"></i></div>
@@ -626,7 +639,8 @@ html.lock{overflow:hidden}
   <section class="stage" id="stage" aria-roledescription="trình chiếu" aria-label="Tướng mạnh nhất mỗi đường"></section>
 
   <section class="sec" aria-labelledby="boardTitle">
-    <div class="sec-h"><div><span class="over">Toàn bộ</span><h2 id="boardTitle">Bảng tier theo đường</h2></div><p>Bấm vào tướng để xem điểm từng nguồn. Trên máy tính, rê chuột để xem nhanh.</p></div>
+    <div class="sec-h"><div><span class="over">Toàn bộ</span><h2 id="boardTitle">Bảng tier theo đường</h2></div><div class="sec-r"><p>Bấm vào tướng để xem điểm từng nguồn. Trên máy tính, rê chuột để xem nhanh.</p>
+      <div class="sec-acts"><button class="cta" id="dlImg" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Tải ảnh tier list</button><button class="cta" id="sharePage" type="button"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg>Chia sẻ</button></div></div></div>
   </section>
 
   <div class="bar" id="bar">
@@ -655,12 +669,14 @@ html.lock{overflow:hidden}
 
   <div class="minebar" id="minebar" hidden>
     <p id="minehint">Bấm chọn một tướng, rồi bấm vào hàng tier muốn đặt. Trên máy tính có thể kéo thả. Bảng tự lưu trên trình duyệt này.</p>
+    <button class="btn" id="dlMine" type="button">Tải ảnh tier list của tôi</button>
     <button class="btn" id="copy">Sao chép tier list</button>
     <button class="btn" id="rmeta">Lấy lại bảng Meta</button>
     <button class="btn" id="rclear">Đưa hết về Chưa xếp</button>
   </div>
 
   <div class="scroller"><div class="board" id="board" aria-live="polite"></div></div>
+  <noscript><p style="padding:40px 0;color:var(--muted)">Bật JavaScript để xem bảng tier.</p></noscript>
 
   <div class="band" id="band" aria-hidden="true">
     <div class="band-row r1">Meta Liên Quân · Mùa S4 2026 · Meta Liên Quân · Mùa S4 2026 · Meta Liên Quân · Mùa S4 2026 ·</div>
