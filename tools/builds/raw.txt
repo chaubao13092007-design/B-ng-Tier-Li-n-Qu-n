@@ -1,0 +1,640 @@
+## hayate
+ITEMS: War Boots | Fafnir's Talon | Frost Cape | Slikk's Sting | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## tulen
+ITEMS: Orb of the Magi | Glided Greaves | Rhea's Blessing | Boomstick | Staff of Nuul | Hecate's Diadem
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## flowborn
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Fenrir's Tooth | Dawning Star | Blade of Eternity
+RUNES: zathong/Atrocity x10 | zathong/Guerrilla x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## aleister
+ITEMS: Orb of the Magi | Hermes' Select | Boomstick | Hecate's Diadem | Arctic Orb | Staff of Nuul
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## airi
+ITEMS: Hermes' Select | Broken Spear | Hercules's Madness | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Onslaught | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## aoi
+ITEMS: Soulreaver | Glided Greaves | Spear of Longinus | Omni Arms | Claves Sancti | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## bright
+ITEMS: Firestorm Bow | War Boots | Claves Sancti | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## butterfly
+ITEMS: Soulreaver | Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Death Sickle
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## enzo
+ITEMS: Soulreaver | War Boots | Omni Arms | Broken Spear | Claves Sancti | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## kaine
+ITEMS: Hermes Select | Soulreaver | Rankbreaker | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: zathong/Onslaught x10 | zathong/Guerrilla x10 | zathong/Skewer x10
+SPELL: Punish
+SKILLS: R > Q > W
+## keera
+ITEMS: Loki's Curse | Hermes' Select | Boomstick | Hecate's Diadem | Rhea's Blessing | Arctic Orb
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Punish
+SKILLS: R > Q > W
+## kriknak
+ITEMS: Soulreaver | Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## murad
+ITEMS: Soulreaver | War Boots | Broken Spear | Omni Arms | Fenrir's Tooth | Death Sickle
+RUNES: red/Awake | purple/Spirit | purple/Essense Reaver | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## nakroth
+ITEMS: Soulreaver | Glided Greaves | Broken Spear | Omni Arms | Claves Sancti | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | purple/Essense Reaver | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## paine
+ITEMS: Loki's Curse | Glided Greaves | Boomstick | Hecate's Diadem | Rhea's Blessing | Arctic Orb
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Punish
+SKILLS: R > Q > W
+## quillen
+ITEMS: Soulreaver | Glided Greaves | Claves Sancti | Broken Spear | Omni Arms | Fenrir's Tooth
+RUNES: red/Rampage | purple/Assassinate | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## sinestrea
+ITEMS: Soulreaver | War Boots | Broken Spear | Omni Arms | Claves Sancti | Blade of Eternity
+RUNES: red/Rampage | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## wukong
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Broken Spear | Omni Arms | Blade of Eternity
+RUNES: red/Rampage | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## capheny
+ITEMS: Fafnir's Talon | War Boots | Claves Sancti | Muramasa | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## celica
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## eland-orr
+ITEMS: Firestorm Bow | War Boots | Claves Sancti | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Frostbite
+SKILLS: R > Q > W
+## elsu
+ITEMS: War Boots | Muramasa | Fafnir's Talon | Fenrir's Tooth | Bow of Slaughter | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## erin
+ITEMS: Enchanted Kicks | Dawning Star | Claves Sancti | Slikk's Sting | Rhea's Blessing | Blade of Eternity
+RUNES: zathong/Blitz x10 | zathong/Guerrilla x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## fennik
+ITEMS: War Boots | Blitz Blades | Claves Sancti | Slikk's Sting | Death Sickle | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## laville
+ITEMS: War Boots | Claves Sancti | Ifrit's Claw | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Sprint
+SKILLS: R > Q > W
+## lindis
+ITEMS: Firestorm Bow | Glided Greaves | Broken Spear | Claves Sancti | Omni Arms | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## moren
+ITEMS: Firestorm Bow | Glided Greaves | Omni Arms | Muramasa | Claves Sancti | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## slimz
+ITEMS: Firestorm Bow | War Boots | Claves Sancti | Slikk's Sting | Bow of Slaughter | Muramasa
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## stuart
+ITEMS: War Boots | Rankbreaker | Fafnir's Talon | Claves Sancti | Fenrir's Tooth | Omni Arms
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## teeri
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Muramasa | Bow of Slaughter | Fafnir's Talon
+RUNES: red/Rampage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## tel-annas
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## thorne
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## valhein
+ITEMS: War Boots | Blitz Blades | Claves Sancti | Frost Cape | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## violet
+ITEMS: Glided Greaves | Broken Spear | Claves Sancti | Omni Arms | Muramasa | Blade of Eternity
+RUNES: red/Rage | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## wisp
+ITEMS: War Boots | Claves Sancti | Slikk's Sting | Bow of Slaughter | Muramasa | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## yorn
+ITEMS: War Boots | Fafnir's Talon | Claves Sancti | Slikk's Sting | Muramasa | Death Sickle
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## azzen-ka
+ITEMS: Orb of the Magi | Hermes' Select | Boomstick | Hecate's Diadem | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## bonnie
+ITEMS: Enchanted Kicks | Tome Of The Reaper | Boomstick | Staff of Nuul | Holy of Holies | Hecate's Diadem
+RUNES: zathong/Enlightened x10 | zathong/Flurry x10 | zathong/Guerrilla x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## d-arcy
+ITEMS: Loki's Curse | Glided Greaves | Apocalypse | Boomstick | Hecate's Diadem | Blade of Eternity
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## diao-chan
+ITEMS: Orb of the Magi | Enchanted Kicks | Boomstick | Hecate's Diadem | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## dirak
+ITEMS: Orb of the Magi | Glided Greaves | Zweihander | Hecate's Diadem | Staff of Nuul | Rhea's Blessing
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## dyadia
+ITEMS: Mother Earth Cleansing | Hermes Select | Frosty's Revenge | Tome Of The Reaper | The Aegis | Medallion of Troy
+RUNES: zathong/Indomitable x10 | zathong/Benevolence x10 | zathong/Valiance x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## gildur
+ITEMS: Arctic Orb | Flashy Boots | Boomstick | Hecate's Diadem | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## goverra
+ITEMS: Enchanted Kicks | Soaring Aura | Hecate's Diadem | Staff of Nuul | Holy of Holies | Arctic Orb
+RUNES: zathong/Violate x10 | zathong/Guerrilla x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## heino
+ITEMS: Sorcerer's Shoes | Berith's Agony | Boomstick | Staff of Nuul | Holy of Holies | Arctic Orb
+RUNES: zathong/Violate x10 | zathong/Assassinate x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## iggy
+ITEMS: Enchanted Kicks | Boomstick | Hecate's Diadem | Staff of Nuul | Arctic Orb | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## ignis
+ITEMS: Orb of the Magi | Glided Greaves | Berith's Agony | Hecate's Diadem | Rhea's Blessing
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## ilumia
+ITEMS: Orb of the Magi | Flashy Boots | Boomstick | Staff of Nuul | Hecate's Diadem | Holy of Holies
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## ishar
+ITEMS: Orb of the Magi | Glided Greaves | Soul Scroll | Hecate's Diadem | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## jinnar
+ITEMS: Orb of the Magi | Gilded Greaves | Rhea's Blessing | Soaring Aura | Berith's Agony | Arctic Orb
+RUNES: zathong/Violate x10 | zathong/Guerrilla x10 | zathong/Flurry x10
+SPELL: Sprint
+SKILLS: R > Q > W
+## kahlii
+ITEMS: Orb of the Magi | Flashy Boots | Boomstick | Hecate's Diadem | Holy of Holies | Arctic Orb
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## krixi
+ITEMS: Orb of the Magi | Glided Greaves | Boomstick | Hecate's Diadem | Rhea's Blessing | Staff of Nuul
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## lauriel
+ITEMS: Rhea's Blessing | Glided Greaves | Berith's Agony | Boomstick | Shield of the Lost | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## liliana
+ITEMS: Orb of the Magi | Glided Greaves | Boomstick | Hecate's Diadem | Rhea's Blessing | Arctic Orb
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## lorion
+ITEMS: Glided Greaves | Berith's Agony | Soul Scroll | Arctic Orb | Hecate's Diadem | Staff of Nuul
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## marja
+ITEMS: Flashy Boots | Berith's Agony | Boomstick | Rhea's Blessing | Soul Scroll | Blade of Eternity
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## mganga
+ITEMS: Orb of the Magi | Sonic Boots | Berith's Agony | Frosty's Revenge | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## natalya
+ITEMS: Arctic Orb | Hermes' Select | Boomstick | Hecate's Diadem | Rhea's Blessing | Arctic Orb
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## preyta
+ITEMS: Orb of the Magi | Flashy Boots | Zweihander | Hecate's Diadem | Staff of Nuul | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## raz
+ITEMS: Soaring Aura | Enchanted Kicks | Boomstick | Hecate's Diadem | Staff of Nuul | Rhea's Blessing
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## sephera
+ITEMS: Orb of the Magi | Glided Greaves | Apocalypse | Hecate's Diadem | Medallion of Troy | Arctic Orb
+RUNES: red/Desolate | purple/Protect | green/Secret
+SPELL: Flicker
+SKILLS: R > Q > W
+## the-flash
+ITEMS: Orb of the Magi | Glided Greaves | Hecate's Diadem | Apocalypse | Rhea's Blessing
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Sprint
+SKILLS: R > Q > W
+## veera
+ITEMS: Enchanted Kicks | Boomstick | The Aegis | Berith's Agony | Staff of Nuul | Blade of Eternity
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## yue
+ITEMS: Glided Greaves | Boomstick | Hecate's Diadem | Staff of Nuul | Arctic Orb | Holy of Holies
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## zata
+ITEMS: Orb of the Magi | Glided Greaves | Boomstick | Hecate's Diadem | Staff of Nuul | Rhea's Blessing
+RUNES: red/Desolate | purple/Spirit | green/Stain
+SPELL: Flicker
+SKILLS: R > Q > W
+## zill
+ITEMS: Loki's Curse | Enchanted Kicks | Hecate's Diadem | Rhea's Blessing | Staff of Nuul | Arctic Orb
+RUNES: red/Awake | purple/Spirit | green/Stain
+SPELL: Punish
+SKILLS: R > Q > W
+## allain
+ITEMS: Soulreaver | Glided Greaves | Claves Sancti | Omni Arms | Hyoga's Edge | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## amily
+ITEMS: Glided Greaves | Broken Spear | Hercules's Madness | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## arduin
+ITEMS: Sonic Boots | Shield of the Lost | Mail of Pain | Medallion of Troy | Muramasa | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## arthur
+ITEMS: Mantle of Ra | Sonic Boots | Frost Cape | Gaia's Standard | Medallion of Troy | Blade of Eternity
+RUNES: zathong/Indomitable x10 | zathong/Undying x10 | zathong/Focus x10
+SPELL: Flicker / Execute
+SKILLS: R > Q > W
+## astrid
+ITEMS: Sonic Boots | Mantle of Ra | Broken Spear | Hercules's Madness | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## bijan
+ITEMS: Gilded Greaves | Spear of Longinus | Frost Cape | Medallion of Troy | Fenrir's Tooth | Blade of Eternity
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## billow
+ITEMS: Soulreaver | Gilded Greaves | Rankbreaker | Blade of Eternity | Fenrir's Tooth | Omni Arms
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Punish
+SKILLS: R > Q > W
+## biron
+ITEMS: Gilded Greaves | Rankbreaker | The Aegis | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## bolt-baron
+ITEMS: War Boots | Apocalypse | Soaring Aura | Holy of Holies | Hecate's Diadem
+RUNES: zathong/Indomitable x10 | zathong/Assassinate x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## charlotte
+ITEMS: Leviathan | Gilded Greaves | Spear of Longinus | Omni Arms | The Diminisher | Medallion of Troy
+RUNES: zathong/Onslaught x10 | zathong/Skewer x10 | zathong/Assassinate x10
+SPELL: Flicker / Punish
+SKILLS: R > Q > W
+## dextra
+ITEMS: Glided Greaves | Fafnir's Talon | Mail of Pain | Omni Arms | Medallion of Troy | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Sprint
+SKILLS: R > Q > W
+## edras
+ITEMS: Spear of Longinus | Sonic Boots | The Diminisher | Fenrir's Tooth | Amulet of Longevity | Blade of Eternity
+RUNES: zathong/Obliterate x10 | zathong/Guerrilla x10 | zathong/Skewer x10
+SPELL: Execute
+SKILLS: R > Q > W
+## errol
+ITEMS: Soulreaver | Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Onslaught | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## florentino
+ITEMS: Broken Spear | Sonic Boots | Hercules's Madness | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Rage | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## kil-groth
+ITEMS: Sonic Boots | Fafnir's Talon | Broken Spear | Hercules's Madness | Hyoga's Edge | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## lu-bu
+ITEMS: Glided Greaves | Spear of Longinus | Frost Cape | Hercules's Madness | Medallion of Troy | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## maloch
+ITEMS: Sonic Boots | The Aegis | Frost Cape | Mail of Pain | Medallion of Troy | Blade of Eternity
+RUNES: red/Golden Body | purple/Assassinate | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## max
+ITEMS: Sonic Boots | Broken Spear | Omni Arms | Fenrir's Tooth | Muramasa | Blade of Eternity
+RUNES: red/Golden Body | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## omen
+ITEMS: Mantle of Ra | Glided Greaves | Fafnir's Talon | Shield of the Lost | Muramasa | Medallion of Troy
+RUNES: red/Onslaught | purple/Colossus | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## qi
+ITEMS: Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Death Sickle | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## riktor
+ITEMS: Hermes' Select | Broken Spear | Omni Arms | Fenrir's Tooth | Hercules's Madness | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: NONE
+SKILLS: R > Q > W
+## rourke
+ITEMS: Firestorm Bow | Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: NONE
+SKILLS: R > Q > W
+## ryoma
+ITEMS: Glided Greaves | Broken Spear | Omni Arms | Hercules's Madness | Muramasa | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: NONE
+SKILLS: R > Q > W
+## skud
+ITEMS: Hermes' Select | Broken Spear | Omni Arms | Fenrir's Tooth | Hercules's Madness | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## superman
+ITEMS: Hermes Select | Rankbreaker | Hercules' Madness | Gaia's Standard | Shield Of The Lost | Blade of Eternity
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## tachi
+ITEMS: Glided Greaves | Omni Arms | Curse of Death | Shield of the Lost | Medallion of Troy | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## tamyn
+ITEMS: Rankbreaker | Sonic Boots | Omni Arms | Hercules' Madness | Fenrir's Tooth | Blade of Eternity
+RUNES: zathong/Onslaught x10 | zathong/Assassinate x10 | zathong/Skewer x10
+SPELL: Flicker
+SKILLS: NONE
+## veres
+ITEMS: Glided Greaves | Frost Cape | Spear of Longinus | Mail of Pain | Medallion of Troy | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## volkath
+ITEMS: Soulreaver | Glided Greaves | Broken Spear | Omni Arms | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## wonder-woman
+ITEMS: Glided Greaves | Broken Spear | Frost Cape | Hercules's Madness | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## yan
+ITEMS: Leviathan | Glided Greaves | Spear of Longinus | Frost Cape | Medallion of Troy | Rock Shield
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## yena
+ITEMS: Sonic Boots | Spear of Longinus | Shield of the Lost | Fenrir's Tooth | Medallion of Troy | Blade of Eternity
+RUNES: red/Onslaught | purple/Protect | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## zanis
+ITEMS: Glided Greaves | Mantle of Ra | Fenrir's Tooth | Frost Cape | Medallion of Troy | Blade of Eternity
+RUNES: red/Awake | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## zephys
+ITEMS: Leviathan | Glided Greaves | Broken Spear | Frost Cape | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Desolate | purple/Protect | green/Dragon's Claw
+SPELL: Punish
+SKILLS: R > Q > W
+## zuka
+ITEMS: Hermes' Select | Broken Spear | Omni Arms | Muramasa | Fenrir's Tooth | Blade of Eternity
+RUNES: red/Onslaught | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## arum
+ITEMS: Leviathan | Sonic Boots | Medallion of Troy | Odin's Will | Mail of Pain | Rock Shield
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## ata
+ITEMS: Poseidon Emblem | Glided Greaves | Frost Cape | Gaia's Standard | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## baldum
+ITEMS: Ring of Terror | Glided Greaves | Gaia's Standard | Shield of the Lost | Medallion of Troy | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## cresht
+ITEMS: Glided Greaves | Ring of Terror | Mantle of Ra | Broken Spear | Omni Arms | Medallion of Troy
+RUNES: red/Golden Body | purple/Assassinate | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## grakk
+ITEMS: Glided Greaves | Ring of Terror | The Aegis | Gaia's Standard | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## mina
+ITEMS: Ring of Terror | Glided Greaves | Gaia's Standard | Shield of the Lost | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## omega
+ITEMS: Glided Greaves | Frost Cape | The Aegis | Gaia's Standard | Mail of Pain | Medallion of Troy
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## ormarr
+ITEMS: Ring of Terror | Glided Greaves | The Aegis | Medallion of Troy | Frost Cape | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## roxie
+ITEMS: Sonic Boots | The Aegis | Frosty's Revenge | Gaia's Standard | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Stain
+SPELL: Sprint
+SKILLS: R > Q > W
+## taara
+ITEMS: Glided Greaves | Mantle of Ra | Frost Cape | Medallion of Troy | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Dragon's Claw
+SPELL: Flicker
+SKILLS: R > Q > W
+## thane
+ITEMS: Ring of Terror | Sonic Boots | The Aegis | Gaia's Standard | Mantle of Ra | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## toro
+ITEMS: Poseidon Emblem | Glided Greaves | The Aegis | Gaia's Standard | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Heal
+SKILLS: R > Q > W
+## wiro
+ITEMS: The Aegis | Hermes' Select | Gaia's Standard | Mail of Pain | Shield of the Lost | Amulet of Longevity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## xeniel
+ITEMS: Soul Strom Badge | Glided Greaves | Frost Cape | Medallion of Troy | The Aegis | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## y-bneth
+ITEMS: Glided Greaves | Mantle of Ra | Frost Cape | Medallion of Troy | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## alice
+ITEMS: Ring of Terror | Flashy Boots | Frosty's Revenge | Frost Cape | Soul Scroll | Blade of Eternity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Heal
+SKILLS: R > Q > W
+## annette
+ITEMS: Glided Greaves | Ring of Terror | Berith's Agony | The Aegis | Gaia's Standard | Mail of Pain
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Sprint
+SKILLS: R > Q > W
+## aya
+ITEMS: NONE
+RUNES: red/Golden Body | purple/Protect | purple/Spirit | green/Prowess
+SPELL: Sprint
+SKILLS: R > Q > W
+## chaugnar
+ITEMS: Ring of Terror | Sonic Boots | Berith's Agony | Shield of the Lost | Gaia's Standard | Medallion of Troy
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## dolia
+ITEMS: Flashy Boots | Frosty's Revenge | The Aegis | Tome Of The Reaper | Berith's Agony | Soaring Aura
+RUNES: zathong/Violate x10 | zathong/Guerrilla x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## helen
+ITEMS: Tidal Force Cleansing | Gilded Greaves | Frosty's Revenge | Gaia's Standard | Shield Of The Lost | Mail of Pain
+RUNES: zathong/Indomitable x10 | zathong/Colossus x10 | zathong/Valiance x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## krizzix
+ITEMS: Ring of Terror | Glided Greaves | The Aegis | Gaia's Standard | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## lumburr
+ITEMS: Poseidon Emblem | Glided Greaves | Gaia's Standard | The Aegis | Rock Shield | Amulet of Longevity
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## ming
+ITEMS: Mother Earth Cleansing | Gilded Greaves | Shield Of The Lost | Hecate's Diadem | Holy of Holies | Medallion of Troy
+RUNES: zathong/Violate x10 | zathong/Benevolence x10 | zathong/Flurry x10
+SPELL: Flicker
+SKILLS: R > Q > W
+## rouie
+ITEMS: Poseidon Emblem | Glided Greaves | The Aegis | Medallion of Troy | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## teemee
+ITEMS: Poseidon Emblem | Hermes' Select | The Aegis | Gaia's Standard | Mail of Pain | Medallion of Troy
+RUNES: red/Golden Body | purple/Protect | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W
+## zip
+ITEMS: Ring of Terror | Hermes' Select | The Aegis | Medallion of Troy | Mail of Pain | Blade of Eternity
+RUNES: red/Golden Body | purple/Spirit | green/Prowess
+SPELL: Flicker
+SKILLS: R > Q > W

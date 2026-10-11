@@ -185,6 +185,28 @@ function breakdown(h){
     ${h.floor==="manual"?`<p class="floor">Tier ${h.tier} do người biên tập điều chỉnh thủ công, không theo điểm tổng.</p>`:h.floor==="pickS"||h.floor==="pickA"?`<p class="floor">Được nâng lên tier ${h.tier} vì được chọn ở ${aogOf(h.key,h.lane)[1]}% số trận ĐTDV mùa Đông.</p>`:h.floor?`<p class="floor">Được nâng lên tier ${h.floor} vì xuất hiện (pick hoặc cấm) ở ${h.pres.toFixed(0)}% số trận ĐTDV mùa Đông.</p>`:""}
   </div>`;
 }
+/* Build tham khảo: đồ, bảng ngọc, phép bổ trợ (dữ liệu ở assets/builds.js) */
+const COLVI={red:"đỏ",purple:"tím",teal:"xanh"};
+function buildHTML(h){
+  if(typeof BUILDS==="undefined")return"";
+  const b=BUILDS[h.key];
+  const head=`<div class="bld-h"><h4>Build tham khảo</h4>${b?`<a href="https://rovmeta.com/heroes/${b.u||h.key}" target="_blank" rel="noopener">${BUILD_META.src} · bản ${BUILD_META.patch}</a>`:""}</div>`;
+  if(!b||(b.only&&b.only!==h.lane))return `<section class="bld">${head}<p class="bld-note">Nguồn chưa có build cho ${h.name} đi ${LANES[h.lane]}.</p></section>`;
+  const jgItem=b.i.find(i=>BITEM[i][1]==="jg"),isJg=!!jgItem||b.s.includes("punish"),laneJg=h.lane==="jg";
+  let spells=b.s.slice();const notes=[];
+  if(laneJg&&jgItem&&!spells.includes("punish"))spells=["punish"];
+  if(laneJg&&!isJg)notes.push("Nguồn chỉ có build đi đường. Khi đi rừng: thêm một món đồ rừng và dùng Trừng Trị.");
+  if(!laneJg&&isJg){notes.push(`Build nguồn dành cho đi rừng. Khi đi ${LANES[h.lane]}: ${jgItem?`bỏ ${BITEM[jgItem][0]}, `:""}dùng Tốc Biến thay Trừng Trị.`);spells=spells.filter(s=>s!=="punish");if(!spells.length)spells=["flicker"]}
+  if(b.n)notes.push(b.n);
+  const items=b.i.length?`<ol class="bld-items">${b.i.map((id,k)=>{const [vi,cat,ic,en]=BITEM[id],off=!laneJg&&cat==="jg";
+      const tip=cat==="sup"&&ic==="gem"?`Đồ trợ thủ: nâng Nguyên Tố Bảo Thạch, chọn nhánh Đại Địa hoặc Liệt Hoả, hiệu ứng ${vi.split("· ")[1]}`:en?`${vi} (${en})`:vi;
+      return `<li class="bi${off?" off":""}" title="${tip}"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${off?"<em>Chỉ khi đi rừng</em>":""}</li>`}).join("")}</ol>`
+    :`<p class="bld-note">Nguồn không ghi build đồ cho ${h.name}.</p>`;
+  const ar=b.r.map(([a,n])=>{const [c,t]=BARC[a];return `<li><img src="b/a-${a}.webp" alt="" loading="lazy" width="30" height="30"><span><b>Ngọc ${COLVI[c]}${n?` ×${n}`:""}</b>${t}</span></li>`}).join("");
+  const sp=spells.map(s=>`<li title="${BSPELL[s][1]}"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><b>${BSPELL[s][0]}</b></li>`).join("")||`<li>Nguồn chưa ghi</li>`;
+  return `<section class="bld" aria-label="Build tham khảo">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
+    <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
+}
 let lastFocus=null;
 function visibleOrder(){return [...document.querySelectorAll("#board .card")].map(c=>c.dataset.id)}
 function openModal(id,dir){
@@ -198,9 +220,11 @@ function openModal(id,dir){
     <div class="m-body"><div class="card" data-t="${h.tier}">${portrait(h)}</div>
     <div><h3>${h.name}</h3>
       <div class="tags"><span class="tag" style="color:var(--t-${h.tier.toLowerCase()})">Tier ${h.tier} · ${TNAME[h.tier]}</span><span class="tag">${LANES[h.lane]}${h.sec?" (đường phụ)":""}</span><span class="tag">${CLASSES[h.cls]}</span>${b?`<span class="tag mv ${b[1]}">${b[2]}</span>`:""}</div>
+      ${others.length?`<div class="other"><span>Còn đi:</span>${others.map(x=>`<button data-go="${x.id}" style="--lc:var(--l-${x.lane})"><i></i>${LANES[x.lane]}${x.sec?" (phụ)":""} · ${x.tier}</button>`).join("")}</div>`:""}
+      ${buildHTML(h)}
+      <h4 class="bds-h">Vì sao tier ${h.tier}</h4>
       ${breakdown(h)}
       <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
-      ${others.length?`<div class="other"><span>Còn đi:</span>${others.map(x=>`<button data-go="${x.id}" style="--lc:var(--l-${x.lane})"><i></i>${LANES[x.lane]}${x.sec?" (phụ)":""} · ${x.tier}</button>`).join("")}</div>`:""}
     </div></div></div></div>`;
   document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
   $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
@@ -208,7 +232,7 @@ function openModal(id,dir){
     const back=document.querySelector(`#board .card[data-id="${id}"]`)||lastFocus;back&&back.focus&&back.focus(mq.matches?{preventScroll:true}:undefined)};
   const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n,d)}};
   const key=e=>{if(e.key==="Escape")close();else if(e.key==="ArrowLeft")go(-1);else if(e.key==="ArrowRight")go(1);
-    else if(e.key==="Tab"){const f=[...$("modalRoot").querySelectorAll("button:not(:disabled)")];if(!f.length)return;const first=f[0],last=f[f.length-1];
+    else if(e.key==="Tab"){const f=[...$("modalRoot").querySelectorAll("button:not(:disabled),a[href]")];if(!f.length)return;const first=f[0],last=f[f.length-1];
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}};
   document.addEventListener("keydown",key);
   $("veil").onclick=e=>{if(e.target.id==="veil")close()};$("mx").onclick=close;

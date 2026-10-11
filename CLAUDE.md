@@ -17,6 +17,11 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - `404.html` — trang báo link sai.
 - Google Analytics `G-5WRPCM36GN` gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
+- `assets/builds.js` — build tham khảo (đồ, bảng ngọc, phép bổ trợ) hiện trong bảng chi tiết khi bấm vào tướng. **Tạo tự động, đừng sửa tay.**
+  Ảnh đồ/ngọc/phép ở `b/`. Nguồn build: ROV META (`rovmeta.com/heroes/<tên>`, mục Standard Build / Core Runes / Summoner Spell),
+  ghi thô trong `tools/builds/raw.txt`; tên Việt và ảnh từ AoV-IndeX (`github.com/AoV-IndeX/avix-data`, `avix-assets`).
+  Cập nhật: sửa `raw.txt` theo nguồn → clone hai repo AoV-IndeX vào `/tmp/ext/avix-data`, `/tmp/ext/avix` → chạy `python3 tools/builds/compile.py && python3 tools/builds/emit.py`.
+  Tên đồ/ngọc bản Thái được quy đổi trong `ALIAS`, `TH`, `ZT` ở `compile.py`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
 - Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 
 ## Dữ liệu trong `assets/data.js`
@@ -43,5 +48,5 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
    rồi thêm key vào `P_KEYS`/`S_KEYS` ở đầu `assets/app.js`.
 5. Kiểm tra trước khi đẩy: `node --check assets/data.js && node --check assets/app.js`, rồi mở `index.html`
    bằng Playwright (Chromium có sẵn) ở 1440px và 390px: không lỗi JS, có 5 slide, bảng có thẻ tướng, không tràn ngang.
-6. Mỗi lần sửa `assets/data.js` hoặc `assets/app.js`, đổi số `?v=` ở hai thẻ `<script>` cuối `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.
+6. Mỗi lần sửa `assets/data.js`, `assets/builds.js` hoặc `assets/app.js`, đổi số `?v=` ở ba thẻ `<script>` cuối `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.
 7. Commit tiếng Việt, mô tả ngắn những gì đổi (tướng nào lên/xuống tier và vì sao). Đẩy thẳng lên `main`.

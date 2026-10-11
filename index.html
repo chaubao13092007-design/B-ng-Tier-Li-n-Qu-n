@@ -680,6 +680,34 @@ html.lock{overflow:hidden}
 }
 @media (max-width:350px){:root{--tlw:70px}.tl .L{font-size:2.5rem}}
 .veil.nav{animation:none}
+/* ===== Build tham khảo trong hộp chi tiết ===== */
+.bld{margin:2px 0 28px;padding-top:20px;border-top:1px solid var(--line)}
+.bld-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px 14px;margin-bottom:14px;flex-wrap:wrap}
+.bld-h h4,.modal .bds-h{margin:0;font:400 12px var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:var(--fg)}
+.modal .bds-h{margin:0 0 14px;padding-top:20px;border-top:1px solid var(--line)}
+.bld-h a{font-size:12.5px;color:var(--muted);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;padding:6px 0}
+.modal .bld-note{margin:0 0 14px;font-size:13px;line-height:1.5;color:var(--accent)}
+.bld-items{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px 10px}
+.bi{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;min-width:0}
+.bi-ic{position:relative;width:56px;height:56px;border:1px solid var(--line-2);background:var(--surface-2);flex:none}
+.bi-ic img{display:block;width:100%;height:100%;object-fit:cover}
+.bi-ic b{position:absolute;left:-1px;top:-1px;min-width:17px;height:17px;padding:0 3px;display:grid;place-items:center;background:var(--fg);color:var(--bg);font:500 10.5px/1 var(--f-body)}
+.bi-n{font-size:12.5px;line-height:1.3;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bi em{font-style:normal;font-size:11.5px;line-height:1.2;color:var(--accent)}
+.bi.off .bi-ic{opacity:.4}
+.bld-row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px 28px}
+.bld-row h5{margin:0 0 10px;font:500 12.5px var(--f-body);color:var(--muted)}
+.bld-ar,.bld-sp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.bld-ar li,.bld-sp li{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.35;color:var(--muted)}
+.bld-ar li span{display:flex;flex-direction:column;min-width:0}
+.bld-ar b,.bld-sp b{color:var(--fg);font-weight:500}
+.bld-ar img{width:30px;height:30px;flex:none}
+.bld-sp img{width:36px;height:36px;flex:none;border-radius:50%}
+@media (max-width:719px){
+  .bld-items{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 8px}
+  .bi-ic{width:60px;height:60px}
+  .bld-row{grid-template-columns:1fr}
+}
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
 @media (max-width:719px) and (prefers-reduced-motion:no-preference){
   .fveil:not([hidden]){animation:fade .3s var(--ease)}
@@ -824,6 +852,7 @@ html.lock{overflow:hidden}
         <li>Preyta và D'Arcy được người biên tập xếp thủ công vào tier A. Annette và Rouie được thêm vào đường Giữa, tier S. Zuka và Nakroth được đổi tier cho nhau (Zuka B, Nakroth A). Airi được nâng lên A. Arthur được thêm vào Trợ thủ, tier B. Krizzix lên A, Chaugnar lên B. Taara, Qi, Yena lên A. Billow ở Tà Thần xuống B. Marja có thêm đường phụ Tà Thần, tier A. Y'bneth và Omega chỉ xếp ở Trợ thủ.</li>
         <li>Mỗi tướng có một đường chính. Tướng thường được đưa sang đường khác có thêm thẻ "Phụ" ở cột đó. Danh sách đường phụ dựa trên lối chơi phổ biến, chưa có số liệu theo đường.</li>
         <li>Lớp tướng (biểu tượng góc thẻ) theo phân loại chính thức của Garena.</li>
+        <li><b>Build tham khảo</b> (bấm vào tướng): đồ, bảng ngọc và phép bổ trợ lấy từ build chuẩn của ROV META (bản 1.64), dựa trên dữ liệu đấu chuyên nghiệp và rank cao server Thái. Tên đồ đổi sang bản Việt theo dữ liệu AoV-IndeX. Đồ trợ thủ đời cũ trong nguồn được quy đổi sang nhánh Bảo Thạch có cùng hiệu ứng. Mỗi tướng chỉ có một build nên khi tướng đi đường khác, bảng sẽ ghi chú cách đổi (ví dụ bỏ đồ rừng).</li>
         <li>Bảng thống kê giải dùng tên bản quốc tế/Thái; đã quy đổi sang tên Việt (Riktor = Richter, Zanis = Triệu Vân, Wukong = Ngộ Không, Lu Bu = Lữ Bố, Diao Chan = Điêu Thuyền, Jinnar = Jinna).</li>
         <li>Số liệu ĐTDV lấy từ bảng thống kê Liquipedia: đủ 214 trận, 80 tướng có pick tính đến 11/10. Sikong Zhen có 6 pick nhưng chưa có trong danh sách tướng Liên Quân Việt Nam nên chưa đưa vào bảng.</li>
       </ul>
@@ -833,6 +862,8 @@ html.lock{overflow:hidden}
         <li>Liquipedia: bảng thống kê mùa trước (299 trận), ảnh chụp do người biên tập cung cấp</li>
         <li><a href="https://rovmeta.com/stats" target="_blank" rel="noopener">ROV META: Pro stats RoV Pro League (bản 1.64)</a></li>
         <li><a href="https://rovmeta.com/" target="_blank" rel="noopener">ROV META: Tier list rank, cập nhật 10/10</a></li>
+        <li><a href="https://rovmeta.com/heroes" target="_blank" rel="noopener">ROV META: Build từng tướng (bản 1.64)</a></li>
+        <li><a href="https://github.com/AoV-IndeX/avix-data" target="_blank" rel="noopener">AoV-IndeX: Tên đồ, ngọc, phép bổ trợ bản Việt</a></li>
         <li><a href="https://fptshop.com.vn/tin-tuc/giai-tri/tier-list-tuong-lien-quan-mua-moi-210149" target="_blank" rel="noopener">FPT Shop: Tier list tướng Liên Quân S3-2026</a></li>
         <li><a href="https://lienquan.garena.vn/chi-tiet-ban-cap-nhat-vet-nut-thoi-khong-29-09-2026/" target="_blank" rel="noopener">Garena: Chi tiết bản cập nhật Vết Nứt Thời Không 29.09.2026</a></li>
         <li><a href="https://cellphones.com.vn/sforum/ban-cap-nhat-lien-quan-mobile-29-9-2026" target="_blank" rel="noopener">Sforum: Bản cập nhật Liên Quân 29/9/2026</a></li>
@@ -849,7 +880,8 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610111507"></script>
-<script src="assets/app.js?v=202610111507"></script>
+<script src="assets/data.js?v=202610112006"></script>
+<script src="assets/builds.js?v=202610112006"></script>
+<script src="assets/app.js?v=202610112006"></script>
 </body>
 </html>
