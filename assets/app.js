@@ -189,23 +189,28 @@ function breakdown(h){
 const COLVI={red:"đỏ",purple:"tím",teal:"xanh"};
 function buildHTML(h){
   if(typeof BUILDS==="undefined")return"";
-  const b=BUILDS[h.key];
-  const head=`<div class="bld-h"><h4>Build tham khảo</h4>${b?`<a href="https://rovmeta.com/heroes/${b.u||h.key}" target="_blank" rel="noopener">${BUILD_META.src} · bản ${BUILD_META.patch}</a>`:""}</div>`;
+  // Ưu tiên build riêng của đường đang xem (nguồn tiếng Việt), không có thì dùng build chung ROV META
+  const own=BUILDS[h.key+"@"+h.lane],b=own||BUILDS[h.key];
+  const title=h.lane==="sp"?"Build Trợ thủ":`Build đi ${LANES[h.lane]}`;
+  const src=!b?"":own?`<a href="${b.l}" target="_blank" rel="noopener">${BSRC[new URL(b.l).hostname]||new URL(b.l).hostname} · server Việt</a>`
+    :`<a href="https://rovmeta.com/heroes/${b.u||h.key}" target="_blank" rel="noopener">${BUILD_META.src} · bản ${BUILD_META.patch} · server Thái</a>`;
+  const head=`<div class="bld-h"><h4>${title}</h4>${src}</div>`;
   if(!b||(b.only&&b.only!==h.lane))return `<section class="bld">${head}<p class="bld-note">Nguồn chưa có build cho ${h.name} đi ${LANES[h.lane]}.</p></section>`;
   const jgItem=b.i.find(i=>BITEM[i][1]==="jg"),isJg=!!jgItem||b.s.includes("punish"),laneJg=h.lane==="jg";
   let spells=b.s.slice();const notes=[];
+  // Phòng hờ (dữ liệu hiện tại đã có build riêng cho mọi trường hợp lệch đường)
   if(laneJg&&jgItem&&!spells.includes("punish"))spells=["punish"];
-  if(laneJg&&!isJg)notes.push("Nguồn chỉ có build đi đường. Khi đi rừng: thêm một món đồ rừng và dùng Trừng Trị.");
+  if(laneJg&&!isJg)notes.push("Nguồn chỉ có build đi đường. Khi đi rừng phải mua một món đồ rừng và mang Trừng Trị.");
   if(!laneJg&&isJg){notes.push(`Build nguồn dành cho đi rừng. Khi đi ${LANES[h.lane]}: ${jgItem?`bỏ ${BITEM[jgItem][0]}, `:""}dùng Tốc Biến thay Trừng Trị.`);spells=spells.filter(s=>s!=="punish");if(!spells.length)spells=["flicker"]}
   if(b.n)notes.push(b.n);
   const items=b.i.length?`<ol class="bld-items">${b.i.map((id,k)=>{const [vi,cat,ic,en]=BITEM[id],off=!laneJg&&cat==="jg";
-      const tip=cat==="sup"&&ic==="gem"?`Đồ trợ thủ: nâng Nguyên Tố Bảo Thạch, chọn nhánh Đại Địa hoặc Liệt Hoả, hiệu ứng ${vi.split("· ")[1]}`:en?`${vi} (${en})`:vi;
-      return `<li class="bi${off?" off":""}" title="${tip}"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${off?"<em>Chỉ khi đi rừng</em>":""}</li>`}).join("")}</ol>`
+      const tip=cat==="sup"&&ic==="gem"?`Đồ trợ thủ: nâng Nguyên Tố Bảo Thạch, chọn nhánh Đại Địa hoặc Liệt Hoả, hiệu ứng ${vi.split("· ")[1]}`:cat==="jg"?`${vi} (${en}) · đồ rừng, cần Trừng Trị`:en?`${vi} (${en})`:vi;
+      return `<li class="bi${off?" off":""}${cat==="jg"&&!off?" jg":""}" title="${tip}"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${off?"<em>Chỉ khi đi rừng</em>":cat==="jg"?"<em>Đồ rừng</em>":""}</li>`}).join("")}</ol>`
     :`<p class="bld-note">Nguồn không ghi build đồ cho ${h.name}.</p>`;
   const ar=b.r.map(([a,n])=>{const [c,t]=BARC[a];return `<li><img src="b/a-${a}.webp" alt="" loading="lazy" width="30" height="30"><span><b>Ngọc ${COLVI[c]}${n?` ×${n}`:""}</b>${t}</span></li>`}).join("");
   const sp=spells.map(s=>`<li title="${BSPELL[s][1]}"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><b>${BSPELL[s][0]}</b></li>`).join("")||`<li>Nguồn chưa ghi</li>`;
-  return `<section class="bld" aria-label="Build tham khảo">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
-    <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
+  return `<section class="bld" aria-label="${title}">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
+    <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ${spells.length>1?" (chọn một)":""}</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
 }
 let lastFocus=null;
 function visibleOrder(){return [...document.querySelectorAll("#board .card")].map(c=>c.dataset.id)}

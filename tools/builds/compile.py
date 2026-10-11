@@ -75,6 +75,56 @@ ADR={'red_samurai','red_berserker','red_bloodlust','red_rampage','red_savage','r
 for k,b in B.items():
     t=dmg(b['i']);rs={a for a,_ in b['r']}
     if t=='phys' and rs&APR or t=='mag' and rs&ADR: print('MISMATCH',k,t,sorted(rs&(APR if t=='phys' else ADR)),b['i'])
+# --- build riêng theo đường, nguồn tiếng Việt (vn.txt): khoá "<key>@<đường>"
+import unicodedata
+def strip(s):
+    s=unicodedata.normalize('NFD',s.replace('đ','d').replace('Đ','D'));s=''.join(c for c in s if unicodedata.category(c)!='Mn')
+    return re.sub(r'\s*[-/]\s*','-',re.sub(r'\s+',' ',s.lower().strip()))
+VIEQ={}
+for e,v in zip(en,vi):
+    k=strip(v['name'])
+    if k in VIEQ and VIEQ[k]!=e['equipmentId']: warn.append(('vi-name clash',k))
+    VIEQ[k]=e['equipmentId']
+# đồ rừng cấp 2 → món nâng cấp cuối; tên nguồn viết khác tên trong game
+VIEQ.update({strip('Đao Truy Kích'):'soulreaver',strip('Rìu Gnoll'):'leviathan',strip('Gươm Hiến Tế'):'lokis-curse',strip('Cung Gió Lốc'):'scorching-wind',
+             strip('Quyền Trượng Rhea'):'rheas-blessing',strip('Chùy Băng Sương'):'frost-hammer',strip('Trượng Băng'):'frostys-revenge'})
+VIRUNE={'do':{'cong vat ly':'red_samurai','cong vat ly-xuyen giap':'red_berserker','ti le chi mang':'red_savage','ti le chi mang-sat thuong chi mang':'red_rampage',
+              'toc danh-ti le chi mang':'red_blitz','toc danh-mau-giap':'red_guardian','cong phep':'red_wise','cong phep-xuyen giap phep':'red_nomad'},
+        'tim':{'toc danh-toc chay':'purple_fairy','cong vat ly-toc chay':'purple_assassin','hut mau':'purple_reaper','hut mau phep':'purple_cleric',
+               'mau-hoi mau-toc chay':'purple_reliever','cong phep-hut mau phep':'purple_vampire'},
+        'xanh':{'cong vat ly-xuyen giap':'teal_dragoon','toc danh-xuyen giap phep':'teal_degenerate','cong phep-giam hoi chieu':'teal_hexer',
+                'mau toi da-giam hoi chieu':'teal_paladin','giap-giap phep-hoi chieu':'teal_crusader','giam hoi chieu':'teal_templar'}}
+VITAL={strip(v['name']):t['talentId'] for t,v in zip(tal_en,tal_vi)}
+LANEK={'top','jg','mid','ad','sp'}
+for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
+    lines=[l for l in blk.strip().split('\n') if l.strip() and not l.startswith('#')];bid=lines[0].strip()
+    key,lane=bid.split('@');assert lane in LANEK,bid
+    f={l.split(':',1)[0]:l.split(':',1)[1].strip() for l in lines[1:]}
+    items=[]
+    for it in f['ITEMS'].split('|'):
+        eid=VIEQ.get(strip(it))
+        if not eid: warn.append((bid,'item?',it.strip()));continue
+        if eid not in items: items.append(eid);used_i.add(eid)
+    runes=[]
+    for r in f['RUNES'].split('|'):
+        m=re.match(r'\s*(\S+)\s+(.+?)\s+x(\d+)\s*$',r);col=strip(m.group(1));aid=VIRUNE[col].get(strip(m.group(2)))
+        if not aid: warn.append((bid,'rune?',r.strip()));continue
+        runes.append([aid,int(m.group(3))]);used_a.add(aid)
+    assert sum(n for _,n in runes)==30,(bid,'runes≠30')
+    sp=[]
+    for s in f['SPELL'].split(' / '):
+        t=VITAL.get(strip(s))
+        if not t: warn.append((bid,'spell?',s));continue
+        sp.append(t);used_t.add(t)
+    b={'i':items,'r':runes,'s':sp,'l':f['SRC']}
+    if f.get('NOTE'):b['n']=f['NOTE']
+    # luật game: đồ rừng chỉ mua được khi mang Trừng Trị; đi đường thì không mang đồ rừng
+    jg=[i for i in items if EQ[i]['categoryId']=='jungling']
+    if lane=='jg': assert jg and sp==['punish'],(bid,'rừng phải có đồ rừng + Trừng Trị')
+    else: assert not jg and 'punish' not in sp,(bid,'đi đường không có đồ rừng')
+    if lane=='sp' and not any(EQ[i]['categoryId']=='support' for i in items): warn.append((bid,'trợ thủ thiếu đồ trợ thủ'))
+    B[bid]=b
+print('vn builds:',sum('@' in k for k in B),'warn',warn[-10:])
 json.dump({'B':B,'I':sorted(used_i),'A':sorted(used_a),'T':sorted(used_t)},open('compiled.json','w'),ensure_ascii=False,indent=0)
 print(len(B),'heroes;',len(used_i),'items;',len(used_a),'arcana;',len(used_t),'spells')
 print('dropped:',{k:b['x'] for k,b in B.items() if 'x' in b})

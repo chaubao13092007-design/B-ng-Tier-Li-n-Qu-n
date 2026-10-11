@@ -38,8 +38,9 @@ B=C['B']
 B['zephys']['r']=[r for r in B['zephys']['r'] if r[0]!='red_nomad'];B['zephys']['n']='Nguồn ghi ngọc đỏ loại công phép, không hợp với build vật lý này nên đã ẩn.'
 for k in ('allain','kilgroth'):B[k]['n']="Nguồn có thêm Hyoga's Edge, món này không còn ở bản Việt Nam nên đã bỏ."
 B['natalya']['n']='Nguồn ghi Quả Cầu Băng Sương hai lần, ở đây chỉ giữ một.'
-js='/* Build tham khảo cho từng tướng — tạo tự động, đừng sửa tay.\n   Nguồn build: ROV META (rovmeta.com/heroes, bản 1.64, cập nhật 10/10/2026) — dữ liệu đấu chuyên nghiệp và rank cao server Thái.\n   Tên đồ, ngọc, phép bổ trợ bản Việt và ảnh: AoV-IndeX (avix-data, avix-assets). Ảnh trong thư mục b/. */\n'
+js='/* Build tham khảo cho từng tướng — tạo tự động từ tools/builds (raw.txt, vn.txt), đừng sửa tay.\n   BUILDS["<key>@<đường>"]: build riêng theo đường, nguồn tiếng Việt (server Việt Nam), link nguồn ở trường l.\n   BUILDS["<key>"]: build chung từ ROV META (rovmeta.com/heroes, bản 1.64, cập nhật 10/10/2026) — đấu chuyên nghiệp và rank cao server Thái.\n   Tên đồ, ngọc, phép bổ trợ bản Việt và ảnh: AoV-IndeX (avix-data, avix-assets). Ảnh trong thư mục b/. */\n'
 js+='const BUILD_META={src:"ROV META",url:"https://rovmeta.com/heroes",patch:"1.64",date:"10/10/2026"};\n'
+js+='const BSRC={"aov-builds.com":"AOV-Builds","gamezingmobile.com":"GameZing Mobile","lienquanmobile.gg":"LienquanMobile.GG"};\n'
 js+='const BITEM='+json.dumps(ITEM,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BARC='+json.dumps(ARC,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BSPELL='+json.dumps(SP,ensure_ascii=False,separators=(',',':'))+';\n'
