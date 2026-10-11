@@ -18,15 +18,15 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - Google Analytics `G-5WRPCM36GN` gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 - `assets/builds.js` — build tham khảo (đồ, bảng ngọc, phép bổ trợ) hiện trong bảng chi tiết khi bấm vào tướng. **Tạo tự động, đừng sửa tay.**
-  Ảnh đồ/ngọc/phép ở `b/`. Nguồn build: ROV META (`rovmeta.com/heroes/<tên>`, mục Standard Build / Core Runes / Summoner Spell),
-  ghi thô trong `tools/builds/raw.txt`; tên Việt và ảnh từ AoV-IndeX (`github.com/AoV-IndeX/avix-data`, `avix-assets`).
-  Cập nhật: sửa `raw.txt` theo nguồn → clone hai repo AoV-IndeX vào `/tmp/ext/avix-data`, `/tmp/ext/avix` → chạy `python3 tools/builds/compile.py && python3 tools/builds/emit.py`.
-  Tên đồ/ngọc bản Thái được quy đổi trong `ALIAS`, `TH`, `ZT` ở `compile.py`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
-  **Build riêng theo đường** ở `tools/builds/vn.txt` (khoá `<key>@<đường>`, nguồn tiếng Việt server VN, chủ yếu https://aov-builds.com/tuong/<tên>/).
-  Bảng chi tiết dùng `BUILDS["<key>@<đường>"]` nếu có, không thì dùng build chung ROV META.
-  Luật bắt buộc, kiểm bằng `node tools/builds/check.js` sau khi chạy emit (báo lỗi thì sửa `vn.txt`): mọi tướng hiện ở cột Rừng — kể cả đường phụ — phải có build `@jg` với một món đồ rừng
-  (Kiếm Truy Hồn, Gươm Loki, Rìu Leviathan, Cung Bão Tố) và Trừng Trị; build đi đường không được có đồ rừng/Trừng Trị; Trợ thủ phải có đồ trợ thủ.
-  Khi thêm tướng hoặc đường phụ mới, kiểm tra lại các luật này và thêm build `@<đường>` nếu build chung không hợp.
+  Mỗi ô tướng (tướng + đường) có build riêng `BUILDS["<key>@<đường>"]`, ghi trong `tools/builds/vn.txt`, nguồn tiếng Việt cho server VN
+  (chủ yếu https://aov-builds.com/tuong/<tên>/; danh sách tên ở https://aov-builds.com/tuong/). Nguồn có nhiều build cho một đường thì lấy build ghi đầu tiên.
+  Ảnh đồ/ngọc/phép ở `b/`, tên Việt và ảnh từ AoV-IndeX (`github.com/AoV-IndeX/avix-data`, `avix-assets`).
+  Cập nhật: sửa `vn.txt` theo nguồn → clone hai repo AoV-IndeX vào `/tmp/ext/avix-data`, `/tmp/ext/avix`
+  → `python3 tools/builds/compile.py && python3 tools/builds/emit.py && node tools/builds/check.js`.
+  `compile.py` dừng nếu tên đồ/ngọc/phép lạ, ngọc mỗi màu không đủ 10 viên, build `@jg` thiếu đồ rừng (Kiếm Truy Hồn, Gươm Loki,
+  Rìu Leviathan, Cung Bão Tố) hoặc Trừng Trị, build đi đường có đồ rừng. `check.js` báo ô tướng nào chưa có build hoặc Trợ thủ thiếu đồ trợ thủ.
+  Khi thêm tướng hoặc đường phụ mới phải thêm build `@<đường>` vào `vn.txt`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
+  `tools/builds/raw.txt` là build cũ của ROV META (server Thái), không còn hiện trên web.
 - Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 
 ## Dữ liệu trong `assets/data.js`

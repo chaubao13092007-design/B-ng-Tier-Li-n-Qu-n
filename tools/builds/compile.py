@@ -91,7 +91,7 @@ VIEQ.update({strip('Đao Truy Kích'):'soulreaver',strip('Rìu Gnoll'):'leviatha
 VIRUNE={'do':{'cong vat ly':'red_samurai','cong vat ly-xuyen giap':'red_berserker','ti le chi mang':'red_savage','ti le chi mang-sat thuong chi mang':'red_rampage',
               'toc danh-ti le chi mang':'red_blitz','toc danh-mau-giap':'red_guardian','cong phep':'red_wise','cong phep-xuyen giap phep':'red_nomad'},
         'tim':{'toc danh-toc chay':'purple_fairy','cong vat ly-toc chay':'purple_assassin','hut mau':'purple_reaper','hut mau phep':'purple_cleric',
-               'mau-hoi mau-toc chay':'purple_reliever','cong phep-hut mau phep':'purple_vampire'},
+               'mau-hoi mau-toc chay':'purple_reliever','cong phep-hut mau phep':'purple_vampire','mau toi da':'purple_colossus'},
         'xanh':{'cong vat ly-xuyen giap':'teal_dragoon','toc danh-xuyen giap phep':'teal_degenerate','cong phep-giam hoi chieu':'teal_hexer',
                 'mau toi da-giam hoi chieu':'teal_paladin','giap-giap phep-hoi chieu':'teal_crusader','giam hoi chieu':'teal_templar'}}
 VITAL={strip(v['name']):t['talentId'] for t,v in zip(tal_en,tal_vi)}
@@ -110,7 +110,7 @@ for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
         m=re.match(r'\s*(\S+)\s+(.+?)\s+x(\d+)\s*$',r);col=strip(m.group(1));aid=VIRUNE[col].get(strip(m.group(2)))
         if not aid: warn.append((bid,'rune?',r.strip()));continue
         runes.append([aid,int(m.group(3))]);used_a.add(aid)
-    assert sum(n for _,n in runes)==30,(bid,'runes≠30')
+    for c in ('red','purple','teal'): assert sum(n for a,n in runes if a.startswith(c))==10,(bid,c,'phải đủ 10 viên')
     sp=[]
     for s in f['SPELL'].split(' / '):
         t=VITAL.get(strip(s))
@@ -123,6 +123,7 @@ for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
     if lane=='jg': assert jg and sp==['punish'],(bid,'rừng phải có đồ rừng + Trừng Trị')
     else: assert not jg and 'punish' not in sp,(bid,'đi đường không có đồ rừng')
     if lane=='sp' and not any(EQ[i]['categoryId']=='support' for i in items): warn.append((bid,'trợ thủ thiếu đồ trợ thủ'))
+    assert bid not in B,(bid,'trùng')
     B[bid]=b
 print('vn builds:',sum('@' in k for k in B),'warn',warn[-10:])
 json.dump({'B':B,'I':sorted(used_i),'A':sorted(used_a),'T':sorted(used_t)},open('compiled.json','w'),ensure_ascii=False,indent=0)

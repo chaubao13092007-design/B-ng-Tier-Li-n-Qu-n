@@ -694,7 +694,7 @@ html.lock{overflow:hidden}
 .bi-ic b{position:absolute;left:-1px;top:-1px;min-width:17px;height:17px;padding:0 3px;display:grid;place-items:center;background:var(--fg);color:var(--bg);font:500 10.5px/1 var(--f-body)}
 .bi-n{font-size:12.5px;line-height:1.3;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .bi em{font-style:normal;font-size:11.5px;line-height:1.2;color:var(--accent)}
-.bi.off .bi-ic{opacity:.4}
+
 .bi.jg .bi-ic{border-color:var(--l-jg)}.bi.jg em{color:var(--l-jg)}
 .bld-row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px 28px}
 .bld-row h5{margin:0 0 10px;font:500 12.5px var(--f-body);color:var(--muted)}
@@ -853,7 +853,7 @@ html.lock{overflow:hidden}
         <li>Preyta và D'Arcy được người biên tập xếp thủ công vào tier A. Annette và Rouie được thêm vào đường Giữa, tier S. Zuka và Nakroth được đổi tier cho nhau (Zuka B, Nakroth A). Airi được nâng lên A. Arthur được thêm vào Trợ thủ, tier B. Krizzix lên A, Chaugnar lên B. Taara, Qi, Yena lên A. Billow ở Tà Thần xuống B. Marja có thêm đường phụ Tà Thần, tier A. Y'bneth và Omega chỉ xếp ở Trợ thủ.</li>
         <li>Mỗi tướng có một đường chính. Tướng thường được đưa sang đường khác có thêm thẻ "Phụ" ở cột đó. Danh sách đường phụ dựa trên lối chơi phổ biến, chưa có số liệu theo đường.</li>
         <li>Lớp tướng (biểu tượng góc thẻ) theo phân loại chính thức của Garena.</li>
-        <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng. Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Build riêng theo đường lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng chưa cần build riêng dùng build chuẩn của ROV META (bản 1.64, đấu chuyên nghiệp và rank cao server Thái). Tên đồ bản Việt theo dữ liệu AoV-IndeX. Mỗi bảng ghi nguồn và có link tới trang gốc.</li>
+        <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng, lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Khi nguồn có nhiều build cho cùng một đường, bảng lấy build nguồn ghi đầu tiên. Tên đồ bản Việt theo dữ liệu AoV-IndeX. Mỗi bảng có link tới trang gốc.</li>
         <li>Bảng thống kê giải dùng tên bản quốc tế/Thái; đã quy đổi sang tên Việt (Riktor = Richter, Zanis = Triệu Vân, Wukong = Ngộ Không, Lu Bu = Lữ Bố, Diao Chan = Điêu Thuyền, Jinnar = Jinna).</li>
         <li>Số liệu ĐTDV lấy từ bảng thống kê Liquipedia: đủ 214 trận, 80 tướng có pick tính đến 11/10. Sikong Zhen có 6 pick nhưng chưa có trong danh sách tướng Liên Quân Việt Nam nên chưa đưa vào bảng.</li>
       </ul>
@@ -864,7 +864,6 @@ html.lock{overflow:hidden}
         <li><a href="https://rovmeta.com/stats" target="_blank" rel="noopener">ROV META: Pro stats RoV Pro League (bản 1.64)</a></li>
         <li><a href="https://rovmeta.com/" target="_blank" rel="noopener">ROV META: Tier list rank, cập nhật 10/10</a></li>
         <li><a href="https://aov-builds.com/" target="_blank" rel="noopener">AOV-Builds: Build theo đường, server Việt (bản 29/09)</a></li>
-        <li><a href="https://rovmeta.com/heroes" target="_blank" rel="noopener">ROV META: Build từng tướng (bản 1.64)</a></li>
         <li><a href="https://github.com/AoV-IndeX/avix-data" target="_blank" rel="noopener">AoV-IndeX: Tên đồ, ngọc, phép bổ trợ bản Việt</a></li>
         <li><a href="https://fptshop.com.vn/tin-tuc/giai-tri/tier-list-tuong-lien-quan-mua-moi-210149" target="_blank" rel="noopener">FPT Shop: Tier list tướng Liên Quân S3-2026</a></li>
         <li><a href="https://lienquan.garena.vn/chi-tiet-ban-cap-nhat-vet-nut-thoi-khong-29-09-2026/" target="_blank" rel="noopener">Garena: Chi tiết bản cập nhật Vết Nứt Thời Không 29.09.2026</a></li>
@@ -882,8 +881,8 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610120049"></script>
-<script src="assets/builds.js?v=202610120049"></script>
-<script src="assets/app.js?v=202610120049"></script>
+<script src="assets/data.js?v=202610120109"></script>
+<script src="assets/builds.js?v=202610120109"></script>
+<script src="assets/app.js?v=202610120109"></script>
 </body>
 </html>

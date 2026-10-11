@@ -3,8 +3,8 @@ const fs=require('fs'),vm=require('vm'),path=require('path');const R=path.join(_
 vm.runInContext(fs.readFileSync(path.join(R,'assets/data.js'),'utf8')+';this.HEROES=HEROES',ctx);
 vm.runInContext(fs.readFileSync(path.join(R,'assets/builds.js'),'utf8')+';this.BUILDS=BUILDS;this.BITEM=BITEM;this.BARC=BARC;this.BSPELL=BSPELL',ctx);
 const {HEROES,BUILDS,BITEM,BARC,BSPELL}=ctx;let bad=0;
-for(const h of HEROES){const b=BUILDS[h.key+'@'+h.lane]||BUILDS[h.key];const f=[];
-  if(!b||(b.only&&b.only!==h.lane))f.push('không có build');
+for(const h of HEROES){const b=BUILDS[h.key+'@'+h.lane];const f=[];
+  if(!b)f.push('chưa có build @'+h.lane+' trong vn.txt');
   else{const cats=b.i.map(i=>BITEM[i]?BITEM[i][1]:'??'),jg=cats.includes('jg'),pun=b.s.includes('punish');
     if(cats.includes('??'))f.push('đồ lạ');if(b.r.some(([a])=>!BARC[a]))f.push('ngọc lạ');if(b.s.some(s=>!BSPELL[s]))f.push('phép lạ');
     if(h.lane==='jg'&&!(jg&&pun))f.push('đi rừng thiếu đồ rừng hoặc Trừng Trị');
