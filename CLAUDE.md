@@ -41,4 +41,5 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
    rồi thêm key vào `P_KEYS`/`S_KEYS` ở đầu `assets/app.js`.
 5. Kiểm tra trước khi đẩy: `node --check assets/data.js && node --check assets/app.js`, rồi mở `index.html`
    bằng Playwright (Chromium có sẵn) ở 1440px và 390px: không lỗi JS, có 5 slide, bảng có thẻ tướng, không tràn ngang.
-6. Commit tiếng Việt, mô tả ngắn những gì đổi (tướng nào lên/xuống tier và vì sao). Đẩy thẳng lên `main`.
+6. Mỗi lần sửa `assets/data.js` hoặc `assets/app.js`, đổi số `?v=` ở hai thẻ `<script>` cuối `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.
+7. Commit tiếng Việt, mô tả ngắn những gì đổi (tướng nào lên/xuống tier và vì sao). Đẩy thẳng lên `main`.
