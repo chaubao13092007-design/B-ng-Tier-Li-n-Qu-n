@@ -59,7 +59,7 @@
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-padding-top:calc(var(--barh) + 20px);-webkit-text-size-adjust:100%}
+html{scroll-padding-top:calc(var(--barh) + 20px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6;padding-inline:20px;padding-block:0 0;overflow-x:clip;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column}
 button{font-family:inherit;color:inherit}
@@ -595,7 +595,8 @@ html.lock{overflow:hidden}
   .hero-foot{padding:0 16px 20px}
   .hero-l{width:100%}
   .hero-sub{max-width:none;color:rgba(243,242,239,.86);text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 22px rgba(0,0,0,.85)}
-  .hero-acts{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;margin-top:16px}
+  .hero-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .hero-acts>*{flex:1 1 auto}
   .hero-go{display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;background:#f3f2ef;color:#000;text-decoration:none;font:500 12px var(--f-display);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
   .hero-go i{width:1px;height:14px;background:currentColor;position:relative}
   .hero-go i::after{content:"";position:absolute;left:-3px;bottom:0;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
@@ -608,7 +609,7 @@ html.lock{overflow:hidden}
   .runners button{min-height:44px;padding:4px 12px 4px 4px}
   .runners img{width:34px;height:34px}
   .runners small{font-size:12px}
-  .tabs button{min-height:52px;letter-spacing:.08em}
+  .tabs button{min-height:52px;letter-spacing:.08em;overflow:hidden;text-overflow:ellipsis}
   /* Thanh dính: cuộn xuống thì thu gọn, chỉ giữ hàng chọn đường */
   .bar{transition:transform .35s var(--ease)}
   .bar.compact{transform:translate3d(0,calc(-1 * var(--r1h,56px)),0)}
@@ -618,7 +619,7 @@ html.lock{overflow:hidden}
   .slide .cta{font-size:12px}
   .ls-b .lg{font-size:12px;height:22px}
   .box p>a{display:inline-block;padding:11px 0;margin:-11px 0}
-  .lanes-m button{font-size:12px;letter-spacing:.08em;min-height:52px}
+  .lanes-m button{font-size:12px;letter-spacing:.08em;min-height:52px;overflow:hidden;text-overflow:ellipsis}
   .ic{height:44px}
   .fhead .btn{height:44px}
   .filters.open{overscroll-behavior:contain}
@@ -627,7 +628,8 @@ html.lock{overflow:hidden}
   .legend-strip{padding:14px 0}
   .ls-t{display:none}
   .ls-b{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin:0;padding:0;overflow:visible;font-size:13px}
-  .ls-b span{white-space:nowrap}
+  .ls-b span{white-space:normal;line-height:1.3}
+  .ls-b .lg{flex:none}
   /* Nút tải ảnh / chia sẻ, thanh tự xếp */
   .sec-acts .long,.minebar .long{display:none}
   .sec-acts .cta{font-size:12px;min-height:48px}
@@ -638,6 +640,9 @@ html.lock{overflow:hidden}
   .por .secl{font-size:11px;font-weight:500;letter-spacing:.14em;line-height:17px}
   .por .bdg{font-size:12px;line-height:20px}
   .card:active .por{transform:scale(.95);transition:transform .15s}
+  /* Luôn đủ 3 thẻ mỗi hàng: máy hẹp thì thu ảnh lại một chút */
+  .hrow,.trow{grid-template-columns:var(--tlw,78px) 1fr}
+  .card{--sz:min(70px,calc((100vw - var(--tlw,78px) - 68px) / 3))}
   /* Hộp chi tiết dạng tấm: có thanh kéo, vuốt xuống để đóng, vuốt ngang để đổi tướng */
   .modal{touch-action:pan-y;overscroll-behavior:contain}
   .modal::before{content:"";position:absolute;left:50%;top:8px;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:rgba(255,255,255,.6);z-index:4;box-shadow:0 0 6px rgba(0,0,0,.5)}
@@ -663,6 +668,17 @@ html.lock{overflow:hidden}
   .pickbar .btn{height:44px;border-color:color-mix(in srgb,var(--bg) 35%,transparent);color:var(--bg)}
   body.picking .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 }
+/* Máy hẹp (≤ 374px): nới chữ giãn để tab đường và hàng công cụ không chồng nhau */
+@media (max-width:374px){
+  .tabs button,.lanes-m button{font-size:11px;letter-spacing:.04em}
+  .row1,.seg{gap:12px}
+  .seg button{letter-spacing:.1em}
+  #ftoggle{padding:0 10px}
+  .hero-go,.hero-about{letter-spacing:.08em}
+  .tl{padding-left:12px}
+  .hero h1{font-size:min(2rem,8.6vw)}
+}
+@media (max-width:350px){:root{--tlw:70px}.tl .L{font-size:2.5rem}}
 .veil.nav{animation:none}
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
 @media (max-width:719px) and (prefers-reduced-motion:no-preference){
@@ -833,7 +849,7 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610111439"></script>
-<script src="assets/app.js?v=202610111439"></script>
+<script src="assets/data.js?v=202610111454"></script>
+<script src="assets/app.js?v=202610111454"></script>
 </body>
 </html>

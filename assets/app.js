@@ -4,6 +4,46 @@ const $=id=>document.getElementById(id);
 function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 const freshMine=()=>Object.fromEntries(HEROES.map(h=>[h.id,h.tier]));
 const mq=window.matchMedia("(max-width:719px)");
+
+/* Trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ của điện thoại nhưng không giãn khung
+   → chữ cụm lại, chồng lên nhau. Đo tỉ lệ phóng thật (so chữ trên trang với chữ vẽ trên canvas, canvas không bị phóng)
+   rồi chia lại cỡ chữ trong CSS cho đúng thiết kế. Người xem vẫn chụm hai ngón để phóng to được.
+   Thêm ?tz vào link để xem tỉ lệ đo được, ?tz=1.3 để thử bù với tỉ lệ cho trước. */
+const TZ=(function fixTextZoom(){
+  const qs=new URLSearchParams(location.search).get("tz"),TXT="Bảng Tier Liên Quân 2026";
+  const res={r14:1,r32:1,applied:0};
+  try{
+    const ctx=document.createElement("canvas").getContext("2d");if(!ctx)return res;
+    const box=document.createElement("div");box.setAttribute("aria-hidden","true");
+    box.style.cssText="height:0;overflow:hidden;visibility:hidden;pointer-events:none";
+    box.innerHTML=[14,32].map(s=>`<span style="display:inline;font:400 ${s}px/1 sans-serif;letter-spacing:0;text-transform:none;white-space:nowrap">${TXT}</span>`).join("<br>");
+    (document.querySelector(".hero-l")||document.body).appendChild(box);
+    const [p14,p32]=box.querySelectorAll("span");
+    const ratio=(el,s)=>{ctx.font=`400 ${s}px sans-serif`;const w=ctx.measureText(TXT).width;return w?el.getBoundingClientRect().width/w:1};
+    res.r14=ratio(p14,14);res.r32=ratio(p32,32);
+    const forced=qs&&+qs>0?+qs:0,r=forced||res.r14;
+    if(r>1.06&&r<3){
+      // Chữ to cũng bị phóng gần như chữ nhỏ → bù mọi cỡ; nếu chữ to gần như không bị phóng → chỉ bù chữ ≤ 16px
+      const linear=forced||res.r32>1+(r-1)*0.6;
+      const saved=[],SZ=/(^|\s)(clamp\([^)]*\)|\d*\.?\d+(?:px|rem))(?=[\s\/]|$)/;
+      const small=v=>{const m=/^(\d*\.?\d+)(px|rem)$/.exec(v.trim());return m&&(m[2]==="px"?+m[1]:+m[1]*16)<=16.5};
+      const ok=v=>{const t=v.replace(/rem/g,"R");return /\d(?:px|R|vw|vh)/.test(t)&&!/\d(?:%|em)/.test(t)&&(linear||small(v))};
+      const set=(st,p,v)=>{const pr=st.getPropertyPriority(p);saved.push([st,p,v,pr]);st.setProperty(p,p==="font"?v.replace(SZ,(m,a,b)=>`${a}calc(${b} / ${r})`):`calc(${v} / ${r})`,pr)};
+      const walk=list=>{for(const rule of list){
+        if(rule.style&&rule.selectorText){const st=rule.style,fs=st.getPropertyValue("font-size"),f=st.getPropertyValue("font");
+          if(fs){if(ok(fs))set(st,"font-size",fs)}else if(f){const m=SZ.exec(f);if(m&&ok(m[2]))set(st,"font",f)}}
+        if(rule.cssRules&&rule.cssRules.length)walk(rule.cssRules)}};
+      for(const sh of document.styleSheets){let rl;try{rl=sh.cssRules}catch(e){continue}if(rl)walk(rl)}
+      // Kiểm tra lại: chữ 14px phải hiện đúng 14px, nếu không thì trả nguyên như cũ
+      p14.style.fontSize=`calc(14px / ${r})`;const after=ratio(p14,14);
+      if(!forced&&Math.abs(after-1)>0.08)saved.forEach(([st,p,v,pr])=>st.setProperty(p,v,pr));
+      else{res.applied=r;res.after=after;document.documentElement.classList.add("tz")}
+    }
+    box.remove();
+  }catch(e){}
+  if(qs!==null)setTimeout(()=>toast(`Chữ ${res.r14.toFixed(2)}× / ${res.r32.toFixed(2)}× · ${res.applied?"đã bù "+res.applied.toFixed(2):"không cần bù"}`),900);
+  return res;
+})();
 let mode=store("lq-mode")==="mine"?"mine":"meta",q="",selected=null,mine=store("lq-mine2")||freshMine();
 let mLane=LANES[store("lq-mlane")]?store("lq-mlane"):"top";
 const F={lane:new Set(),cls:new Set(),trend:new Set()};

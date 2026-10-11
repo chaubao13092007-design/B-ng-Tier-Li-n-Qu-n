@@ -17,6 +17,7 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - `404.html` — trang báo link sai.
 - Google Analytics `G-5WRPCM36GN` gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
+- Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 
 ## Dữ liệu trong `assets/data.js`
 - `SRC.aog` — ĐTDV mùa hiện tại, mỗi tướng: `[tỉ lệ thắng %, pick % số trận, cấm % số trận, số pick, số cấm]`.
