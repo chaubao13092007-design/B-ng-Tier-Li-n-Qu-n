@@ -191,10 +191,17 @@ function breakdown(h){
     ${h.floor==="manual"?`<p class="floor">Tier ${h.tier} do người biên tập điều chỉnh thủ công, không theo điểm tổng.</p>`:h.floor==="pickS"||h.floor==="pickA"?`<p class="floor">Được nâng lên tier ${h.tier} vì được chọn ở ${aogOf(h.key,h.lane)[1]}% số trận ĐTDV mùa Đông.</p>`:h.floor?`<p class="floor">Được nâng lên tier ${h.floor} vì xuất hiện (pick hoặc cấm) ở ${h.pres.toFixed(0)}% số trận ĐTDV mùa Đông.</p>`:""}
   </div>`;
 }
-/* Build tham khảo: đồ, bảng ngọc, phép bổ trợ (dữ liệu ở assets/builds.js) */
+/* Build tham khảo: đồ, bảng ngọc, phép bổ trợ (dữ liệu ở assets/builds.js, tải async sau app.js để bảng tier hiện sớm hơn) */
+function waitBuilds(){if(waitBuilds.on)return;waitBuilds.on=true;
+  const redo=ok=>{waitBuilds.on=false;const sec=document.querySelector(".modal .bld[data-wait]");if(!sec)return;const h=HEROES.find(x=>x.id===sec.dataset.wait);
+    if(ok&&h&&typeof BUILDS!=="undefined")sec.outerHTML=buildHTML(h);else sec.querySelector(".bld-note").textContent="Không tải được build. Tải lại trang để thử lại."};
+  // Thẻ script của builds.js nằm sau app.js nên có thể chưa có trong trang lúc này: chờ trang đọc xong rồi mới gắn
+  const hook=()=>{if(typeof BUILDS!=="undefined")return redo(true);const s=$("buildsjs");if(!s)return redo(false);
+    s.addEventListener("load",()=>redo(true));s.addEventListener("error",()=>redo(false))};
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",hook);else hook()}
 const COLVI={red:"đỏ",purple:"tím",teal:"xanh"};
 function buildHTML(h){
-  if(typeof BUILDS==="undefined")return"";
+  if(typeof BUILDS==="undefined"){waitBuilds();return `<section class="bld" data-wait="${h.id}"><p class="bld-note">Đang tải build…</p></section>`}
   // Build riêng cho đường đang xem, nguồn tiếng Việt (server Việt Nam)
   const b=BUILDS[h.key+"@"+h.lane];
   const title=h.lane==="sp"?"Build Trợ thủ":`Build đi ${LANES[h.lane]}`;
@@ -299,17 +306,22 @@ function buildStage(){
   const lanes=Object.keys(LANES);
   const slides=lanes.map((l,i)=>{const top=laneTop(l),h=top[0];if(!h)return"";const a=aogOf(h.key,h.lane),sp=splOf(h);
     return `<div class="slide${i===0?" on":""}" role="group" aria-roledescription="trang" aria-label="${LANES[l]}: ${h.name}" style="--lc:var(--l-${l})"${i?' aria-hidden="true"':""}>
-      <img class="bg" ${i===0?"src":"data-src"}="${sp||imgOf(h)}" alt="" decoding="async"${sp?"":' style="filter:blur(22px) brightness(.55)"'}>
+      <img class="bg" data-src="${sp||imgOf(h)}" alt="" decoding="async"${sp?"":' style="filter:blur(22px) brightness(.55)"'}>
       <div class="slide-c"><div class="over"><i></i>${LANES[l]} · Hạng 1</div>
         <h3>${h.name}</h3>
         <div class="slide-meta"><span class="tier"><b>${h.tier}</b>Tier</span><span><b>${a?a[3]:0}</b>Pick ĐTDV</span><span><b>${a?a[4]:0}</b>Lượt cấm</span><span><b>${h.score.toFixed(2)}</b>Điểm / 5</span></div>
         <div class="slide-acts"><button class="cta" data-open="${h.id}">Xem chi tiết<i></i></button>
-          <div class="runners">${top.slice(1).map((x,j)=>`<button data-open="${x.id}" aria-label="Hạng ${j+2}: ${x.name}, tier ${x.tier}"><img src="${imgOf(x)}" alt=""><small>0${j+2}</small>${x.name}</button>`).join("")}</div></div>
+          <div class="runners">${top.slice(1).map((x,j)=>`<button data-open="${x.id}" aria-label="Hạng ${j+2}: ${x.name}, tier ${x.tier}"><img data-src="${imgOf(x)}" alt="" decoding="async"><small>0${j+2}</small>${x.name}</button>`).join("")}</div></div>
       </div></div>`}).join("");
   const tabs=`<div class="tabs" role="tablist" aria-label="Chọn đường">${lanes.map((l,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}">${LANES[l]}<b>${(laneTop(l)[0]||{}).name||""}</b><span class="pg"></span></button>`).join("")}</div>`;
   const pp=reduce.matches?"":`<button class="stage-pp" id="stagePP" aria-label="Tạm dừng trình chiếu"></button>`;
   const st=$("stage");st.innerHTML=slides+tabs+pp;st.style.setProperty("--dur",DUR+"ms");
-  try{new IntersectionObserver(([en],o)=>{if(en.isIntersecting){loadSlide(1);o.disconnect()}},{rootMargin:"300px"}).observe(st)}catch(e){loadSlide(1)}
+  // Ảnh sân khấu không tải lúc mở trang (nhường mạng cho bảng tier): tải khi người xem bắt đầu cuộn,
+  // khi sân khấu sắp hiện, hoặc 2,5 giây sau khi trang tải xong — cái nào tới trước
+  const kick=()=>{if(kick.done)return;kick.done=true;loadSlide(0);loadSlide(1);st.querySelectorAll(".runners img[data-src]").forEach(im=>{im.src=im.dataset.src;im.removeAttribute("data-src")})};
+  try{new IntersectionObserver(([en],o)=>{if(en.isIntersecting){kick();o.disconnect()}},{rootMargin:"150px 0px"}).observe(st)}catch(e){kick()}
+  addEventListener("scroll",kick,{once:true,passive:true});
+  if(document.readyState==="complete")setTimeout(kick,2500);else addEventListener("load",()=>setTimeout(kick,2500),{once:true});
   st.onclick=e=>{if(e.target.closest("#stagePP")){userPaused=!userPaused;paintPP();userPaused?pauseStage(true):(sPaused=false,$("stage").classList.remove("paused"),sLeft=DUR,schedule());return}const o=e.target.closest("[data-open]");if(o)return openModal(o.dataset.open);const t=e.target.closest("[data-i]");if(t)goSlide(+t.dataset.i,true)};
   let sx=null,sy=0;
   st.addEventListener("touchstart",e=>{const t=e.touches[0];sx=(e.touches.length>1||t.clientX<24||t.clientX>innerWidth-24)?null:t.clientX;sy=t.clientY},{passive:true});

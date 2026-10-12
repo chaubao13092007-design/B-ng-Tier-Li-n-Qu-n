@@ -23,6 +23,7 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - Google Analytics `G-5WRPCM36GN` khởi tạo trong `assets/boot.js`, gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 - `assets/builds.js` — build tham khảo (đồ, bảng ngọc, phép bổ trợ) hiện trong bảng chi tiết khi bấm vào tướng. **Tạo tự động, đừng sửa tay.**
+  Nạp `async` sau `app.js` (thẻ `id="buildsjs"`) để bảng tier không phải chờ; bảng chi tiết tự hiện build khi tệp tải xong.
   Mỗi ô tướng (tướng + đường) có build riêng `BUILDS["<key>@<đường>"]`, ghi trong `tools/builds/vn.txt`, nguồn tiếng Việt cho server VN
   (chủ yếu https://aov-builds.com/tuong/<tên>/; danh sách tên ở https://aov-builds.com/tuong/). Nguồn có nhiều build cho một đường thì lấy build ghi đầu tiên.
   Ảnh đồ/ngọc/phép ở `b/`, tên Việt và ảnh từ AoV-IndeX (`github.com/AoV-IndeX/avix-data`, `avix-assets`).
@@ -36,7 +37,7 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - Danh sách "Chỉnh tay của người biên tập" và "Đường phụ" trong mục Cách xếp và nguồn được `assets/app.js` tự sinh từ `MANUAL`/`SECONDARY`, không cần sửa chữ trong `index.html`.
 - Kiểu hover chỉ đặt trong `@media (hover:hover)` để điện thoại không bị dính trạng thái sau khi chạm. Thanh dính và hàng tên đường dùng nền đặc `var(--bg)`.
 - Việc định kỳ mỗi Thứ Bảy cải thiện giao diện ghi nhật ký ở `tools/uiux-log.md` (đọc trước khi sửa giao diện; mục "Đã chốt" không làm ngược lại).
-- Việc định kỳ mỗi Chủ nhật tối ưu hiệu năng ghi số đo và việc đã làm ở `tools/perf-log.md` (đo theo đúng cách ghi ở đầu tệp để so được giữa các tuần).
+- Việc định kỳ mỗi Chủ nhật tối ưu hiệu năng ghi số đo và việc đã làm ở `tools/perf-log.md`; đo bằng `tools/perf/serve.py` + `tools/perf/measure.js` để so được giữa các tuần.
 - Đầu `assets/app.js` có hàm `fixTextZoom`: bù lại việc trình duyệt trong Messenger/Facebook trên Android phóng to chữ theo cỡ chữ điện thoại (chữ bị cụm, chồng nhau). Giữ nguyên. Thêm `?tz` vào link để xem tỉ lệ đo được.
 
 ## Dữ liệu trong `assets/data.js`
