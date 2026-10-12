@@ -295,6 +295,10 @@ mq.addEventListener?mq.addEventListener("change",()=>{draw();measure()}):mq.addL
 const seen=new Set();
 $("log").innerHTML=HEROES.filter(h=>h.trend&&!h.sec&&!seen.has(h.key)&&seen.add(h.key)).sort((a,b)=>"down up new mix".indexOf(a.trend)-"down up new mix".indexOf(b.trend)).map(h=>`<li><span class="mv ${TR[h.trend][1]}">${TR[h.trend][0]}</span><span><button data-open="${h.id}">${h.name}</button> · ${h.note.replace(/^[^:]+: /,"")}</span></li>`).join("");
 $("log").onclick=e=>{const b=e.target.closest("[data-open]");if(b)openModal(b.dataset.open)};
+(function logMore(){const ul=$("log"),bt=$("logMore"),n=ul.children.length,more=n-6;if(!bt||more<=0)return;
+  const paint=()=>{const open=!ul.classList.contains("short");bt.textContent=open?"Thu gọn":`Xem thêm ${more} thay đổi`;bt.setAttribute("aria-expanded",open)};
+  ul.classList.add("short");bt.hidden=false;paint();
+  bt.onclick=()=>{ul.classList.toggle("short");paint();if(ul.classList.contains("short"))ul.scrollIntoView({block:"nearest"})}})();
 
 /* Nổi bật mỗi đường */
 const TORD={S:0,A:1,B:2,C:3,D:4};

@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" id="fontcss" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" media="print">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"></noscript>
-<script src="assets/boot.js?v=202610121152"></script>
+<script src="assets/boot.js?v=202610121156"></script>
 <style>
 /* Layout: hero toàn màn hình (thiên hà) → sân khấu "mạnh nhất mỗi đường" kiểu trình chiếu → thanh công cụ dính → lưới tier × đường.
    Tinh thần xe sang: đen tuyền, chữ in hoa giãn rộng, góc vuông, đường kẻ mảnh, chuyển động chậm */
@@ -583,6 +583,7 @@ html.lock{overflow:hidden}
 .mb{display:none}
 .hero-acts{display:flex;align-items:center;gap:22px;margin-top:10px}
 .fveil,.pickbar{display:none}
+.log-more{display:none}
 .hero-go{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0 22px;background:#f3f2ef;color:#000;text-decoration:none;font:400 11px var(--f-display);letter-spacing:var(--track);text-transform:uppercase;white-space:nowrap;transition:background .3s}
 .hero-go i{width:1px;height:14px;background:currentColor;position:relative}
 .hero-go i::after{content:"";position:absolute;left:-3px;bottom:0;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
@@ -663,7 +664,10 @@ html.lock{overflow:hidden}
   .modal .other button{min-height:40px}
   /* Danh sách thay đổi + nguồn */
   .log li{grid-template-columns:1fr;gap:4px}
-  .log li button{position:relative;padding:7px 0;margin:-7px 0;min-width:28px;text-align:left}
+  .log li button{position:relative;padding:7px 0;margin:-7px 0;min-width:28px;text-align:left;border-bottom:0;text-decoration:underline;text-decoration-color:var(--line-2);text-decoration-thickness:1px;text-underline-offset:4px}
+  /* Danh sách thay đổi dài: điện thoại chỉ hiện 6 dòng đầu, bấm để xem hết */
+  .log.short li:nth-child(n+7){display:none}
+  .log-more:not([hidden]){display:flex;width:100%;justify-content:center;margin-top:12px;min-height:44px}
   .log li button::after{content:"";position:absolute;inset:-12px -8px}
   .box li>a:only-child{display:block;padding:11px 0}
   .foot{font-size:12px;letter-spacing:.12em}
@@ -759,7 +763,7 @@ html.lock{overflow:hidden}
       <div><dt>Lượt chọn</dt><dd id="stPick">–</dd></div>
       <div><dt>Lượt cấm</dt><dd id="stBan">–</dd></div>
       <div><dt>Trận ĐTDV</dt><dd id="stGames">–</dd></div>
-      <div><dt>Tướng · 11/10</dt><dd id="heroCount">–</dd></div>
+      <div><dt>Tướng được xếp</dt><dd id="heroCount">–</dd></div>
     </dl>
   </header>
 
@@ -846,6 +850,7 @@ html.lock{overflow:hidden}
     <div class="box">
       <h2>Thay đổi theo bản 29/09</h2>
       <ul class="log" id="log"></ul>
+      <button class="btn ghost log-more" id="logMore" type="button" aria-controls="log" aria-expanded="false" hidden></button>
     </div>
     <div class="box">
       <h2 id="method">Cách xếp và nguồn</h2>
@@ -892,8 +897,8 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610121152"></script>
-<script src="assets/app.js?v=202610121152"></script>
-<script src="assets/builds.js?v=202610121152" id="buildsjs" async></script>
+<script src="assets/data.js?v=202610121156"></script>
+<script src="assets/app.js?v=202610121156"></script>
+<script src="assets/builds.js?v=202610121156" id="buildsjs" async></script>
 </body>
 </html>
