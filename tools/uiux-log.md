@@ -1,6 +1,6 @@
 # Nhật ký cải thiện giao diện (UI/UX)
 
-Việc định kỳ mỗi sáng (7:45 giờ Việt Nam) đọc tệp này trước khi làm, rồi thêm một mục mới ở cuối.
+Việc định kỳ mỗi Thứ Bảy (7:45 giờ Việt Nam) đọc tệp này trước khi làm, rồi thêm một mục mới ở cuối.
 Mỗi mục: ngày, đã sửa gì và vì sao, đã kiểm tra gì, ý tưởng để lần sau.
 
 ## Đã chốt, không làm ngược lại
