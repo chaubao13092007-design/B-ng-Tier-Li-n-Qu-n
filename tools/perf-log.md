@@ -34,3 +34,9 @@ Máy tính không đổi đáng kể (bảng hiện ~0,5 giây, LCP ~0,1 giây).
 - Thêm tools/perf/serve.py và tools/perf/measure.js để các tuần sau đo cùng một cách.
 Ý tưởng để lần sau: TBT trên điện thoại phần lớn là vẽ thiên hà WebGL (trong môi trường đo không có GPU nên bị phóng đại);
 mở bảng chi tiết ~0,5–0,7 giây trên điện thoại chậm (dựng HTML + ảnh bìa 960px), xem có giảm được không.
+
+## 2026-10-12 — sau khi thêm hộp thông tin trang bị
+- builds.js lớn thêm (thêm giá, chỉ số, nội tại từng món: 46 → 67 kB chưa nén). Nạp async ngay từ HTML làm bảng tier chậm lại ~350 ms
+  trên điện thoại chậm (1333 → 1684 ms), nên đổi sang để app.js tự tải builds.js 1,2 giây sau khi trang tải xong (hoặc khi mở bảng chi tiết).
+- Điện thoại (giả lập chậm, trung vị 5 lần): bảng có thẻ 1260 ms, tải tới lúc bảng hiện 50 kB / 4 yêu cầu, TBT 342 ms, LCP 504 ms.
+- Máy tính: bảng có thẻ 551 ms, LCP 108 ms.

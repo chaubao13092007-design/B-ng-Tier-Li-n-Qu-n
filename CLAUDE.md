@@ -17,13 +17,16 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - `404.html` — trang báo link sai.
 - Bảo mật: `index.html` và `404.html` có thẻ `Content-Security-Policy` (chỉ cho chạy mã của web và Google Analytics, font Google).
   Không viết mã `<script>` nội tuyến hay thuộc tính `onclick=`/`onload=` trong HTML — đặt vào tệp JS. Thêm dịch vụ ngoài mới thì phải thêm tên miền vào CSP.
-  `assets/boot.js` (nạp trong `<head>`): khởi tạo Google Analytics, chống nhúng web vào iframe, bật font. Đổi `?v=` của nó cùng ba script cuối trang.
+  `assets/boot.js` (nạp trong `<head>`): khởi tạo Google Analytics, chống nhúng web vào iframe, bật font. Đổi `?v=` của nó cùng các script cuối trang.
   Khi kiểm tra bằng Playwright mà cần chèn script (ví dụ axe-core), tạo context với `bypassCSP: true`.
   Dữ liệu đọc từ bộ nhớ trình duyệt (bảng Tự xếp) được lọc lại trước khi dùng (`loadMine`). `.well-known/security.txt` hết hạn 2027-10-12, nhớ gia hạn.
 - Google Analytics `G-5WRPCM36GN` khởi tạo trong `assets/boot.js`, gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 - `assets/builds.js` — build tham khảo (đồ, bảng ngọc, phép bổ trợ) hiện trong bảng chi tiết khi bấm vào tướng. **Tạo tự động, đừng sửa tay.**
-  Nạp `async` sau `app.js` (thẻ `id="buildsjs"`) để bảng tier không phải chờ; bảng chi tiết tự hiện build khi tệp tải xong.
+  Không có thẻ `<script>` cho builds.js trong HTML: `app.js` tự tải nó 1,2 giây sau khi trang tải xong (hoặc ngay khi mở bảng chi tiết),
+  dùng cùng số `?v=` với `app.js`. Bảng chi tiết hiện "Đang tải build…" rồi tự hiện build. Khi kiểm tra bằng Playwright, chờ `typeof BUILDS !== "undefined"`.
+  `BINFO` (giá, chỉ số, nội tại từng món, lấy từ avix-data bản Việt) hiện trong hộp thông tin khi trỏ/chạm vào món đồ hoặc phép bổ trợ.
+  Món nào bản cập nhật Garena đã đổi mà avix-data chưa cập nhật thì sửa trong `FIXSTAT`/`FIXPAS` ở `emit.py` (hiện có Giáp Thống Khổ theo bản 29/09).
   Mỗi ô tướng (tướng + đường) có build riêng `BUILDS["<key>@<đường>"]`, ghi trong `tools/builds/vn.txt`, nguồn tiếng Việt cho server VN
   (chủ yếu https://aov-builds.com/tuong/<tên>/; danh sách tên ở https://aov-builds.com/tuong/). Nguồn có nhiều build cho một đường thì lấy build ghi đầu tiên.
   Ảnh đồ/ngọc/phép ở `b/`, tên Việt và ảnh từ AoV-IndeX (`github.com/AoV-IndeX/avix-data`, `avix-assets`).

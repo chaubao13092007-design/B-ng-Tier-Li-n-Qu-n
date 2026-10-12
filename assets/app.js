@@ -191,14 +191,17 @@ function breakdown(h){
     ${h.floor==="manual"?`<p class="floor">Tier ${h.tier} do người biên tập điều chỉnh thủ công, không theo điểm tổng.</p>`:h.floor==="pickS"||h.floor==="pickA"?`<p class="floor">Được nâng lên tier ${h.tier} vì được chọn ở ${aogOf(h.key,h.lane)[1]}% số trận ĐTDV mùa Đông.</p>`:h.floor?`<p class="floor">Được nâng lên tier ${h.floor} vì xuất hiện (pick hoặc cấm) ở ${h.pres.toFixed(0)}% số trận ĐTDV mùa Đông.</p>`:""}
   </div>`;
 }
-/* Build tham khảo: đồ, bảng ngọc, phép bổ trợ (dữ liệu ở assets/builds.js, tải async sau app.js để bảng tier hiện sớm hơn) */
+/* Build tham khảo: đồ, bảng ngọc, phép bổ trợ (dữ liệu ở assets/builds.js, tải sau khi trang hiện xong để bảng tier hiện sớm hơn) */
+// Không nạp builds.js bằng thẻ script trong HTML: app.js tự tải nó khi trang đã hiện xong (hoặc ngay khi cần mở bảng chi tiết),
+// dùng cùng số ?v= với app.js để trình duyệt nhận bản mới
+const VQ=((document.currentScript&&document.currentScript.src)||"").split("?")[1]||"";
+function loadBuilds(){let s=$("buildsjs");if(!s){s=document.createElement("script");s.id="buildsjs";s.async=true;s.src="assets/builds.js"+(VQ?"?"+VQ:"");document.body.appendChild(s)}return s}
+if(document.readyState==="complete")setTimeout(loadBuilds,1200);else addEventListener("load",()=>setTimeout(loadBuilds,1200),{once:true});
 function waitBuilds(){if(waitBuilds.on)return;waitBuilds.on=true;
   const redo=ok=>{waitBuilds.on=false;const sec=document.querySelector(".modal .bld[data-wait]");if(!sec)return;const h=HEROES.find(x=>x.id===sec.dataset.wait);
     if(ok&&h&&typeof BUILDS!=="undefined")sec.outerHTML=buildHTML(h);else sec.querySelector(".bld-note").textContent="Không tải được build. Tải lại trang để thử lại."};
-  // Thẻ script của builds.js nằm sau app.js nên có thể chưa có trong trang lúc này: chờ trang đọc xong rồi mới gắn
-  const hook=()=>{if(typeof BUILDS!=="undefined")return redo(true);const s=$("buildsjs");if(!s)return redo(false);
-    s.addEventListener("load",()=>redo(true));s.addEventListener("error",()=>redo(false))};
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",hook);else hook()}
+  if(typeof BUILDS!=="undefined")return redo(true);
+  const s=loadBuilds();s.addEventListener("load",()=>redo(true),{once:true});s.addEventListener("error",()=>redo(false),{once:true})}
 const COLVI={red:"đỏ",purple:"tím",teal:"xanh"};
 function buildHTML(h){
   if(typeof BUILDS==="undefined"){waitBuilds();return `<section class="bld" data-wait="${h.id}"><p class="bld-note">Đang tải build…</p></section>`}
@@ -210,13 +213,44 @@ function buildHTML(h){
   if(!b)return `<section class="bld">${head}<p class="bld-note">Chưa có build cho ${h.name} đi ${LANES[h.lane]}.</p></section>`;
   const notes=b.n?[b.n]:[];
   const items=`<ol class="bld-items">${b.i.map((id,k)=>{const [vi,cat,ic,en]=BITEM[id],jg=cat==="jg";
-      const tip=jg?`${vi} (${en}) · đồ rừng, cần Trừng Trị`:cat==="sup"?`${vi} (${en}) · đồ trợ thủ`:`${vi} (${en})`;
-      return `<li class="bi${jg?" jg":""}" title="${tip}"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${jg?"<em>Đồ rừng</em>":cat==="sup"?"<em>Đồ trợ thủ</em>":""}</li>`}).join("")}</ol>`;
+      return `<li class="bi${jg?" jg":""}"><button type="button" class="bi-b" data-item="${id}" aria-describedby="itip"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${jg?"<em>Đồ rừng</em>":cat==="sup"?"<em>Đồ trợ thủ</em>":""}</button></li>`}).join("")}</ol>
+    <p class="bld-hint">${mq.matches?"Chạm":"Trỏ hoặc bấm"} vào món đồ hay phép bổ trợ để xem chỉ số.</p>`;
   const ar=b.r.map(([a,n])=>{const [c,t]=BARC[a];return `<li><img src="b/a-${a}.webp" alt="" loading="lazy" width="30" height="30"><span><b>Ngọc ${COLVI[c]} ×${n}</b>${t}</span></li>`}).join("");
-  const sp=b.s.map(s=>`<li title="${BSPELL[s][1]}"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><span><b>${BSPELL[s][0]}</b>${(b.o||[]).includes(s)?"<em>Phương án thêm</em>":""}</span></li>`).join("");
+  const sp=b.s.map(s=>`<li><button type="button" class="sp-b" data-spell="${s}" aria-describedby="itip"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><span><b>${BSPELL[s][0]}</b>${(b.o||[]).includes(s)?"<em>Phương án thêm</em>":""}</span></button></li>`).join("");
   return `<section class="bld" aria-label="${title}">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
     <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ${b.s.length>1?" (chọn một)":""}</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
 }
+/* Hộp thông tin khi trỏ (máy tính) hoặc chạm (điện thoại) vào món đồ / phép bổ trợ trong phần build:
+   giá, chỉ số và nội tại như trang Học viện · Trang bị của Garena (dữ liệu BINFO trong assets/builds.js) */
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let itipFor=null,itipPin=false;
+function itipEl(){let t=$("itip");if(!t){t=document.createElement("div");t.id="itip";t.className="itip";t.setAttribute("role","tooltip");t.hidden=true;document.body.appendChild(t)}return t}
+function showItip(el,pin){const t=itipEl(),id=el.dataset.item,sp=el.dataset.spell;let html="";
+  if(id&&typeof BITEM!=="undefined"){const [vi,cat]=BITEM[id],f=(typeof BINFO!=="undefined"&&BINFO[id])||{s:[],n:[]};
+    const tag=cat==="jg"?"Đồ rừng · cần Trừng Trị":cat==="sup"?"Đồ trợ thủ":"";
+    html=`<div class="it-h"><b>${esc(vi)}</b>${f.p?`<span class="it-p">${f.p.toLocaleString("vi-VN")} vàng</span>`:""}</div>${tag?`<p class="it-tag">${tag}</p>`:""}
+      ${f.s.length?`<ul class="it-s">${f.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      ${f.n.length?`<ul class="it-n">${f.n.map(([n,d])=>`<li><b>${esc(n)}:</b> ${esc(d)}</li>`).join("")}</ul>`:""}`}
+  else if(sp&&typeof BSPELL!=="undefined"){const [n,d]=BSPELL[sp];html=`<div class="it-h"><b>${esc(n)}</b><span class="it-p">Phép bổ trợ</span></div><p class="it-d">${esc(d)}</p>`}
+  if(!html)return;
+  t.innerHTML=html;t.hidden=false;itipFor=el;itipPin=!!pin;el.setAttribute("aria-expanded","true");
+  // đặt hộp ngay dưới (hoặc trên) món đồ, không tràn khỏi màn hình
+  const r=el.getBoundingClientRect(),w=Math.min(320,innerWidth-24);t.style.width=w+"px";
+  const hgt=t.offsetHeight,below=innerHeight-r.bottom>=hgt+12||r.top<hgt+12;
+  t.style.left=Math.max(12,Math.min(innerWidth-w-12,r.left+r.width/2-w/2))+"px";
+  t.style.top=(below?Math.min(innerHeight-hgt-8,r.bottom+8):Math.max(8,r.top-hgt-8))+"px"}
+function hideItip(){const t=$("itip");if(t)t.hidden=true;if(itipFor)itipFor.removeAttribute("aria-expanded");itipFor=null;itipPin=false}
+(function itipEvents(){itipEl();const sel="[data-item],[data-spell]",fine=matchMedia("(hover:hover) and (pointer:fine)");
+  document.addEventListener("pointerover",e=>{if(!fine.matches||itipPin)return;const el=e.target.closest&&e.target.closest(".modal "+sel);if(el&&el!==itipFor)showItip(el)});
+  document.addEventListener("pointerout",e=>{if(!fine.matches||itipPin||!itipFor)return;const to=e.relatedTarget;if(!to||!itipFor.contains(to))hideItip()});
+  document.addEventListener("click",e=>{const el=e.target.closest&&e.target.closest(".modal "+sel);
+    if(el){if(itipFor===el&&itipPin)hideItip();else showItip(el,true);return}
+    if(itipFor&&!(e.target.closest&&e.target.closest("#itip")))hideItip()});
+  document.addEventListener("focusin",e=>{const el=e.target.closest&&e.target.closest(".modal "+sel);if(el&&el!==itipFor&&e.target.matches(":focus-visible"))showItip(el)});
+  document.addEventListener("focusout",e=>{if(itipFor&&e.target===itipFor&&!itipPin)hideItip()});
+  // Esc đóng hộp thông tin trước, chưa đóng bảng chi tiết
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&itipFor){e.stopPropagation();e.preventDefault();hideItip()}},true);
+  addEventListener("resize",hideItip);document.addEventListener("scroll",()=>{if(itipFor)hideItip()},true)})();
 let lastFocus=null;
 function visibleOrder(){return [...document.querySelectorAll("#board .card")].map(c=>c.dataset.id)}
 function openModal(id,dir){
@@ -236,9 +270,9 @@ function openModal(id,dir){
       ${breakdown(h)}
       <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
     </div></div></div></div>`;
-  document.documentElement.classList.add("lock");hideTip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
+  document.documentElement.classList.add("lock");hideTip();hideItip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
   $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
-  const close=()=>{setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);
+  const close=()=>{hideItip();setHash("");$("modalRoot").innerHTML="";document.documentElement.classList.remove("lock");document.removeEventListener("keydown",key);
     const back=document.querySelector(`#board .card[data-id="${id}"]`)||lastFocus;back&&back.focus&&back.focus(mq.matches?{preventScroll:true}:undefined)};
   const go=d=>{const n=order[i+d];if(n){document.removeEventListener("keydown",key);openModal(n,d)}};
   const key=e=>{if(e.key==="Escape")close();else if(e.key==="ArrowLeft")go(-1);else if(e.key==="ArrowRight")go(1);

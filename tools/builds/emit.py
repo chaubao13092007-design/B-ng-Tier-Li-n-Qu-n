@@ -23,6 +23,22 @@ def icon(src,dst,size=72):
     im.save(dst,'WEBP',quality=72,method=6)
 used_i=sorted({i for b in B.values() for i in b['i']});used_a=sorted({a for b in B.values() for a,_ in b['r']});used_t=sorted({t for b in B.values() for t in b['s']})
 keep=set()
+# Thông tin trang bị hiện khi trỏ/chạm vào đồ (giá, chỉ số, nội tại) — từ avix-data bản Việt, khớp trang Học viện của Garena
+VIEQ={e['equipmentId']:e for e in vi}
+ISTAT=[('attackDamage','Công vật lý',''),('abilityPower','Công phép',''),('attackSpeed','Tốc đánh','%'),('criticalRate','Tỉ lệ chí mạng','%'),
+       ('physicalLifesteal','Hút máu','%'),('magicLifesteal','Hút máu phép','%'),('cooldownReduction','Giảm hồi chiêu','%'),('maxHp','Máu tối đa',''),
+       ('physicalArmor','Giáp',''),('magicArmor','Giáp phép',''),('movementSpeed','Tốc chạy','%'),('hpRegen','Hồi máu mỗi 5 giây',''),
+       ('maxMana','Năng lượng tối đa',''),('manaRegen','Hồi năng lượng mỗi 5 giây','')]
+# Bản 29/09/2026 làm lại Giáp Thống Khổ: dữ liệu nguồn chưa đổi chỉ số → sửa theo ghi chú bản cập nhật của Garena
+FIXSTAT={'mail-of-pain':{'attackDamage':50,'physicalArmor':300,'maxHp':700}}
+FIXPAS={'mail-of-pain':{'Phản pháo':'Kích hoạt: Tăng hiệu ứng nội tại [Phản phệ] lên 25%, kéo dài 3 giây. Hồi chiêu 75 giây.'}}
+INFO={}
+for i in used_i:
+    v=VIEQ[i];st=FIXSTAT.get(i,v['stats'])
+    INFO[i]={'p':v['price'],'s':[f"+{st[k]}{u} {lb}" for k,lb,u in ISTAT if st.get(k)],
+             'n':[[x.get('name') or 'Nội tại',FIXPAS.get(i,{}).get(x.get('name'),x['description'])] for x in v.get('passives',[])]}
+    unk=set(st)-{k for k,_,_ in ISTAT}
+    assert not unk,(i,unk)
 ITEM={}
 for i in used_i:
     e=EQ[i];ITEM[i]=[FIXVI.get(i,e['vi']),CAT[e['categoryId']],i,e['name']]
@@ -40,6 +56,7 @@ for f in os.listdir(f'{REPO}/b'):
 js='/* Build tham khảo cho từng tướng theo từng đường — tạo tự động từ tools/builds/vn.txt, đừng sửa tay.\n   BUILDS["<key>@<đường>"]: nguồn tiếng Việt (server Việt Nam), link trang nguồn ở trường l.\n   Tên đồ, ngọc, phép bổ trợ bản Việt và ảnh: AoV-IndeX (avix-data, avix-assets). Ảnh trong thư mục b/. */\n'
 js+='const BSRC={"aov-builds.com":"AOV-Builds","gamezingmobile.com":"GameZing Mobile","lienquanmobile.gg":"LienquanMobile.GG","www.finhay.com.vn":"Finhay"};\n'
 js+='const BITEM='+json.dumps(ITEM,ensure_ascii=False,separators=(',',':'))+';\n'
+js+='const BINFO='+json.dumps(INFO,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BARC='+json.dumps(ARC,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BSPELL='+json.dumps(SP,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BUILDS={\n'+',\n'.join(f'  {json.dumps(k)}:'+json.dumps(v,ensure_ascii=False,separators=(",",":")) for k,v in sorted(B.items()))+'\n};\n'
