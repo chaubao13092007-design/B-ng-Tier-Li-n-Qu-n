@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WRPCM36GN"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-5WRPCM36GN");</script>
 <meta name="description" content="Tier list tướng Liên Quân mùa S4 2026 theo từng đường, chấm điểm từ số liệu ĐTDV mùa Đông, giải RoV, rank cộng đồng và báo game. Có ảnh tướng, lọc theo lớp và chế độ tự xếp.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -26,11 +27,13 @@
 <meta property="og:locale" content="vi_VN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tierlq.github.io/og.jpg">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}html.framed body{display:none!important}.framed-go{display:block;margin:40vh auto 0;width:max-content;padding:14px 22px;border:1px solid currentColor;font:14px system-ui,sans-serif;color:inherit;text-decoration:none}</style>
 <title>Bảng Tier Liên Quân</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" id="fontcss" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" media="print">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"></noscript>
+<script src="assets/boot.js?v=202610121112"></script>
 <style>
 /* Layout: hero toàn màn hình (thiên hà) → sân khấu "mạnh nhất mỗi đường" kiểu trình chiếu → thanh công cụ dính → lưới tier × đường.
    Tinh thần xe sang: đen tuyền, chữ in hoa giãn rộng, góc vuông, đường kẻ mảnh, chuyển động chậm */
@@ -875,6 +878,7 @@ html.lock{overflow:hidden}
         <li><a href="https://lienquan.garena.vn/chi-tiet-ban-cap-nhat-vet-nut-thoi-khong-29-09-2026/" target="_blank" rel="noopener">Garena: Chi tiết bản cập nhật Vết Nứt Thời Không 29.09.2026</a></li>
         <li><a href="https://cellphones.com.vn/sforum/ban-cap-nhat-lien-quan-mobile-29-9-2026" target="_blank" rel="noopener">Sforum: Bản cập nhật Liên Quân 29/9/2026</a></li>
       </ul>
+      <p style="margin-top:12px">Web dùng Google Analytics để đếm lượt xem, đã tắt chia sẻ dữ liệu cho quảng cáo. Bảng Tự xếp và chế độ sáng/tối chỉ lưu trên trình duyệt của bạn, không gửi đi đâu.</p>
       <p style="margin-top:12px">Bảng mang tính tham khảo. Hình tướng thuộc bản quyền Garena / TiMi Studio, lấy từ kho ảnh cộng đồng <a href="https://github.com/AoV-IndeX/avix-assets" target="_blank" rel="noopener">AoV-IndeX/avix-assets</a>.</p>
     </div>
   </div>
@@ -888,8 +892,8 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610120140"></script>
-<script src="assets/builds.js?v=202610120140"></script>
-<script src="assets/app.js?v=202610120140"></script>
+<script src="assets/data.js?v=202610121112"></script>
+<script src="assets/builds.js?v=202610121112"></script>
+<script src="assets/app.js?v=202610121112"></script>
 </body>
 </html>

@@ -44,7 +44,11 @@ const TZ=(function fixTextZoom(){
   if(qs!==null)setTimeout(()=>toast(`Chữ ${res.r14.toFixed(2)}× / ${res.r32.toFixed(2)}× · ${res.applied?"đã bù "+res.applied.toFixed(2):"không cần bù"}`),900);
   return res;
 })();
-let mode=store("lq-mode")==="mine"?"mine":"meta",q="",selected=null,mine=store("lq-mine2")||freshMine();
+// Bảng "Tự xếp" đọc lại từ bộ nhớ trình duyệt: chỉ nhận đúng mã tướng và tier hợp lệ, phần khác bỏ qua
+function loadMine(){const m=freshMine(),saved=store("lq-mine2");
+  if(saved&&typeof saved==="object")for(const id of Object.keys(m)){const t=saved[id];if(TIERS.includes(t)||t==="X")m[id]=t}
+  return m}
+let mode=store("lq-mode")==="mine"?"mine":"meta",q="",selected=null,mine=loadMine();
 let mLane=LANES[store("lq-mlane")]?store("lq-mlane"):"top";
 const F={lane:new Set(),cls:new Set(),trend:new Set()};
 HEROES.forEach(h=>{if(!(h.id in mine))mine[h.id]=h.tier});

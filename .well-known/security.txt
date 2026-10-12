@@ -1,0 +1,6 @@
+# Báo lỗi bảo mật của Bảng Tier Liên Quân (https://tierlq.github.io/)
+# Vui lòng báo riêng qua GitHub, không đăng công khai trong Issues.
+Contact: https://github.com/tierlq/tierlq.github.io/security/advisories/new
+Expires: 2027-10-12T00:00:00.000Z
+Preferred-Languages: vi, en
+Canonical: https://tierlq.github.io/.well-known/security.txt

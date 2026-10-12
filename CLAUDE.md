@@ -15,7 +15,12 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
 - `manifest.webmanifest`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — cài web như ứng dụng trên điện thoại.
 - `sw.js` — bộ nhớ đệm: ảnh lưu lâu, trang và dữ liệu luôn lấy bản mới. **Nếu thay ảnh trong `p/` hoặc `s/` mà giữ nguyên tên tệp, tăng `V` trong `sw.js`.**
 - `404.html` — trang báo link sai.
-- Google Analytics `G-5WRPCM36GN` gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
+- Bảo mật: `index.html` và `404.html` có thẻ `Content-Security-Policy` (chỉ cho chạy mã của web và Google Analytics, font Google).
+  Không viết mã `<script>` nội tuyến hay thuộc tính `onclick=`/`onload=` trong HTML — đặt vào tệp JS. Thêm dịch vụ ngoài mới thì phải thêm tên miền vào CSP.
+  `assets/boot.js` (nạp trong `<head>`): khởi tạo Google Analytics, chống nhúng web vào iframe, bật font. Đổi `?v=` của nó cùng ba script cuối trang.
+  Khi kiểm tra bằng Playwright mà cần chèn script (ví dụ axe-core), tạo context với `bypassCSP: true`.
+  Dữ liệu đọc từ bộ nhớ trình duyệt (bảng Tự xếp) được lọc lại trước khi dùng (`loadMine`). `.well-known/security.txt` hết hạn 2027-10-12, nhớ gia hạn.
+- Google Analytics `G-5WRPCM36GN` khởi tạo trong `assets/boot.js`, gắn ở `<head>` của `index.html` và `404.html`. Sự kiện riêng: `xem_tuong`, `tai_anh`, `chia_se`, `doi_che_do` (hàm `track` trong `assets/app.js`).
 - Link riêng từng tướng: `…/#tuong-<key>-<đường>` (ví dụ `#tuong-zata-mid`) tự mở bảng chi tiết.
 - `assets/builds.js` — build tham khảo (đồ, bảng ngọc, phép bổ trợ) hiện trong bảng chi tiết khi bấm vào tướng. **Tạo tự động, đừng sửa tay.**
   Mỗi ô tướng (tướng + đường) có build riêng `BUILDS["<key>@<đường>"]`, ghi trong `tools/builds/vn.txt`, nguồn tiếng Việt cho server VN
@@ -57,5 +62,5 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
    rồi thêm key vào `P_KEYS`/`S_KEYS` ở đầu `assets/app.js`.
 5. Kiểm tra trước khi đẩy: `node --check assets/data.js && node --check assets/app.js`, rồi mở `index.html`
    bằng Playwright (Chromium có sẵn) ở 1440px và 390px: không lỗi JS, có 5 slide, bảng có thẻ tướng, không tràn ngang.
-6. Mỗi lần sửa `assets/data.js`, `assets/builds.js` hoặc `assets/app.js`, đổi số `?v=` ở ba thẻ `<script>` cuối `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.
+6. Mỗi lần sửa `assets/data.js`, `assets/builds.js`, `assets/app.js` hoặc `assets/boot.js`, đổi số `?v=` ở các thẻ `<script>` của `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.
 7. Commit tiếng Việt, mô tả ngắn những gì đổi (tướng nào lên/xuống tier và vì sao). Đẩy thẳng lên `main`.

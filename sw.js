@@ -15,7 +15,7 @@ self.addEventListener("fetch", e => {
       const hit = await c.match(req);
       if (hit) return hit;
       const r = await fetch(req);
-      if (r.ok) c.put(req, r.clone());
+      if (r.ok && r.type === "basic") c.put(req, r.clone());
       return r;
     }));
     return;
@@ -23,7 +23,8 @@ self.addEventListener("fetch", e => {
   e.respondWith((async () => {
     try {
       const r = await fetch(req);
-      if (r.ok) (await caches.open(PAGES)).put(req, r.clone());
+      // Chỉ lưu bản mới nhất của mỗi tệp (bỏ các bản ?v= cũ để bộ nhớ không phình ra)
+      if (r.ok && r.type === "basic") { const c = await caches.open(PAGES); await c.delete(req, { ignoreSearch: true }); await c.put(req, r.clone()); }
       return r;
     } catch (err) {
       return (await caches.match(req, { ignoreSearch: true })) || Response.error();
