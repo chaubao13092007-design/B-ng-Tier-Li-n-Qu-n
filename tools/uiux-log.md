@@ -11,6 +11,7 @@ Mỗi mục: ngày, đã sửa gì và vì sao, đã kiểm tra gì, ý tưởng
 - Thẻ tướng hiện ngay khi cuộn tới; không dùng lại hiệu ứng bật lên lần lượt (từng làm bảng mờ hơn 1 giây).
 - Mỗi bảng chi tiết có build riêng theo đường từ nguồn server Việt; đi rừng luôn có đồ rừng + Trừng Trị.
 - Danh sách chỉnh tay và đường phụ trong mục Cách xếp tự sinh từ dữ liệu, không viết tay.
+- Món đồ và phép bổ trợ trong build dùng con trỏ bàn tay (`cursor:pointer`), không dùng `cursor:help` (dấu ?): chủ web thấy không tự nhiên.
 
 ## 2026-10-12 (làm tay cùng chủ web)
 - Sửa nút dính màu sau khi chạm trên điện thoại; thanh dính nền đặc; thẻ tướng hiện ngay.
