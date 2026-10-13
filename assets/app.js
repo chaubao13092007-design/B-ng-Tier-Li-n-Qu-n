@@ -195,7 +195,30 @@ function breakdown(h){
 // Không nạp builds.js bằng thẻ script trong HTML: app.js tự tải nó khi trang đã hiện xong (hoặc ngay khi cần mở bảng chi tiết),
 // dùng cùng số ?v= với app.js để trình duyệt nhận bản mới
 const VQ=((document.currentScript&&document.currentScript.src)||"").split("?")[1]||"";
-function loadBuilds(){let s=$("buildsjs");if(!s){s=document.createElement("script");s.id="buildsjs";s.async=true;s.src="assets/builds.js"+(VQ?"?"+VQ:"");document.body.appendChild(s)}return s}
+function loadJS(id,src){let s=$(id);if(!s){s=document.createElement("script");s.id=id;s.async=true;s.src=src+(VQ?"?"+VQ:"");document.body.appendChild(s)}return s}
+function loadBuilds(){return loadJS("buildsjs","assets/builds.js")}
+/* Bộ chiêu thức (assets/skills.js, ~37 kB): chỉ tải khi người xem chạm vào thẻ tướng hoặc mở bảng chi tiết,
+   vì phần lớn người xem chỉ lướt bảng tier */
+function loadSkills(){return loadJS("skillsjs","assets/skills.js")}
+document.addEventListener("pointerdown",e=>{if(e.target.closest&&e.target.closest("#board .card"))loadSkills()},{passive:true});
+function waitSkills(){if(waitSkills.on)return;waitSkills.on=true;
+  const redo=ok=>{waitSkills.on=false;const sec=document.querySelector(".modal .sk[data-wait]");if(!sec)return;const h=HEROES.find(x=>x.id===sec.dataset.wait);
+    if(ok&&h&&typeof SKILLS!=="undefined")sec.outerHTML=skillHTML(h);else sec.querySelector(".bld-note").textContent="Không tải được bộ chiêu thức. Tải lại trang để thử lại."};
+  if(typeof SKILLS!=="undefined")return redo(true);
+  const s=loadSkills();s.addEventListener("load",()=>redo(true),{once:true});s.addEventListener("error",()=>redo(false),{once:true})}
+function skillHTML(h){
+  const head=`<h4 class="bds-h">Bộ chiêu thức</h4>`;
+  if(typeof SKILLS==="undefined"){waitSkills();return `<section class="sk" data-wait="${h.id}">${head}<p class="bld-note">Đang tải bộ chiêu thức…</p></section>`}
+  const s=SKILLS[h.key==="flowborn"?"flowborn-"+h.lane:h.key];if(!s)return "";
+  const [slug,list]=s,last=list.length-1;
+  const lab=i=>i===0?"Nội tại":i===last?"Chiêu cuối":"Chiêu "+i;
+  // Ảnh chiêu lấy từ máy chủ Garena; ảnh lỗi thì hiện chữ cái đầu (xem sự kiện error bên dưới)
+  const li=list.map(([n,ic,d],i)=>`<li${i===0?' class="p"':""}><span class="sk-ic" aria-hidden="true">${esc((n||lab(i)).charAt(0))}${ic?`<img src="${SKU+ic}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="48" height="48">`:""}</span>
+    <div><p class="sk-t"><em>${lab(i)}</em>${n?`<b>${esc(n)}</b>`:""}</p>${d?`<p class="sk-d">${esc(d)}</p>`:""}</div></li>`).join("");
+  return `<section class="sk" aria-label="Bộ chiêu thức của ${esc(h.name)}">${head}<ol class="sk-list">${li}</ol>
+    <p class="sk-src">Tóm tắt ngắn theo <a href="https://lienquan.garena.vn/hoc-vien/tuong-skin/d/${slug}/" target="_blank" rel="noopener">trang Học viện của Garena</a>. Mở trang để xem mô tả và chỉ số đầy đủ.</p></section>`;
+}
+document.addEventListener("error",e=>{const t=e.target;if(t&&t.tagName==="IMG"&&t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains("sk-ic"))t.remove()},true);
 if(document.readyState==="complete")setTimeout(loadBuilds,1200);else addEventListener("load",()=>setTimeout(loadBuilds,1200),{once:true});
 function waitBuilds(){if(waitBuilds.on)return;waitBuilds.on=true;
   const redo=ok=>{waitBuilds.on=false;const sec=document.querySelector(".modal .bld[data-wait]");if(!sec)return;const h=HEROES.find(x=>x.id===sec.dataset.wait);
@@ -269,6 +292,7 @@ function openModal(id,dir){
       <h4 class="bds-h">Vì sao tier ${h.tier}</h4>
       ${breakdown(h)}
       <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
+      ${skillHTML(h)}
     </div></div></div></div>`;
   document.documentElement.classList.add("lock");hideTip();hideItip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
   $("mshare").onclick=()=>shareLink(`${h.name} · Tier ${h.tier} ${LANES[h.lane]}`,`${h.name} đang ở tier ${h.tier} đường ${LANES[h.lane]} trên Bảng Tier Liên Quân`,pageUrl()+"#tuong-"+id);
