@@ -218,7 +218,10 @@ function skillHTML(h){
   return `<section class="sk" aria-label="Bộ chiêu thức của ${esc(h.name)}">${head}<ol class="sk-list">${li}</ol>
     <p class="sk-src">Tóm tắt ngắn theo <a href="https://lienquan.garena.vn/hoc-vien/tuong-skin/d/${slug}/" target="_blank" rel="noopener">trang Học viện của Garena</a>. Mở trang để xem mô tả và chỉ số đầy đủ.</p></section>`;
 }
-document.addEventListener("error",e=>{const t=e.target;if(t&&t.tagName==="IMG"&&t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains("sk-ic"))t.remove()},true);
+// ảnh chiêu hiện mờ dần khi tải xong (không lộ biểu tượng ảnh hỏng trong lúc chờ), lỗi thì bỏ ảnh để lộ chữ cái đầu
+const isSkImg=t=>t&&t.tagName==="IMG"&&t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains("sk-ic");
+document.addEventListener("load",e=>{if(isSkImg(e.target))e.target.classList.add("ok")},true);
+document.addEventListener("error",e=>{if(isSkImg(e.target))e.target.remove()},true);
 if(document.readyState==="complete")setTimeout(loadBuilds,1200);else addEventListener("load",()=>setTimeout(loadBuilds,1200),{once:true});
 function waitBuilds(){if(waitBuilds.on)return;waitBuilds.on=true;
   const redo=ok=>{waitBuilds.on=false;const sec=document.querySelector(".modal .bld[data-wait]");if(!sec)return;const h=HEROES.find(x=>x.id===sec.dataset.wait);

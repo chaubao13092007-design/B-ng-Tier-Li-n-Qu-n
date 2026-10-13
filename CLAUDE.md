@@ -37,6 +37,15 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   Khi thêm tướng hoặc đường phụ mới phải thêm build `@<đường>` vào `vn.txt`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
   Phép có dấu `*` trong `vn.txt` (ví dụ `Trừng Trị*` của Taara đi Tà Thần) là phương án chủ web thêm, không có ở trang nguồn — giữ nguyên khi cập nhật.
   `tools/builds/raw.txt` là build cũ của ROV META (server Thái), không còn hiện trên web.
+- `assets/skills.js` — Bộ chiêu thức (dưới phần "Vì sao tier" trong bảng chi tiết). **Tạo tự động, đừng sửa tay**:
+  sửa `tools/skills/garena.json` rồi chạy `python3 tools/skills/emit.py`. Mỗi tướng: `[[tên chiêu, link ảnh, tóm tắt], …]` theo thứ tự
+  trang Học viện Garena `https://lienquan.garena.vn/hoc-vien/tuong-skin/d/<slug>/` (nội tại → chiêu 1 → chiêu 2 → chiêu cuối; danh sách slug ở
+  `/hoc-vien/tuong-skin/`; slug đặc biệt: Edras `11596`, Flowborn Rồng `flowborn`, Flowborn Giữa `flowborn-2`).
+  Tóm tắt là lời viết lại ngắn (tối đa ~30 chữ), **không chép nguyên văn** mô tả của Garena; web có link tới trang gốc.
+  Ảnh chiêu lấy thẳng từ máy chủ Garena (chủ web đồng ý ngày 13/10/2026, `https://lienquan.garena.vn` có trong CSP `img-src` của `index.html`, gửi không kèm referrer); ảnh lỗi thì hiện chữ cái đầu.
+  `app.js` chỉ tải skills.js (~37 kB nén) khi người xem chạm vào thẻ tướng hoặc mở bảng chi tiết (`loadSkills`/`waitSkills`). Khi kiểm tra bằng Playwright, chờ `typeof SKILLS !== "undefined"`.
+  Trang Garena thiếu mô tả: Bright (3 chiêu), Elsu không có ảnh, chiêu 2 của Richter không có tên; Yue chiêu 1 và 2 Garena ghi mô tả giống nhau.
+  Tướng mới: thêm vào `garena.json` rồi chạy lại emit.py.
 - Danh sách "Chỉnh tay của người biên tập" và "Đường phụ" trong mục Cách xếp và nguồn được `assets/app.js` tự sinh từ `MANUAL`/`SECONDARY`, không cần sửa chữ trong `index.html`.
 - Kiểu hover chỉ đặt trong `@media (hover:hover)` để điện thoại không bị dính trạng thái sau khi chạm. Thanh dính và hàng tên đường dùng nền đặc `var(--bg)`.
 - Việc định kỳ mỗi Thứ Bảy cải thiện giao diện ghi nhật ký ở `tools/uiux-log.md` (đọc trước khi sửa giao diện; mục "Đã chốt" không làm ngược lại).

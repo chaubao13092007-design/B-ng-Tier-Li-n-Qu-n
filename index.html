@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://lienquan.garena.vn https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WRPCM36GN"></script>
@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" id="fontcss" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" media="print">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"></noscript>
-<script src="assets/boot.js?v=202610121211"></script>
+<script src="assets/boot.js?v=202610131945"></script>
 <style>
 /* Layout: hero toàn màn hình (thiên hà) → sân khấu "mạnh nhất mỗi đường" kiểu trình chiếu → thanh công cụ dính → lưới tier × đường.
    Tinh thần xe sang: đen tuyền, chữ in hoa giãn rộng, góc vuông, đường kẻ mảnh, chuyển động chậm */
@@ -737,7 +737,7 @@ html.lock{overflow:hidden}
 .sk-list li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:start}
 .sk-ic{position:relative;width:48px;height:48px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line-2);background:var(--surface-2);color:var(--faint);font:400 15px var(--f-display);text-transform:uppercase}
 .sk-list li.p .sk-ic{border-radius:50%}
-.sk-ic img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.sk-ic img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s var(--ease)}.sk-ic img.ok{opacity:1}
 .modal .sk-t{margin:1px 0 0;display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 10px;color:var(--fg)}
 .sk-t em{font-style:normal;font:400 10.5px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .sk-t b{font-weight:500;font-size:14px}
@@ -897,6 +897,7 @@ html.lock{overflow:hidden}
         <li>Mỗi tướng có một đường chính. Tướng thường được đưa sang đường khác có thêm thẻ "Phụ" ở cột đó. Danh sách đường phụ dựa trên lối chơi phổ biến, chưa có số liệu theo đường.</li>
         <li>Lớp tướng (biểu tượng góc thẻ) theo phân loại chính thức của Garena.</li>
         <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng, lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Khi nguồn có nhiều build cho cùng một đường, bảng lấy build nguồn ghi đầu tiên. Tên đồ bản Việt theo dữ liệu AoV-IndeX. Mỗi bảng có link tới trang gốc.</li>
+        <li><b>Bộ chiêu thức</b> (bấm vào tướng, dưới phần Vì sao tier): tên và ảnh chiêu theo trang Học viện của Garena, kèm tóm tắt ngắn tác dụng chính của từng chiêu. Mô tả và chỉ số đầy đủ xem ở trang Garena (có link trong bảng).</li>
         <li>Bảng thống kê giải dùng tên bản quốc tế/Thái; đã quy đổi sang tên Việt (Riktor = Richter, Zanis = Triệu Vân, Wukong = Ngộ Không, Lu Bu = Lữ Bố, Diao Chan = Điêu Thuyền, Jinnar = Jinna).</li>
         <li>Số liệu ĐTDV lấy từ bảng thống kê Liquipedia: đủ 214 trận, 80 tướng có pick tính đến 11/10. Sikong Zhen có 6 pick nhưng chưa có trong danh sách tướng Liên Quân Việt Nam nên chưa đưa vào bảng.</li>
       </ul>
@@ -908,6 +909,7 @@ html.lock{overflow:hidden}
         <li><a href="https://rovmeta.com/" target="_blank" rel="noopener">ROV META: Tier list rank, cập nhật 10/10</a></li>
         <li><a href="https://aov-builds.com/" target="_blank" rel="noopener">AOV-Builds: Build theo đường, server Việt (bản 29/09)</a></li>
         <li><a href="https://github.com/AoV-IndeX/avix-data" target="_blank" rel="noopener">AoV-IndeX: Tên đồ, ngọc, phép bổ trợ bản Việt</a></li>
+        <li><a href="https://lienquan.garena.vn/hoc-vien/tuong-skin/" target="_blank" rel="noopener">Garena Liên Quân · Học viện: Bộ chiêu thức và ảnh chiêu</a></li>
         <li><a href="https://fptshop.com.vn/tin-tuc/giai-tri/tier-list-tuong-lien-quan-mua-moi-210149" target="_blank" rel="noopener">FPT Shop: Tier list tướng Liên Quân S3-2026</a></li>
         <li><a href="https://lienquan.garena.vn/chi-tiet-ban-cap-nhat-vet-nut-thoi-khong-29-09-2026/" target="_blank" rel="noopener">Garena: Chi tiết bản cập nhật Vết Nứt Thời Không 29.09.2026</a></li>
         <li><a href="https://cellphones.com.vn/sforum/ban-cap-nhat-lien-quan-mobile-29-9-2026" target="_blank" rel="noopener">Sforum: Bản cập nhật Liên Quân 29/9/2026</a></li>
@@ -926,7 +928,7 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610121211"></script>
-<script src="assets/app.js?v=202610121211"></script>
+<script src="assets/data.js?v=202610131945"></script>
+<script src="assets/app.js?v=202610131945"></script>
 </body>
 </html>
