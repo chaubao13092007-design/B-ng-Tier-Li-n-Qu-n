@@ -451,13 +451,14 @@ const RAW=[
  ["top","fighter","S","Arthur,Zuka,Florentino,Volkath"],["top","fighter","B","Ryoma,Maloch,Triệu Vân,Airi,Yena,Veres,Qi,Bijan"],
  ["top","fighter","C","Lữ Bố,Omen,Richter,Errol,Allain,Edras,Biron,Bolt Baron"],
  ["top","fighter","D","Skud,Kil'Groth,Superman,Amily,Charlotte,Astrid,Wonder Woman,Rourke,Dextra,Tachi,Yan"],
+ ["top","mage","B","Marja"],
  ["jg","fighter","-","Tamyn"],
  ["mid","support","-","Annette,Rouie"],
  ["jg","fighter","B","Zephys"],
  ["jg","assassin","S","Sinestrea,Billow"],["jg","assassin","A","Butterfly,Murad,Ngộ Không,Nakroth,Paine"],["jg","assassin","B","Zill,Quillen,Kaine,Enzo"],
  ["jg","assassin","C","Keera,Kriknak"],["jg","assassin","D","Aoi,Bright,The Flash"],
  ["mid","mage","S","Gildur,Yue,Zata"],["mid","mage","A","Raz,Lorion,Azzen'Ka,Iggy"],
- ["mid","mage","B","Krixi,Veera,Natalya,Marja,Lauriel,Aleister,Tulen,Liliana,Heino,Flowborn,Goverra"],
+ ["mid","mage","B","Krixi,Veera,Natalya,Lauriel,Aleister,Tulen,Liliana,Heino,Flowborn,Goverra"],
  ["mid","mage","C","Kahlii,Mganga,Ilumia,Điêu Thuyền,Bonnie,Ignis"],["mid","mage","D","Preyta,Jinna,D'Arcy,Ishar,Sephera,Dirak"],
  ["ad","marksman","S","Violet,Hayate,Flowborn"],["ad","marksman","A","Moren,Elsu"],["ad","marksman","B","Valhein,Slimz,Fennik,Stuart,Tel'Annas,Capheny,Laville"],
  ["ad","marksman","C","Celica,Eland'orr,Yorn,Lindis,Wisp,Thorne"],["ad","marksman","D","Teeri,Erin"],
@@ -498,9 +499,9 @@ function addHero(lane,cls,vn,n,sec){const k=slug(n),p=P[k]||[],sc=score(k,vn,lan
   const man=MANUAL[k+"-"+lane]||MANUAL[k];if(man){tier=man;floor="manual"}
   HEROES.push({id:k+"-"+lane,key:k,name:n,lane,cls,vn,score:sc,tier,floor,pres,sec:!!sec,trend:p[0]||"",note:p[1]||""})}
 RAW.forEach(([lane,cls,vn,names])=>names.split(",").forEach(n=>addHero(lane,cls,vn,n)));
-// Đường phụ: tướng thường được đưa sang đường khác ngoài đường chính
+// Đường phụ: tướng thường được đưa sang đường khác ngoài đường chính (đã bỏ Toro và Marja)
 const SECONDARY={"Y'bneth":["sp"],Taara:["sp"],Omega:["sp"],Ata:["sp"],Zuka:["jg"],Ryoma:["jg"],Qi:["jg"],Airi:["jg"],"Triệu Vân":["jg"],
-  Billow:["top"],Zephys:["top"],Kaine:["top"],Marja:["top"],Zill:["mid"],Toro:["top"],Wiro:["top"],Mina:["top"],Arthur:["sp"],Arduin:["top"]};
+  Billow:["top"],Zephys:["top"],Kaine:["top"],Zill:["mid"],Wiro:["top"],Mina:["top"],Arthur:["sp"],Arduin:["top"]};
 for(const [n,lanes] of Object.entries(SECONDARY)){const base=HEROES.find(h=>h.name===n&&!h.sec);if(!base)continue;
   lanes.forEach(l=>{if(!HEROES.some(h=>h.key===base.key&&h.lane===l))addHero(l,base.cls,base.vn,n,true)})}
 HEROES.filter(h=>h.lane==="mid"&&["annette","rouie"].includes(h.key)).forEach(h=>h.sec=true);
