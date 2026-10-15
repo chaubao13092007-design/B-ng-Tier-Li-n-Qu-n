@@ -454,14 +454,16 @@ const P={
  preyta:["new","Làm lại hoàn toàn với hệ năng lượng dịch bệnh (mốc 25/75/145). Chưa đủ dữ liệu, tạm giữ bậc D."]
 };
 // đường|lớp|tier: danh sách
+// đường|lớp|tier: danh sách
 const RAW=[
  ["top","tank","A","Y'bneth"],["top","tank","B","Taara"],["top","tank","C","Ata"],["top","tank","D","Omega,Max"],
  ["sp","tank","A","Toro"],["sp","tank","B","Mina"],["sp","tank","C","Roxie,Baldum,Chaugnar,Thane"],["sp","tank","D","Ormarr,Arduin,Xeniel,Wiro"],
  ["top","fighter","S","Arthur,Zuka,Florentino,Volkath"],["top","fighter","B","Ryoma,Maloch,Triệu Vân,Airi,Yena,Veres,Qi,Bijan"],
  ["top","fighter","C","Lữ Bố,Omen,Richter,Errol,Allain,Edras,Biron,Bolt Baron"],
- ["top","fighter","D","Skud,Kil'Groth,Superman,Amily,Charlotte,Astrid,Wonder Woman,Rourke,Dextra,Tachi,Yan"],
+ ["top","fighter","D","Skud,Kil'Groth,Superman,Amily,Charlotte,Wonder Woman,Rourke,Dextra,Tachi,Yan"],
  ["top","mage","B","Marja"],
  ["jg","fighter","-","Tamyn"],
+ ["jg","fighter","D","Astrid"],
  ["mid","support","-","Annette,Rouie"],
  ["jg","fighter","B","Zephys"],
  ["jg","assassin","S","Sinestrea,Billow"],["jg","assassin","A","Butterfly,Murad,Ngộ Không,Nakroth,Paine"],["jg","assassin","B","Zill,Quillen,Kaine,Enzo"],
