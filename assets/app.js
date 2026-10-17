@@ -54,7 +54,7 @@ const F={lane:new Set(),cls:new Set(),trend:new Set()};
 HEROES.forEach(h=>{if(!(h.id in mine))mine[h.id]=h.tier});
 
 function initials(n){const w=n.replace(/[^\p{L}\s]/gu,"").trim().split(/\s+/);return (w.length>1?w[0][0]+w[1][0]:w[0].slice(0,2)).toUpperCase()}
-const P_KEYS=new Set(["ishar", "tamyn", "ybneth", "taara", "ata", "omega", "max", "toro", "mina", "roxie", "baldum", "chaugnar", "thane", "ormarr", "arduin", "xeniel", "wiro", "arthur", "zuka", "florentino", "volkath", "ryoma", "maloch", "trieuvan", "airi", "yena", "veres", "qi", "bijan", "lubo", "omen", "richter", "errol", "allain", "edras", "biron", "boltbaron", "skud", "kilgroth", "superman", "amily", "charlotte", "astrid", "wonderwoman", "rourke", "dextra", "tachi", "yan", "zephys", "sinestrea", "billow", "butterfly", "murad", "ngokhong", "nakroth", "paine", "zill", "quillen", "kaine", "enzo", "keera", "kriknak", "aoi", "bright", "theflash", "gildur", "yue", "zata", "raz", "lorion", "azzenka", "iggy", "krixi", "veera", "natalya", "marja", "lauriel", "aleister", "tulen", "liliana", "heino", "flowborn-mid", "goverra", "kahlii", "mganga", "ilumia", "dieuthuyen", "bonnie", "ignis", "preyta", "jinna", "darcy", "sephera", "dirak", "violet", "hayate", "flowborn-ad", "moren", "elsu", "valhein", "slimz", "fennik", "stuart", "telannas", "capheny", "laville", "celica", "elandorr", "yorn", "lindis", "wisp", "thorne", "teeri", "erin", "alice", "dolia", "aya", "annette", "dyadia", "cresht", "grakk", "rouie", "krizzix", "arum", "lumburr", "helen", "teemee", "zip", "ming"]),S_KEYS=new Set(["ishar", "tamyn", "ybneth", "taara", "ata", "omega", "max", "toro", "mina", "roxie", "baldum", "chaugnar", "thane", "ormarr", "arduin", "xeniel", "wiro", "arthur", "zuka", "florentino", "volkath", "ryoma", "maloch", "trieuvan", "airi", "yena", "veres", "qi", "bijan", "lubo", "omen", "richter", "errol", "allain", "edras", "biron", "boltbaron", "skud", "kilgroth", "superman", "amily", "charlotte", "astrid", "wonderwoman", "rourke", "dextra", "tachi", "yan", "zephys", "sinestrea", "billow", "butterfly", "murad", "ngokhong", "nakroth", "paine", "zill", "quillen", "kaine", "enzo", "keera", "kriknak", "aoi", "bright", "theflash", "gildur", "yue", "zata", "raz", "lorion", "azzenka", "iggy", "krixi", "veera", "natalya", "marja", "lauriel", "aleister", "tulen", "liliana", "heino", "flowborn-mid", "goverra", "kahlii", "mganga", "ilumia", "dieuthuyen", "bonnie", "ignis", "preyta", "jinna", "darcy", "sephera", "dirak", "violet", "hayate", "flowborn-ad", "moren", "elsu", "valhein", "slimz", "fennik", "stuart", "telannas", "capheny", "laville", "celica", "elandorr", "yorn", "lindis", "wisp", "thorne", "teeri", "erin", "alice", "dolia", "aya", "annette", "dyadia", "cresht", "grakk", "rouie", "krizzix", "arum", "lumburr", "helen", "teemee", "zip", "ming"]);
+const P_KEYS=new Set(["evita", "ishar", "tamyn", "ybneth", "taara", "ata", "omega", "max", "toro", "mina", "roxie", "baldum", "chaugnar", "thane", "ormarr", "arduin", "xeniel", "wiro", "arthur", "zuka", "florentino", "volkath", "ryoma", "maloch", "trieuvan", "airi", "yena", "veres", "qi", "bijan", "lubo", "omen", "richter", "errol", "allain", "edras", "biron", "boltbaron", "skud", "kilgroth", "superman", "amily", "charlotte", "astrid", "wonderwoman", "rourke", "dextra", "tachi", "yan", "zephys", "sinestrea", "billow", "butterfly", "murad", "ngokhong", "nakroth", "paine", "zill", "quillen", "kaine", "enzo", "keera", "kriknak", "aoi", "bright", "theflash", "gildur", "yue", "zata", "raz", "lorion", "azzenka", "iggy", "krixi", "veera", "natalya", "marja", "lauriel", "aleister", "tulen", "liliana", "heino", "flowborn-mid", "goverra", "kahlii", "mganga", "ilumia", "dieuthuyen", "bonnie", "ignis", "preyta", "jinna", "darcy", "sephera", "dirak", "violet", "hayate", "flowborn-ad", "moren", "elsu", "valhein", "slimz", "fennik", "stuart", "telannas", "capheny", "laville", "celica", "elandorr", "yorn", "lindis", "wisp", "thorne", "teeri", "erin", "alice", "dolia", "aya", "annette", "dyadia", "cresht", "grakk", "rouie", "krizzix", "arum", "lumburr", "helen", "teemee", "zip", "ming"]),S_KEYS=new Set(["evita", "ishar", "tamyn", "ybneth", "taara", "ata", "omega", "max", "toro", "mina", "roxie", "baldum", "chaugnar", "thane", "ormarr", "arduin", "xeniel", "wiro", "arthur", "zuka", "florentino", "volkath", "ryoma", "maloch", "trieuvan", "airi", "yena", "veres", "qi", "bijan", "lubo", "omen", "richter", "errol", "allain", "edras", "biron", "boltbaron", "skud", "kilgroth", "superman", "amily", "charlotte", "astrid", "wonderwoman", "rourke", "dextra", "tachi", "yan", "zephys", "sinestrea", "billow", "butterfly", "murad", "ngokhong", "nakroth", "paine", "zill", "quillen", "kaine", "enzo", "keera", "kriknak", "aoi", "bright", "theflash", "gildur", "yue", "zata", "raz", "lorion", "azzenka", "iggy", "krixi", "veera", "natalya", "marja", "lauriel", "aleister", "tulen", "liliana", "heino", "flowborn-mid", "goverra", "kahlii", "mganga", "ilumia", "dieuthuyen", "bonnie", "ignis", "preyta", "jinna", "darcy", "sephera", "dirak", "violet", "hayate", "flowborn-ad", "moren", "elsu", "valhein", "slimz", "fennik", "stuart", "telannas", "capheny", "laville", "celica", "elandorr", "yorn", "lindis", "wisp", "thorne", "teeri", "erin", "alice", "dolia", "aya", "annette", "dyadia", "cresht", "grakk", "rouie", "krizzix", "arum", "lumburr", "helen", "teemee", "zip", "ming"]);
 const pKey=h=>{const k=h.key==="flowborn"?"flowborn-"+h.lane:h.key;return P_KEYS.has(k)?k:""};
 function portrait(h){
   const b=TR[h.trend];
@@ -74,7 +74,7 @@ function buildFilters(){
     b.onclick=()=>{F[key].has(k)?F[key].delete(k):F[key].add(k);b.setAttribute("aria-pressed",F[key].has(k));draw()};el.appendChild(b)})};
   mk("f-lane","lane",LANES,(b,k,v)=>{b.innerHTML=`<span class="d" style="background:var(--l-${k})"></span>${v}`});
   mk("f-class","cls",CLASSES,(b,k,v)=>{b.innerHTML=ICON[k]+v});
-  mk("f-trend","trend",{up:"↑ Tăng",down:"↓ Giảm",mix:"⇄ Điều chỉnh",new:"Làm lại"},(b,k,v)=>{b.textContent=v});
+  mk("f-trend","trend",{up:"↑ Tăng",down:"↓ Giảm",mix:"⇄ Điều chỉnh",new:"Mới"},(b,k,v)=>{b.textContent=v});
   $("lanesM").innerHTML=Object.entries(LANES).map(([k,v])=>`<button data-l="${k}" style="--lc:var(--l-${k})" aria-pressed="${k===mLane}"><i></i>${v}</button>`).join("");
   $("lanesM").onclick=e=>{const b=e.target.closest("button");if(b)setLane(b.dataset.l)};
 }
@@ -186,7 +186,7 @@ function breakdown(h){
     ${(()=>{const pv=prevOf(h.key,h.lane);return bar("Mùa trước",aogScore(pv),pv?`${pv[3]} pick · ${pv[4]} cấm / ${SRC.prevGames} trận${pv[3]?" · Thắng "+pv[0]+"%":""}`:`Không được chọn trong ${SRC.prevGames} trận`)})()}
     ${bar("RoV Pro League",ps,pro)}
     ${bar("Rank cộng đồng",m?RMS[m]:null,m?"Tier "+m:"Chưa có dữ liệu")}
-    ${bar("Báo game VN",VNS[h.vn]??null,VNS[h.vn]?"Tier "+h.vn+(h.trend&&h.trend!=="mix"?" (đã chỉnh bản 29/09)":""):"Chưa có trong bài")}
+    ${bar("Báo game VN",VNS[h.vn]??null,VNS[h.vn]?"Tier "+h.vn+(h.vnAdj?` (đã chỉnh theo bản ${PATCH})`:""):"Chưa có trong bài")}
     <div class="bd total"><span>Điểm tổng</span><div class="bdbar"><i style="width:${h.score/5*100}%"></i></div><b>${h.score.toFixed(2)} / 5 · hạng ${h.rank}/${h.laneN} ở ${LANES[h.lane]}${h.sec?" (đường phụ: trừ 0,4, tối đa tier A)":""}</b></div>
     ${h.floor==="manual"?`<p class="floor">Tier ${h.tier} do người biên tập điều chỉnh thủ công, không theo điểm tổng.</p>`:h.floor==="pickS"||h.floor==="pickA"?`<p class="floor">Được nâng lên tier ${h.tier} vì được chọn ở ${aogOf(h.key,h.lane)[1]}% số trận ĐTDV mùa Đông.</p>`:h.floor?`<p class="floor">Được nâng lên tier ${h.floor} vì xuất hiện (pick hoặc cấm) ở ${h.pres.toFixed(0)}% số trận ĐTDV mùa Đông.</p>`:""}
   </div>`;
@@ -295,7 +295,7 @@ function openModal(id,dir){
       ${buildHTML(h)}
       <h4 class="bds-h">Vì sao tier ${h.tier}</h4>
       ${breakdown(h)}
-      <p>${h.note||"Không có thay đổi ở bản 29/09."}</p>
+      <p>${h.note||`Không có thay đổi ở bản ${PATCH}.`}</p>
       ${skillHTML(h)}
     </div></div></div></div>`;
   document.documentElement.classList.add("lock");hideTip();hideItip();setHash("tuong-"+id);track("xem_tuong",{tuong:h.name,duong:LANES[h.lane],tier:h.tier});
@@ -353,7 +353,7 @@ const sentinel=document.createElement("div");$("bar").before(sentinel);
 try{new IntersectionObserver(([en])=>$("bar").classList.toggle("stuck",!en.isIntersecting)).observe(sentinel)}catch(e){}
 mq.addEventListener?mq.addEventListener("change",()=>{draw();measure()}):mq.addListener(()=>{draw();measure()});
 
-/* Danh sách thay đổi bản 29/09 (mỗi tướng một dòng) */
+/* Danh sách thay đổi bản cập nhật gần nhất (PATCH trong data.js, mỗi tướng một dòng) */
 const seen=new Set();
 $("log").innerHTML=HEROES.filter(h=>h.trend&&!h.sec&&!seen.has(h.key)&&seen.add(h.key)).sort((a,b)=>"down up new mix".indexOf(a.trend)-"down up new mix".indexOf(b.trend)).map(h=>`<li><span class="mv ${TR[h.trend][1]}">${TR[h.trend][0]}</span><span><button data-open="${h.id}">${h.name}</button> · ${h.note.replace(/^[^:]+: /,"")}</span></li>`).join("");
 $("log").onclick=e=>{const b=e.target.closest("[data-open]");if(b)openModal(b.dataset.open)};
@@ -511,7 +511,7 @@ addEventListener("resize",()=>fitNames());
   const sl=$("secList");if(sl)sl.textContent=sec.join("; ")})();
 /* Chú giải luôn hiện */
 $("legendStrip").innerHTML=`<div class="ls-t">${TIERS.map(t=>`<span class="ls-tier" style="--tc:var(--t-${t.toLowerCase()})"><b>${t}</b>${TNAME[t]}</span>`).join("")}</div>
-  <div class="ls-b"><span><i class="lg up">↑</i>Tăng sức mạnh</span><span><i class="lg down">↓</i>Giảm sức mạnh</span><span><i class="lg new">MỚI</i>Làm lại</span><span><i class="lg sec">PHỤ</i>Đường phụ</span></div>`;
+  <div class="ls-b"><span><i class="lg up">↑</i>Tăng sức mạnh</span><span><i class="lg down">↓</i>Giảm sức mạnh</span><span><i class="lg new">MỚI</i>Tướng mới</span><span><i class="lg sec">PHỤ</i>Đường phụ</span></div>`;
 
 /* ===== Hiệu ứng cuộn ===== */
 const seenRows=new Set();

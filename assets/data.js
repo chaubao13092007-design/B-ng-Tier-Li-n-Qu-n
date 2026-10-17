@@ -435,26 +435,21 @@ const ICON={
 const TIERS=["S","A","B","C","D"];
 const TNAME={S:"Rất mạnh",A:"Mạnh",B:"Ổn",C:"Tình huống",D:"Yếu"};
 const GROUPS={S:["Đỉnh meta","nên cấm hoặc chọn sớm"],A:["Meta","lựa chọn an toàn khi leo rank"],C:["Ngoài meta","cần đội hình phù hợp"],D:["Ít được dùng","đang yếu ở bản hiện tại"]};
-const TR={up:["↑ Tăng","up","Được tăng sức mạnh"],down:["↓ Giảm","down","Bị giảm sức mạnh"],mix:["⇄ Chỉnh","mix","Điều chỉnh"],new:["Làm lại","new","Làm lại bộ kỹ năng"]};
+const TR={up:["↑ Tăng","up","Được tăng sức mạnh"],down:["↓ Giảm","down","Bị giảm sức mạnh"],mix:["⇄ Chỉnh","mix","Điều chỉnh"],new:["Mới","new","Tướng mới / làm lại"]};
+// Bản cập nhật gần nhất: Điều chỉnh giữa mùa Vết Nứt Thời Không 15/10/2026 (lienquan.garena.vn)
+// key: [xu hướng, ghi chú, true nếu phần báo VN đã chỉnh theo bản này]; key có thể kèm đường (flowborn-ad)
+const PATCH="15/10";
 const P={
- toro:["down","Giảm sức mạnh: sát thương chiêu 2 còn 180 (+36/cấp, +3,5% máu tối đa). Phần báo VN hạ từ S xuống A."],
- ryoma:["down","Giảm sức mạnh: hồi chiêu 1 tăng từ 8s lên 10s, chiêu 3 giảm sát thương cơ bản và hồi lâu hơn. Phần báo VN hạ từ A xuống B."],
- ata:["up","Tăng sức mạnh: nội tại và chiêu 2 gây nhiều sát thương hơn, hồi chiêu 1 còn 7,5s. Phần báo VN lên từ D lên C."],
- roxie:["up","Tăng sức mạnh: sát thương chiêu 2 lên 180, khiên lên 250 (+50/cấp). Phần báo VN lên từ D lên C."],
- celica:["up","Tăng sức mạnh: chiêu 1 nhân đôi công vật lý từ nội tại và kéo dài 3s; hồi chiêu 3 giảm. Phần báo VN lên từ D lên C."],
- krizzix:["up","Tăng sức mạnh: sát thương nội tại lên 235 (+17/cấp, +0,55 SMPT). Phần báo VN lên từ D lên C."],
- baldum:["up","Tăng sức mạnh: chiêu 2 cho ngay 2 tầng giảm sát thương, tối đa 5 tầng."],
- lauriel:["up","Tăng sức mạnh: hồi máu nội tại tăng từ 120 lên 140."],
- elandorr:["up","Tăng sức mạnh: sát thương cộng thêm của nội tại có thể chí mạng sau khi dùng chiêu."],
- amily:["up","Chiêu 2 có thể lướt tới khi không có mục tiêu, linh hoạt hơn."],
- natalya:["mix","Sát thương đầu trận giảm, cuối trận mạnh hơn."],
- aleister:["mix","Nội tại sát thương chuẩn đầu trận cao hơn, chiêu 2 tăng theo cấp nhanh hơn."],
- yorn:["mix","Chiêu 1 và 2 thêm hiệu ứng lộ diện; nội tại đổi thành sát thương cơ bản cộng 1,5% máu tối đa."],
- darcy:["mix","Chiêu 3 kích nổ ngay chiêu 2 nếu đặt đúng tâm vòng phép."],
- preyta:["new","Làm lại hoàn toàn với hệ năng lượng dịch bệnh (mốc 25/75/145). Chưa đủ dữ liệu, tạm giữ bậc D."]
+ gildur:["down","Giảm sức mạnh: sát thương chiêu 2 còn 350 (+70/cấp, +0,5 SMPT), trước là 380 (+76/cấp, +0,55); sát thương duy trì tăng nhẹ lên 35 (+7/cấp); hồi chiêu 3 thành 45s (−5s/cấp). Phần báo VN hạ từ S xuống A.",true],
+ "flowborn-ad":["down","Giảm sức mạnh (dạng Xạ thủ): sát thương cơ bản chiêu 3 còn 64 (+32/cấp, +0,26 công vật lý), trước là 70 (+35/cấp, +0,28). Phần báo VN hạ từ S xuống A.",true],
+ raz:["up","Tăng sức mạnh: hồi chiêu 1 còn 8s (−0,3s/cấp), trước là 10s; chiêu 2 gây 450 (+90/cấp, +0,9 SMPT) và giảm giáp phép 100 (+20/cấp)."],
+ kriknak:["up","Tăng sức mạnh: sát thương chiêu 1 lên 325 (+65/cấp, +1,5 công vật lý cộng thêm), trước là 300 (+50/cấp, +1,4)."],
+ trieuvan:["up","Tăng sức mạnh: đòn đánh cường hóa của chiêu 1 lướt tới mục tiêu; không có mục tiêu thì lướt về phía trước."],
+ evita:["new","Tướng mới (Pháp sư, đường giữa), ra mắt 15/10. Chưa có số liệu giải đấu, rank và báo VN nên tạm xếp theo điểm hiện có."],
+ dirak:["mix","Điều chỉnh: Pháo tử quang tách khỏi chiêu 3 thành chiêu 4 riêng (500 +250/cấp +0,8 SMPT, hồi 50s); chiêu 2 rơi thẳng xuống nếu đặt trong vòng trong của chiêu 1, hồi chiêu 2 thành 12,5s."],
+ ngokhong:["mix","Điều chỉnh: đòn đánh cường hóa của nội tại gây 450 (+1,0 công vật lý) thay vì 340–508 tăng theo cấp, nên mạnh hơn đầu trận, nhẹ hơn cuối trận."],
+ errol:["mix","Điều chỉnh: tầng nội tại mất dần từng tầng một, mỗi tầng giữ lâu thêm 1 giây."]
 };
-// đường|lớp|tier: danh sách
-// đường|lớp|tier: danh sách
 // đường|lớp|tier: danh sách
 const RAW=[
  ["top","tank","A","Y'bneth"],["top","tank","B","Taara"],["top","tank","C","Ata"],["top","tank","D","Omega,Max"],
@@ -469,17 +464,18 @@ const RAW=[
  ["jg","fighter","B","Zephys"],
  ["jg","assassin","S","Sinestrea,Billow"],["jg","assassin","A","Butterfly,Murad,Ngộ Không,Nakroth,Paine"],["jg","assassin","B","Zill,Quillen,Kaine,Enzo"],
  ["jg","assassin","C","Keera,Kriknak"],["jg","assassin","D","Aoi,Bright,The Flash"],
- ["mid","mage","S","Gildur,Yue,Zata"],["mid","mage","A","Raz,Lorion,Azzen'Ka,Iggy"],
+ ["mid","mage","S","Yue,Zata"],["mid","mage","A","Gildur,Raz,Lorion,Azzen'Ka,Iggy"],
+ ["mid","mage","-","Evita"],
  ["mid","mage","B","Krixi,Veera,Natalya,Lauriel,Aleister,Tulen,Liliana,Heino,Flowborn,Goverra"],
  ["mid","mage","C","Kahlii,Mganga,Ilumia,Điêu Thuyền,Bonnie,Ignis"],["mid","mage","D","Preyta,Jinna,D'Arcy,Ishar,Sephera,Dirak"],
- ["ad","marksman","S","Violet,Hayate,Flowborn"],["ad","marksman","A","Moren,Elsu"],["ad","marksman","B","Valhein,Slimz,Fennik,Stuart,Tel'Annas,Capheny,Laville"],
+ ["ad","marksman","S","Violet,Hayate"],["ad","marksman","A","Flowborn,Moren,Elsu"],["ad","marksman","B","Valhein,Slimz,Fennik,Stuart,Tel'Annas,Capheny,Laville"],
  ["ad","marksman","C","Celica,Eland'orr,Yorn,Lindis,Wisp,Thorne"],["ad","marksman","D","Teeri,Erin"],
  ["sp","support","S","Alice,Dolia,Aya"],["sp","support","A","Annette,Dyadia"],["sp","support","B","Cresht,Grakk,Rouie"],
  ["sp","support","C","Krizzix,Arum"],["sp","support","D","Lumburr,Helen,TeeMee,Zip,Ming"]
 ];
 const slug=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/gi,"d").toLowerCase().replace(/[^a-z]/g,"");
 const HEROES=[];
-// Điểm tổng hợp: ĐTDV mùa Đông 35% · RoV Pro League 15% · rank cộng đồng 25% · báo game VN (đã chỉnh bản 29/09) 25%
+// Điểm tổng hợp: ĐTDV mùa Đông 35% · RoV Pro League 15% · rank cộng đồng 25% · báo game VN (đã chỉnh theo bản 29/09 và 15/10) 25%
 const VNS={S:5,A:4,B:3,C:2,D:1}, RMS={"S+":5,S:4.5,A:3.5,B:2.5,C:1.5};
 function proScore(r){if(!r)return null;const [w,p,b]=r,P=p+b;let s=P>=50?5:P>=30?4.5:P>=20?4:P>=10?3.5:P>=5?3:2.5;
   if(w!=null&&p>=5){if(w>=55)s+=.5;else if(w<=45)s-=.5}return Math.max(1,Math.min(5,s))}
@@ -501,7 +497,7 @@ const MANUAL={preyta:"A",aoi:"B",darcy:"A",zuka:"B",nakroth:"A",airi:"A","arthur
 const toTier=s=>s>=4.2?"S":s>=3.5?"A":s>=2.7?"B":s>=2?"C":"D";
 // Lớp tướng theo phân loại chính thức trên lienquan.garena.vn
 const CLASSFIX={airi:"assassin",chaugnar:"support",cresht:"tank",zill:"mage",xeniel:"support",ata:"fighter",boltbaron:"mage",arum:"tank",bright:"marksman",roxie:"fighter",lumburr:"tank",ormarr:"fighter",theflash:"mage",arduin:"fighter",sephera:"support"};
-function addHero(lane,cls,vn,n,sec){const k=slug(n),p=P[k]||[],sc=score(k,vn,lane);cls=CLASSFIX[k]||cls;
+function addHero(lane,cls,vn,n,sec){const k=slug(n),p=P[k+"-"+lane]||P[k]||[],sc=score(k,vn,lane);cls=CLASSFIX[k]||cls;
   const a=aogOf(k,lane),pres=a?a[1]+a[2]:0;let tier=toTier(sc),floor="";
   // Sàn theo ĐTDV: pick+cấm ≥ 75% số trận → S, ≥ 55% → tối thiểu A
   if(pres>=75&&tier!=="S"){tier="S";floor="S"}else if(pres>=55&&"BCD".includes(tier)){tier="A";floor="A"}
@@ -509,7 +505,7 @@ function addHero(lane,cls,vn,n,sec){const k=slug(n),p=P[k]||[],sc=score(k,vn,lan
   const pk=a?a[1]:0,wr=a?a[0]:0;
   if(wr>=45){if(pk>=30&&tier!=="S"){tier="S";floor="pickS"}else if(pk>=20&&"BCD".includes(tier)){tier="A";floor="pickA"}}
   const man=MANUAL[k+"-"+lane]||MANUAL[k];if(man){tier=man;floor="manual"}
-  HEROES.push({id:k+"-"+lane,key:k,name:n,lane,cls,vn,score:sc,tier,floor,pres,sec:!!sec,trend:p[0]||"",note:p[1]||""})}
+  HEROES.push({id:k+"-"+lane,key:k,name:n,lane,cls,vn,score:sc,tier,floor,pres,sec:!!sec,trend:p[0]||"",note:p[1]||"",vnAdj:!!p[2]})}
 RAW.forEach(([lane,cls,vn,names])=>names.split(",").forEach(n=>addHero(lane,cls,vn,n)));
 // Đường phụ: tướng thường được đưa sang đường khác ngoài đường chính (đã bỏ Toro và Marja)
 const SECONDARY={"Y'bneth":["sp"],Taara:["sp"],Omega:["sp"],Ata:["sp"],Zuka:["jg"],Ryoma:["jg"],Qi:["jg"],Airi:["jg"],"Triệu Vân":["jg"],

@@ -349,6 +349,12 @@ ITEMS: Giày Kiên Cường | Thương Longinus | Phức Hợp Kiếm | Thương
 RUNES: Đỏ Tốc đánh-Tỉ lệ chí mạng x5 | Đỏ Công vật lý-Xuyên giáp x5 | Tím Tốc đánh-Tốc chạy x10 | Xanh Công vật lý-Xuyên giáp x10
 SPELL: Tốc Biến
 
+## astrid@jg
+SRC: https://aov-builds.com/tuong/astrid/
+ITEMS: Kiếm Truy Hồn | Giày Kiên Cường | Thương Longinus | Phức Hợp Kiếm | Nanh Fenrir | Giáp Hộ Mệnh
+RUNES: Đỏ Tốc đánh-Tỉ lệ chí mạng x5 | Đỏ Công vật lý-Xuyên giáp x5 | Tím Tốc đánh-Tốc chạy x10 | Xanh Công vật lý-Xuyên giáp x10
+SPELL: Trừng Trị
+
 ## violet@ad
 SRC: https://aov-builds.com/tuong/violet/
 ITEMS: Giày Kiên Cường | Thánh Kiếm | Phức Hợp Kiếm | Kiếm Muramasa | Nanh Fenrir | Giáp Hộ Mệnh
@@ -408,6 +414,12 @@ SRC: https://aov-builds.com/tuong/tachi/
 ITEMS: Giày Kiên Cường | Đao Truy Hồn | Giáp Gaia | Khiên Thất Truyền | Nham Thuẫn | Giáp Hộ Mệnh
 RUNES: Đỏ Tốc đánh-Máu-Giáp x10 | Tím Máu tối đa x5 | Tím Tốc đánh-Tốc chạy x5 | Xanh Máu tối đa-Giảm hồi chiêu x10
 SPELL: Tốc Biến
+
+## tachi@jg
+SRC: https://aov-builds.com/tuong/tachi/
+ITEMS: Kiếm Truy Hồn | Giày Hộ Vệ | Thương Khung Kiếm | Nanh Fenrir | Giáp Cuồng Nộ | Huân Chương Troy
+RUNES: Đỏ Tốc đánh-Máu-Giáp x10 | Tím Máu tối đa x5 | Tím Tốc đánh-Tốc chạy x5 | Xanh Máu tối đa-Giảm hồi chiêu x10
+SPELL: Trừng Trị
 
 ## maloch@top
 SRC: https://aov-builds.com/tuong/maloch/
@@ -510,6 +522,13 @@ SRC: https://aov-builds.com/tuong/richter/
 ITEMS: Giày Kiên Cường | Thương Longinus | Huân Chương Troy | Nham Thuẫn | Nanh Fenrir | Giáp Hộ Mệnh
 RUNES: Đỏ Công vật lý-Xuyên giáp x10 | Tím Công vật lý-Tốc chạy x10 | Xanh Công vật lý-Xuyên giáp x10
 SPELL: Tốc Biến
+
+## evita@mid
+SRC: https://cellphones.com.vn/sforum/cach-choi-evita-lien-quan
+ITEMS: Giày Phù Thuỷ | Sách Truy Hồn | Trượng Bùng Nổ | Vương Miện Hecate | Trượng Hỗn Mang | Quả Cầu Băng Sương
+RUNES: Đỏ Công phép-Xuyên giáp phép x10 | Tím Tốc đánh-Tốc chạy x10 | Xanh Tốc đánh-Xuyên giáp phép x10
+SPELL: Tốc Biến
+NOTE: Tướng mới: build theo bài hướng dẫn ngày 15/10 của Sforum, AOV-Builds chưa có build cho Evita.
 
 ## gildur@mid
 SRC: https://aov-builds.com/tuong/gildur/

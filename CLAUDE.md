@@ -58,22 +58,29 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   (trang này thường chặn bằng bước xác minh người dùng — không được vượt; nếu không đọc được thì giữ số cũ).
 - `SRC.prev` / `SRC.prevGames` — mùa trước, cùng định dạng.
 - `SRC.rpl` — RoV Pro League (Thái Lan): `[tỉ lệ thắng % hoặc null, pick %, cấm %]`. Nguồn: https://rovmeta.com/stats
-- `SRC.rm` — tier list rank cộng đồng ROV META (`S+`/`S`/`A`/`B`/`C`). Nguồn: https://rovmeta.com/
+- `SRC.rm` — tier list rank cộng đồng (`S+`/`S`/`A`/`B`/`C`). Từ 15/10/2026 **chủ web tự tổng hợp** từ @darkiaov9126 và @blvkhanhhy
+  (ghi chú ngay trên khối `rm`). Không thay bằng số của rovmeta.com hay nguồn khác, kể cả trong lịch tự cập nhật, trừ khi chủ web yêu cầu.
+  Tướng chưa có trong `rm` (ví dụ tướng mới) thì để trống, không tự thêm.
 - Tên quốc tế → tên Việt: Riktor = Richter, Zanis = Triệu Vân, Wukong = Ngộ Không, Lu Bu = Lữ Bố,
   Diao Chan = Điêu Thuyền, Jinnar = Jinna, Terri = Teeri, Sinestra = Sinestrea.
 - `RAW` — `[đường, lớp, tier báo VN, "Tên1,Tên2"]`. Đường: `top` Tà Thần, `jg` Rừng, `mid` Giữa, `ad` Rồng, `sp` Trợ thủ.
-- `P` — thay đổi của bản cập nhật gần nhất: `key: ["up"|"down"|"mix"|"new", "ghi chú"]`.
-  Khi có bản cập nhật Garena mới (https://lienquan.garena.vn/category/cap-nhat/), thay toàn bộ `P` bằng thay đổi mới.
+- `P` — thay đổi của bản cập nhật gần nhất: `key: ["up"|"down"|"mix"|"new", "ghi chú", true nếu đã chỉnh tier báo VN theo bản này]`.
+  Key có thể kèm đường khi thay đổi chỉ áp cho một dạng (ví dụ `"flowborn-ad"`). `PATCH` (ngay trên `P`) là ngày bản, hiện ở chữ "bản …" trong bảng chi tiết.
+  `"new"` = tướng mới hoặc làm lại bộ kỹ năng.
+  Khi có bản cập nhật Garena mới (https://lienquan.garena.vn/category/cap-nhat/), thay toàn bộ `P` bằng thay đổi mới, đổi `PATCH`,
+  và theo cách tính đã ghi: tướng bị giảm sức mạnh hạ 1 bậc báo VN trong `RAW`, tướng tier D được tăng rõ lên 1 bậc (đánh dấu `true`).
 - `MANUAL` — **chỉnh tay của chủ web. Không bao giờ xoá hay sửa** trừ khi chủ web yêu cầu.
 - `SECONDARY` và các dòng bỏ/đổi đường phía dưới — cũng là quyết định của chủ web, giữ nguyên.
 
 ## Quy tắc khi cập nhật
 1. Chỉ dùng số liệu đọc được từ nguồn. Không đoán, không bịa số.
 2. Giữ nguyên `MANUAL`, `SECONDARY`, các dòng bỏ đường.
-3. Cập nhật ngày "Cập nhật …" và tên mùa/bản trong `index.html` (tìm `11/10/2026`, `S4 2026`, `Vết Nứt Thời Không`, `29/09`)
+3. Cập nhật ngày "Cập nhật …" và tên mùa/bản trong `index.html` (tìm `17/10/2026`, `S4 2026`, `Vết Nứt Thời Không`, `15/10`)
    và `<lastmod>` trong `sitemap.xml` khi có thay đổi thật.
 4. Tướng mới: thêm vào `RAW`, tạo `p/<key>.webp` (176×176, WebP chất lượng 72) và `s/<key>.webp` (rộng 960, chất lượng 60),
    rồi thêm key vào `P_KEYS`/`S_KEYS` ở đầu `assets/app.js`.
+   Thêm luôn build `@<đường>` vào `tools/builds/vn.txt` (nguồn chưa có thì lấy bài hướng dẫn tiếng Việt khác, ghi `NOTE`) và bộ chiêu vào `tools/skills/garena.json`.
+   Chủ web đổi đường tướng trong `RAW` thì cũng phải có build cho đường mới (`node tools/builds/check.js` báo thiếu).
 5. Kiểm tra trước khi đẩy: `node --check assets/data.js && node --check assets/app.js`, rồi mở `index.html`
    bằng Playwright (Chromium có sẵn) ở 1440px và 390px: không lỗi JS, có 5 slide, bảng có thẻ tướng, không tràn ngang.
 6. Mỗi lần sửa `assets/data.js`, `assets/builds.js`, `assets/app.js` hoặc `assets/boot.js`, đổi số `?v=` ở các thẻ `<script>` của `index.html` (dùng ngày giờ, ví dụ `?v=202610150846`) để trình duyệt người xem tải bản mới.

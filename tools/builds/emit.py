@@ -54,7 +54,7 @@ for t in used_t:
 for f in os.listdir(f'{REPO}/b'):
     if f not in keep: os.remove(f'{REPO}/b/{f}')
 js='/* Build tham khảo cho từng tướng theo từng đường — tạo tự động từ tools/builds/vn.txt, đừng sửa tay.\n   BUILDS["<key>@<đường>"]: nguồn tiếng Việt (server Việt Nam), link trang nguồn ở trường l.\n   Tên đồ, ngọc, phép bổ trợ bản Việt và ảnh: AoV-IndeX (avix-data, avix-assets). Ảnh trong thư mục b/. */\n'
-js+='const BSRC={"aov-builds.com":"AOV-Builds","gamezingmobile.com":"GameZing Mobile","lienquanmobile.gg":"LienquanMobile.GG","www.finhay.com.vn":"Finhay"};\n'
+js+='const BSRC={"aov-builds.com":"AOV-Builds","gamezingmobile.com":"GameZing Mobile","lienquanmobile.gg":"LienquanMobile.GG","www.finhay.com.vn":"Finhay","cellphones.com.vn":"Sforum CellphoneS"};\n'
 js+='const BITEM='+json.dumps(ITEM,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BINFO='+json.dumps(INFO,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BARC='+json.dumps(ARC,ensure_ascii=False,separators=(',',':'))+';\n'
