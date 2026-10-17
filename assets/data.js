@@ -445,7 +445,7 @@ const P={
  raz:["up","Tăng sức mạnh: hồi chiêu 1 còn 8s (−0,3s/cấp), trước là 10s; chiêu 2 gây 450 (+90/cấp, +0,9 SMPT) và giảm giáp phép 100 (+20/cấp)."],
  kriknak:["up","Tăng sức mạnh: sát thương chiêu 1 lên 325 (+65/cấp, +1,5 công vật lý cộng thêm), trước là 300 (+50/cấp, +1,4)."],
  trieuvan:["up","Tăng sức mạnh: đòn đánh cường hóa của chiêu 1 lướt tới mục tiêu; không có mục tiêu thì lướt về phía trước."],
- evita:["new","Tướng mới (Pháp sư, đường giữa), ra mắt 15/10. Chưa có số liệu giải đấu, rank và báo VN nên tạm xếp theo điểm hiện có."],
+ evita:["new","Tướng mới (Pháp sư, đường giữa), ra mắt 15/10. Chưa có số liệu giải đấu, rank và báo VN; tier do người biên tập xếp."],
  dirak:["mix","Điều chỉnh: Pháo tử quang tách khỏi chiêu 3 thành chiêu 4 riêng (500 +250/cấp +0,8 SMPT, hồi 50s); chiêu 2 rơi thẳng xuống nếu đặt trong vòng trong của chiêu 1, hồi chiêu 2 thành 12,5s."],
  ngokhong:["mix","Điều chỉnh: đòn đánh cường hóa của nội tại gây 450 (+1,0 công vật lý) thay vì 340–508 tăng theo cấp, nên mạnh hơn đầu trận, nhẹ hơn cuối trận."],
  errol:["mix","Điều chỉnh: tầng nội tại mất dần từng tầng một, mỗi tầng giữ lâu thêm 1 giây."]
@@ -493,7 +493,7 @@ function score(k,vn,lane){const parts=[];if(VNS[vn])parts.push([VNS[vn],.1]);
   const m=SRC.rm[k];if(m)parts.push([RMS[m],.2]);
   return parts.reduce((s,[v,w])=>s+v*w,0)/parts.reduce((s,[,w])=>s+w,0)}
 // Điều chỉnh thủ công của người biên tập (ưu tiên cao nhất)
-const MANUAL={preyta:"A",aoi:"B",darcy:"A",zuka:"B",nakroth:"A",airi:"A","arthur-sp":"B",krizzix:"A",chaugnar:"B",taara:"A",qi:"A",yena:"A","billow-top":"B","marja-top":"A","annette-mid":"S","rouie-mid":"S"};
+const MANUAL={evita:"A",preyta:"A",aoi:"B",darcy:"A",zuka:"B",nakroth:"A",airi:"A","arthur-sp":"B",krizzix:"A",chaugnar:"B",taara:"A",qi:"A",yena:"A","billow-top":"B","marja-top":"A","annette-mid":"S","rouie-mid":"S"};
 const toTier=s=>s>=4.2?"S":s>=3.5?"A":s>=2.7?"B":s>=2?"C":"D";
 // Lớp tướng theo phân loại chính thức trên lienquan.garena.vn
 const CLASSFIX={airi:"assassin",chaugnar:"support",cresht:"tank",zill:"mage",xeniel:"support",ata:"fighter",boltbaron:"mage",arum:"tank",bright:"marksman",roxie:"fighter",lumburr:"tank",ormarr:"fighter",theflash:"mage",arduin:"fighter",sephera:"support"};
