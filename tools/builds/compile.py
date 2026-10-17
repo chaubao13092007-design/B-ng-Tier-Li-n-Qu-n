@@ -95,6 +95,31 @@ VIRUNE={'do':{'cong vat ly':'red_samurai','cong vat ly-xuyen giap':'red_berserke
         'xanh':{'cong vat ly-xuyen giap':'teal_dragoon','toc danh-xuyen giap phep':'teal_degenerate','cong phep-giam hoi chieu':'teal_hexer',
                 'mau toi da-giam hoi chieu':'teal_paladin','giap-giap phep-hoi chieu':'teal_crusader','giam hoi chieu':'teal_templar'}}
 VITAL={strip(v['name']):t['talentId'] for t,v in zip(tal_en,tal_vi)}
+# Phù hiệu (enchantments) bản Việt: tên → id; nhánh theo categoryId của avix-data
+ENC_VI=json.load(open(D+'/vi/enchantments.json'))
+VIENC={strip(e['name']):e for e in ENC_VI}
+BRANCH={'veda':'thap quang minh','lokheim':'vuc hon mang','afata':'rung nguyen sinh','leagueofhumans':'thanh khoi nguyen'}
+used_e=set()
+def parse_ench(bid,txt):
+    """'Nhánh: a, b, c | Nhánh: d, e' → [id…] (nhánh chính trước). Luật game: nhánh chính đủ cấp I–III,
+    2 phù hiệu phụ cấp I/II từ nhánh khác (cùng một nhánh thì một cấp I, một cấp II; khác nhánh thì cấp nào cũng được)."""
+    ids=[];groups=[]
+    for part in txt.split('|'):
+        br,names=part.split(':',1);br=strip(br)
+        assert br in BRANCH.values(),(bid,'nhánh lạ',br)
+        g=[]
+        for n in names.split(','):
+            e=VIENC.get(strip(n));assert e,(bid,'phù hiệu lạ',n.strip())
+            assert BRANCH[e['categoryId']]==br,(bid,n.strip(),'không thuộc nhánh',br)
+            g.append(e)
+        groups.append(g)
+    main=groups[0];rest=[e for g in groups[1:] for e in g]
+    assert sorted(e['level'] for e in main)==[1,2,3],(bid,'nhánh chính phải đủ cấp I, II, III')
+    assert len(rest)==2 and all(e['level']<=2 for e in rest),(bid,'cần đúng 2 phù hiệu phụ cấp I hoặc II')
+    assert all(e['categoryId']!=main[0]['categoryId'] for e in rest),(bid,'phù hiệu phụ phải khác nhánh chính')
+    if rest[0]['categoryId']==rest[1]['categoryId']: assert rest[0]['level']!=rest[1]['level'],(bid,'2 phù hiệu phụ cùng nhánh phải khác cấp')
+    out=[e['enchantmentId'] for e in sorted(main,key=lambda e:e['level'])]+[e['enchantmentId'] for e in sorted(rest,key=lambda e:e['level'])]
+    used_e.update(out);return out
 LANEK={'top','jg','mid','ad','sp'}
 for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
     lines=[l for l in blk.strip().split('\n') if l.strip() and not l.startswith('#')];bid=lines[0].strip()
@@ -119,6 +144,8 @@ for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
         if mark: own.append(t)
     b={'i':items,'r':runes,'s':sp,'l':f['SRC']}
     if own: b['o']=own
+    if f.get('ENCH'): b['e']=parse_ench(bid,f['ENCH'])
+    if f.get('ENCH_SRC'): b['el']=f['ENCH_SRC']
     if f.get('NOTE'):b['n']=f['NOTE']
     # luật game: đồ rừng chỉ mua được khi mang Trừng Trị; đi đường thì không mang đồ rừng
     jg=[i for i in items if EQ[i]['categoryId']=='jungling']
@@ -128,7 +155,8 @@ for blk in open('vn.txt',encoding='utf-8').read().split('\n## ')[1:]:
     assert bid not in B,(bid,'trùng')
     B[bid]=b
 print('vn builds:',sum('@' in k for k in B),'warn',warn[-10:])
-json.dump({'B':B,'I':sorted(used_i),'A':sorted(used_a),'T':sorted(used_t)},open('compiled.json','w'),ensure_ascii=False,indent=0)
-print(len(B),'heroes;',len(used_i),'items;',len(used_a),'arcana;',len(used_t),'spells')
+json.dump({'B':B,'I':sorted(used_i),'A':sorted(used_a),'T':sorted(used_t),'E':sorted(used_e)},open('compiled.json','w'),ensure_ascii=False,indent=0)
+print(len(B),'heroes;',len(used_i),'items;',len(used_a),'arcana;',len(used_t),'spells;',len(used_e),'phù hiệu')
+print('thiếu phù hiệu:',[k for k,b in B.items() if '@' in k and not b.get('e')])
 print('dropped:',{k:b['x'] for k,b in B.items() if 'x' in b})
 print('no spell:',[k for k,b in B.items() if not b['s']],' no items:',[k for k,b in B.items() if not b['i']])

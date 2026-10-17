@@ -37,6 +37,11 @@ Chủ repo giao tiếp bằng tiếng Việt, muốn sửa thẳng vào file và
   Khi thêm tướng hoặc đường phụ mới phải thêm build `@<đường>` vào `vn.txt`. Build chỉ cập nhật khi chủ web yêu cầu, lịch tự cập nhật không đụng tới.
   Phép có dấu `*` trong `vn.txt` (ví dụ `Trừng Trị*` của Taara đi Tà Thần) là phương án chủ web thêm, không có ở trang nguồn — giữ nguyên khi cập nhật.
   `tools/builds/raw.txt` là build cũ của ROV META (server Thái), không còn hiện trên web.
+  Phù hiệu: dòng `ENCH: <nhánh chính>: a, b, c | <nhánh>: d, e` trong mỗi khối của `vn.txt` (cùng trang nguồn với build; ưu tiên bộ ghi cho
+  đúng đường, không có thì bộ ghi đầu tiên). Nguồn build không có phù hiệu thì lấy trang AOV-Builds của tướng và ghi `ENCH_SRC: <link>`.
+  `compile.py` kiểm luật game: nhánh chính đủ cấp I–III; 2 phù hiệu phụ cấp I/II ở nhánh khác (cùng một nhánh thì phải khác cấp).
+  `emit.py` xuất `BENCH` (tên, nhánh, cấp, mô tả từ avix-data `vi/enchantments.json`), `BENCHB` (tên 4 nhánh) và ảnh `b/e-<id>.webp`.
+  `tools/builds/ench_raw.txt` là bản ghi thô các bộ phù hiệu đọc từ trang nguồn ngày 17/10/2026 (để tra lại).
 - `assets/skills.js` — Bộ chiêu thức (dưới phần "Vì sao tier" trong bảng chi tiết). **Tạo tự động, đừng sửa tay**:
   sửa `tools/skills/garena.json` rồi chạy `python3 tools/skills/emit.py`. Mỗi tướng: `[[tên chiêu, link ảnh, tóm tắt], …]` theo thứ tự
   trang Học viện Garena `https://lienquan.garena.vn/hoc-vien/tuong-skin/d/<slug>/` (nội tại → chiêu 1 → chiêu 2 → chiêu cuối; danh sách slug ở

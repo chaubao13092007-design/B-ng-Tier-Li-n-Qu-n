@@ -1,0 +1,259 @@
+airi	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+airi	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+ryoma	Top – Full dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+ryoma	Top – Semi | Rừng nguyên sinh: Ám kích, Bơm máu, Du hiệp | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+ryoma	Rừng – Full dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+ryoma	Rừng – Semi | Rừng nguyên sinh: Ám kích, Bơm máu, Du hiệp | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+zuka	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+zuka	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+trieu-van	Full Dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+trieu-van	Semi - Support | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Tháp quang minh: Thánh châu | Vực hỗn mang: Hấp huyết
+ngo-khong	* | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Tương phản, Bí quyết
+the-flash	Rừng | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+the-flash	Mid | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+kriknak	* sốc sát thương | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+kriknak	* hồi sinh | Thành khởi nguyên: Quả cầu băng sương, Thợ săn, Chuyển sinh | Tháp quang minh: Tương phản, Xuyên tâm
+sinestrea	* sốc dame | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Thánh châu, Xuyên tâm
+sinestrea	* cấu rỉa | Tháp quang minh: Thánh châu, Xuyên tâm, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+billow	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản | Thành khởi nguyên: Thợ săn
+billow	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản | Thành khởi nguyên: Thợ săn
+butterfly	Rừng | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+butterfly	Top | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+murad	* | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+nakroth	* | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+paine	* | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+zill	Rừng - địch máu giấy | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+zill	Rừng - địch nhiều tank | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Hấp huyết, Cường công
+zill	Mid/Top - địch máu giấy | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+zill	Mid/Top - địch nhiều tank | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Hấp huyết, Cường công
+quillen	* | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+kaine	Rừng: full dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+kaine	Rừng: gank liên tục | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Thánh châu, Xuyên tâm
+kaine	Top: full dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+kaine	Top: gank liên tục | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Thánh châu, Xuyên tâm
+enzo	Rừng | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+enzo	Top | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+enzo	Trợ thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+keera	Rừng (an toàn) | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+keera	Rừng (full sát thương) | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+keera	Top/Mid (an toàn) | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+keera	Top/Mid (full sát thương) | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+aoi	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+bright	* sốc sát thương | Vực hỗn mang: Dư ảnh, Cố Thủ, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+bright	* sát thương kéo dài | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Vực hỗn mang: Hấp huyết, Cố Thủ
+bright	* làm kinh tế | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+zephys	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+zephys	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+rourke	Rừng | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Thánh châu, Xuyên tâm
+rourke	Top | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Thánh châu, Xuyên tâm
+errol	Top | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+errol	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+volkath	Top | Vực hỗn mang: Ma Hỏa, Cường công, Đấu khí | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+volkath	Rừng | Vực hỗn mang: Ma Hỏa, Cường công, Đấu khí | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+allain	* full dame | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Tháp quang minh: Tương phản, Bí quyết
+allain	* công thủ toàn diện | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+allain	* full tank | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết, Cường công
+yan	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+yan	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+charlotte	Top – tối ưu sát thương | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Tháp quang minh: Tương phản, Xuyên tâm
+charlotte	Top – tối ưu farm | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Siêu hồi máu, Uy áp
+charlotte	Rừng – tối ưu sát thương | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Tháp quang minh: Tương phản, Xuyên tâm
+charlotte	Rừng – tối ưu farm | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Siêu hồi máu, Uy áp
+darcy	* đánh an toàn | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+darcy	* đánh hổ báo | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+elandorr	Rừng | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+elandorr	Rồng | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+slimz	* tối ưu cấu rỉa | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+slimz	* tối ưu farm late | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+moren	* tối ưu dame | Vực hỗn mang: Hấp huyết, Cố Thủ, Ma tính | Tháp quang minh: Thánh châu, Bí quyết
+moren	* tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Thợ săn, Luyện kim | Tháp quang minh: Tương phản, Xuyên tâm
+lindis	Rừng | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+lindis	Rồng | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+ybneth	* | Rừng nguyên sinh: Canh gác, Bơm máu, Trói buộc | Vực hỗn mang: Hấp huyết, Cố Thủ
+taara	Top | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết | Tháp quang minh: Thánh châu
+taara	Trợ thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết | Tháp quang minh: Thánh châu
+omega	* | Rừng nguyên sinh: Canh gác, Bơm máu, Trói buộc | Vực hỗn mang: Hấp huyết, Cường công
+arthur	Top, tank | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+arthur	Top, dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+arthur	Trợ thủ, tank | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+arthur	Trợ thủ, dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+arum	Top (full phép) | Vực hỗn mang: Hấp huyết, Cố Thủ, Ma chú | Thành khởi nguyên: Mật ngữ, Thợ săn
+arum	Trợ thủ (full tank) | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+wiro	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+wiro	Trợ thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+roxie	Top | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Thành khởi nguyên: Mật ngữ | Vực hỗn mang: Hấp huyết
+roxie	Trợ thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Thành khởi nguyên: Mật ngữ | Vực hỗn mang: Hấp huyết
+arduin	Top | Rừng nguyên sinh: Canh gác, Bơm máu, Trói buộc | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+arduin	* full dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+arduin	Trợ thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Trói buộc | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+dolia	Mid | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Rừng nguyên sinh: Nhạy bén, Bơm máu
+dolia	Trợ thủ | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Rừng nguyên sinh: Nhạy bén, Bơm máu
+mina	Top | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+mina	Trợ thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+ata	Top | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+ata	Trợ thủ | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+annette	Trợ thủ | Rừng nguyên sinh: Nhạy bén, Bơm máu, Du hiệp | Tháp quang minh: Thánh châu | Thành khởi nguyên: Mật ngữ
+annette	Mid | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+rouie	Trợ thủ | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Hấp huyết, Cường công
+rouie	Trợ thủ (tối ưu thủ) | Rừng nguyên sinh: Canh gác, Sinh tồn, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+rouie	Mid | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Hấp huyết, Cường công
+rouie	Mid (tối ưu thủ) | Rừng nguyên sinh: Canh gác, Sinh tồn, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+flowborn-phep	* | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+marja	Top | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+marja	Rừng | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+flowborn	* | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Vực hỗn mang: Hấp huyết, Cường công
+astrid	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Thánh châu, Xuyên tâm
+astrid	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Thánh châu, Xuyên tâm
+violet	* sốc sát thương mạnh | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+violet	* tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+violet	* tối ưu thủ | Rừng nguyên sinh: Ám kích, Sinh tồn, Du hiệp | Thành khởi nguyên: Siêu hồi máu, Uy áp
+zata	* | Tháp quang minh: Thánh châu, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+lorion	* | Tháp quang minh: Tương phản, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Uy áp
+valhein	* tối ưu farm | Thành khởi nguyên: Quả cầu băng sương, Thợ săn, Luyện kim | Vực hỗn mang: Hấp huyết, Cường công
+valhein	* tối ưu cấu rỉa | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+liliana	* | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+hayate	* full dame | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Uy áp, Siêu hồi máu
+hayate	* semi | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Du hiệp | Tháp quang minh: Tương phản, Xuyên tâm
+teemee	* | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết, Cố Thủ
+thane	* tối ưu công | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết, Cố Thủ
+thane	* tối ưu thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+capheny	* tối ưu đi đường | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+capheny	* tối ưu combat | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+tachi	Top | Rừng nguyên sinh: Canh gác, Bơm máu, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+tachi	Rừng | Rừng nguyên sinh: Canh gác, Bơm máu, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+tachi	Trợ thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+maloch	Top – tối ưu công | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+maloch	Top – tối ưu thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+maloch	Trợ thủ – tối ưu công | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+maloch	Trợ thủ – tối ưu thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+biron	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+biron	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+tamyn	Top | Vực hỗn mang: Dư ảnh, Cố Thủ, Đấu khí | Tháp quang minh: Tương phản, Xuyên tâm
+tamyn	Rừng | Vực hỗn mang: Dư ảnh, Cố Thủ, Đấu khí | Tháp quang minh: Tương phản, Xuyên tâm
+edras	* dạng Thần | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+edras	* dạng Ma | Vực hỗn mang: Hấp huyết, Cố Thủ, Đấu khí | Tháp quang minh: Tương phản, Xuyên tâm
+stuart	* tối ưu dame | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+stuart	* tối ưu farm | Thành khởi nguyên: Quả cầu băng sương, Thợ săn, Luyện kim | Tháp quang minh: Tương phản, Xuyên tâm
+iggy	* | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+cresht	Trợ thủ | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết | Tháp quang minh: Thánh châu
+cresht	Top | Vực hỗn mang: Hấp huyết, Cố Thủ, Ma tính | Tháp quang minh: Thánh châu, Bí quyết
+skud	Top | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+skud	Rừng | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+alice	* full phép | Tháp quang minh: Sung mãn, Bí quyết, Thần quang | Vực hỗn mang: Hấp huyết, Cường công
+alice	Trợ thủ tank - phép | Rừng nguyên sinh: Nhạy bén, Bơm máu, Du hiệp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+alice	* full tank | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Tháp quang minh: Sung mãn
+wisp	* tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+wisp	* tối ưu dame | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+ignis	* đánh an toàn | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Hấp huyết, Cố Thủ
+ignis	* đánh hổ báo | Tháp quang minh: Sung mãn, Xuyên tâm, Tinh linh | Vực hỗn mang: Hấp huyết, Cường công
+yue	* | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+yena	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+yena	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+mganga	* tối ưu công | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+mganga	* tối ưu thủ | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+baldum	Trợ thủ | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+baldum	Top | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+florentino	Top (tối ưu công) | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Rừng nguyên sinh: Canh gác, Bơm máu
+florentino	Top (tối ưu thủ) | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Dư ảnh, Cường công
+florentino	Rừng (tối ưu công) | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Rừng nguyên sinh: Canh gác, Bơm máu
+florentino	Rừng (tối ưu thủ) | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Dư ảnh, Cường công
+richter	Top – tối ưu cấu rỉa | Rừng nguyên sinh: Ám kích, Sinh tồn, Du hiệp | Vực hỗn mang: Dư ảnh, Cố Thủ
+richter	Top – tối ưu dồn dame | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương | Rừng nguyên sinh: Ám kích
+richter	Trợ thủ – tối ưu cấu rỉa | Rừng nguyên sinh: Ám kích, Sinh tồn, Du hiệp | Vực hỗn mang: Dư ảnh, Cố Thủ
+richter	Trợ thủ – tối ưu dồn dame | Vực hỗn mang: Dư ảnh, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương | Rừng nguyên sinh: Ám kích
+gildur	Mid | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+gildur	Trợ thủ | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+elsu	* tối ưu sát thương | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+elsu	* tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Thợ săn, Luyện kim | Vực hỗn mang: Ma Hỏa, Cường công
+chaugnar	* | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+chaugnar	* full phép | Vực hỗn mang: Hấp huyết, Cố Thủ, Ma tính | Tháp quang minh: Sung mãn, Xuyên tâm
+krizzix	* | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Mật ngữ
+omen	Top (địch máu giấy) | Vực hỗn mang: Hấp huyết, Cố Thủ, Đấu khí | Rừng nguyên sinh: Canh gác, Sinh tồn
+omen	Top (địch trâu bò) | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Vực hỗn mang: Hấp huyết, Cố Thủ
+omen	Trợ thủ | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Mật ngữ
+dyadia	* full tank | Rừng nguyên sinh: Nhạy bén, Bơm máu, Du hiệp | Thành khởi nguyên: Mật ngữ | Vực hỗn mang: Hấp huyết
+fennik	Rừng, tối ưu dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+fennik	Rừng, tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Thợ săn, Luyện kim | Rừng nguyên sinh: Nhạy bén | Tháp quang minh: Thánh châu
+fennik	Rồng, tối ưu dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+fennik	Rồng, tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Thợ săn, Luyện kim | Rừng nguyên sinh: Nhạy bén | Tháp quang minh: Thánh châu
+wonder-woman	Top | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+wonder-woman	Rừng | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+preyta	* | Tháp quang minh: Thánh châu, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Uy áp
+goverra	Rừng | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Uy áp
+goverra	Mid | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Uy áp
+aleister	Mid | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+aleister	Trợ thủ | Thành khởi nguyên: Siêu hồi máu, Thợ săn, Chuyển sinh | Vực hỗn mang: Hấp huyết | Tháp quang minh: Thánh châu
+natalya	* | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+heino	Top - full dame | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+heino	Top - semi | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+heino	Mid - full dame | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+heino	Mid - semi | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+kahlii	* | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+aya	* | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu | Tháp quang minh: Thánh châu
+azzenka	Mid | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Sung mãn, Xuyên tâm
+azzenka	Trợ thủ | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Tháp quang minh: Sung mãn, Xuyên tâm
+raz	* | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+zip	* | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Thành khởi nguyên: Siêu hồi máu | Vực hỗn mang: Hấp huyết
+laville	* | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+lu-bo	* full dame | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Tháp quang minh: Tương phản, Xuyên tâm
+lu-bo	* semi | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+celica	* tối ưu sát thương | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+celica	* tối ưu farm vàng | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+dieu-thuyen	* | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Hấp huyết, Cường công
+yorn	* | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+grakk	* full tank | Rừng nguyên sinh: Canh gác, Sinh tồn, Mộc giáp | Thành khởi nguyên: Mật ngữ | Vực hỗn mang: Hấp huyết
+grakk	* full phép | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết, Cố Thủ
+bijan	Top/Trợ thủ | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+bijan	Rừng | Vực hỗn mang: Dư ảnh, Cường công, Ma chú | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+krixi	* | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+tulen	* | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+veres	Top | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+veres	Rừng | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+veres	Trợ thủ | Vực hỗn mang: Hấp huyết, Cường công, Đấu khí | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+bonnie	* | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+telannas	* địch máu giấy | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+telannas	* địch nhiều tank | Tháp quang minh: Tương phản, Bí quyết, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+telannas	* tối ưu farm | Thành khởi nguyên: Siêu hồi máu, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+erin	Rồng stvl | Tháp quang minh: Tương phản, Bí quyết, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+erin	Mid full phép | Tháp quang minh: Tương phản, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+ming	Trợ thủ | Rừng nguyên sinh: Nhạy bén, Bơm máu, Du hiệp | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+ming	Mid | Tháp quang minh: Thánh châu, Bí quyết, Thần quang | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+lauriel	* | Vực hỗn mang: Hấp huyết, Cố Thủ, Ma tính | Tháp quang minh: Sung mãn, Xuyên tâm
+ilumia	Mid | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+ilumia	Trợ thủ | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+xeniel	* full tank | Rừng nguyên sinh: Canh gác, Bơm máu, Mộc giáp | Tháp quang minh: Thánh châu | Vực hỗn mang: Hấp huyết
+xeniel	* full dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Tháp quang minh: Thánh châu, Xuyên tâm
+thorne	* tối ưu farm | Thành khởi nguyên: Quả cầu băng sương, Uy áp, Luyện kim | Tháp quang minh: Tương phản, Bí quyết
+thorne	* tối ưu dame | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+bolt-baron	* địch ít sốc dame | Tháp quang minh: Thánh châu, Xuyên tâm, Tinh linh | Vực hỗn mang: Ma Hỏa, Cường công
+bolt-baron	* địch nhiều sốc dame | Tháp quang minh: Thánh châu, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Ma Hỏa, Cường công
+helen	* | Rừng nguyên sinh: Nhạy bén, Bơm máu, Du hiệp | Tháp quang minh: Sung mãn | Thành khởi nguyên: Siêu hồi máu
+amily	Top | Vực hỗn mang: Dư ảnh, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+amily	Rừng | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+dextra	* | Vực hỗn mang: Hấp huyết, Cường công, Ma chú | Tháp quang minh: Tương phản, Xuyên tâm
+dirak	Rừng | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+dirak	Mid | Tháp quang minh: Sung mãn, Xuyên tâm, Thánh thuẫn | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+kilgroth	Top chí mạng | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+kilgroth	Top tank/dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+kilgroth	Rừng | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+lumburr	* | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Thành khởi nguyên: Mật ngữ | Vực hỗn mang: Hấp huyết
+ormarr	* | Rừng nguyên sinh: Canh gác, Bơm máu, Trói buộc | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+superman	Top | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+superman	Trợ thủ | Rừng nguyên sinh: Nhạy bén, Sinh tồn, Mộc giáp | Vực hỗn mang: Hấp huyết, Cố Thủ
+teeri	* | Tháp quang minh: Tương phản, Xuyên tâm, Tinh linh | Thành khởi nguyên: Siêu hồi máu, Uy áp
+veera	* | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Tương phản, Bí quyết
+jinna	* | Tháp quang minh: Thánh châu, Xuyên tâm, Thánh thuẫn | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+sephera	Mid, tối ưu cấu rỉa | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+sephera	Mid, tối ưu dồn sát thương | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Sung mãn, Xuyên tâm
+sephera	Trợ thủ, tối ưu cấu rỉa | Tháp quang minh: Sung mãn, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+sephera	Trợ thủ, tối ưu dồn sát thương | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Tháp quang minh: Sung mãn, Xuyên tâm
+ishar	Mid | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+ishar	Trợ thủ | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công
+max	* bộ 1 | Vực hỗn mang: Ma Hỏa, Cường công, Ma chú | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+max	* bộ 2 | Vực hỗn mang: Ma Hỏa, Cường công, Ma tính | Thành khởi nguyên: Siêu hồi máu, Thợ săn
+qi	* | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+toro	* | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Vực hỗn mang: Hấp huyết | Thành khởi nguyên: Siêu hồi máu
+gamezingmobile.com/qi-lien-quan	* | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+www.finhay.com.vn/cach-len-do-trieu-van	* full dame | Vực hỗn mang: Hấp huyết, Cường công, Ma tính | Thành khởi nguyên: Quả cầu băng sương, Thợ săn
+www.finhay.com.vn/cach-len-do-trieu-van	* semi/support | Rừng nguyên sinh: Canh gác, Sinh tồn, Trói buộc | Tháp quang minh: Thánh châu | Vực hỗn mang: Hấp huyết
+cellphones.com.vn/sforum/cach-choi-evita-lien-quan	* | Tháp quang minh: Thánh châu, Xuyên tâm, Thần quang | Vực hỗn mang: Ma Hỏa, Cường công

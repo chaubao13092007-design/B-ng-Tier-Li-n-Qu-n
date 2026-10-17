@@ -47,6 +47,13 @@ ARC={}
 for a in used_a:
     s=AR[a]['stats'];txt=' · '.join(f"{STATVI[k]} +{v}{'%' if k in PCT else ''}" for k,v in s.items())
     ARC[a]=[a.split('_')[0],txt];icon(f"{A}/{AR[a]['asset']}",f'{REPO}/b/a-{a}.webp',64);keep.add(f'a-{a}.webp')
+# Phù hiệu: tên Việt, nhánh, cấp, mô tả (avix-data bản Việt); ảnh b/e-<id>.webp
+ENV={e['enchantmentId']:e for e in json.load(open(f'{D}/vi/enchantments.json'))}
+BRV={'leagueofhumans':'Thành khởi nguyên','veda':'Tháp quang minh','lokheim':'Vực hỗn mang','afata':'Rừng nguyên sinh'}
+ENCH={}
+for e in sorted(C.get('E',[])):
+    v=ENV[e];ENCH[e]=[v['name'][:1].upper()+v['name'][1:],v['categoryId'],v['level'],v['description']]
+    icon(f"{A}/{v['asset']}",f'{REPO}/b/e-{e}.webp',64);keep.add(f'e-{e}.webp')
 SP={}
 for t in used_t:
     SP[t]=[TAL[t]['vi'],TAL[t]['desc']];icon(f"{A}/{TAL[t]['asset']}",f'{REPO}/b/t-{t}.webp',64);keep.add(f't-{t}.webp')
@@ -58,6 +65,8 @@ js+='const BSRC={"aov-builds.com":"AOV-Builds","gamezingmobile.com":"GameZing Mo
 js+='const BITEM='+json.dumps(ITEM,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BINFO='+json.dumps(INFO,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BARC='+json.dumps(ARC,ensure_ascii=False,separators=(',',':'))+';\n'
+js+='const BENCHB='+json.dumps(BRV,ensure_ascii=False,separators=(',',':'))+';\n'
+js+='const BENCH='+json.dumps(ENCH,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BSPELL='+json.dumps(SP,ensure_ascii=False,separators=(',',':'))+';\n'
 js+='const BUILDS={\n'+',\n'.join(f'  {json.dumps(k)}:'+json.dumps(v,ensure_ascii=False,separators=(",",":")) for k,v in sorted(B.items()))+'\n};\n'
 open(f'{REPO}/assets/builds.js','w',encoding='utf-8').write(js)

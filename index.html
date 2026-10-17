@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" id="fontcss" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" media="print">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"></noscript>
-<script src="assets/boot.js?v=202610170900"></script>
+<script src="assets/boot.js?v=202610172230"></script>
 <style>
 /* Layout: hero toàn màn hình (thiên hà) → sân khấu "mạnh nhất mỗi đường" kiểu trình chiếu → thanh công cụ dính → lưới tier × đường.
    Tinh thần xe sang: đen tuyền, chữ in hoa giãn rộng, góc vuông, đường kẻ mảnh, chuyển động chậm */
@@ -731,6 +731,20 @@ html.lock{overflow:hidden}
 .bld-ar b,.bld-sp b{color:var(--fg);font-weight:500}
 .bld-ar img{width:30px;height:30px;flex:none}
 .bld-sp img{width:36px;height:36px;flex:none;border-radius:50%}
+/* Phù hiệu trong build */
+.bld-en{margin-top:24px}
+.bld-en h5{margin:0 0 12px;font:500 12.5px var(--f-body);color:var(--muted)}
+.en-row{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px 28px}
+.en-br{display:block;margin:0 0 10px;font:400 10.5px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.en-g ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px}
+.en-g.sub ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+.en-b{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%;min-width:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:center;cursor:pointer}
+.en-b img{display:block;width:40px;height:40px;border-radius:50%;flex:none}
+.en-b[aria-expanded="true"] img{outline:1px solid var(--fg);outline-offset:2px}
+.en-n{font-size:12.5px;line-height:1.3;color:var(--fg)}
+.en-b em{font-style:normal;font-size:11px;line-height:1.2;color:var(--faint)}
+.modal .en-src{margin:12px 0 0;font-size:12px;line-height:1.5;color:var(--faint)}
+.en-src a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
 /* Bộ chiêu thức (dưới phần Vì sao tier) */
 .modal .sk{margin-top:28px}
 .sk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
@@ -748,6 +762,7 @@ html.lock{overflow:hidden}
   .bld-items{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 8px}
   .bi-ic{width:60px;height:60px}
   .bld-row{grid-template-columns:1fr}
+  .en-row{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
 @media (max-width:719px) and (prefers-reduced-motion:no-preference){
@@ -896,7 +911,7 @@ html.lock{overflow:hidden}
         <li id="secNote"><b>Đường phụ:</b> <span id="secList"></span>.</li>
         <li>Mỗi tướng có một đường chính. Tướng thường được đưa sang đường khác có thêm thẻ "Phụ" ở cột đó. Danh sách đường phụ dựa trên lối chơi phổ biến, chưa có số liệu theo đường.</li>
         <li>Lớp tướng (biểu tượng góc thẻ) theo phân loại chính thức của Garena.</li>
-        <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng, lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Khi nguồn có nhiều build cho cùng một đường, bảng lấy build nguồn ghi đầu tiên. Tên đồ bản Việt theo dữ liệu AoV-IndeX. Mỗi bảng có link tới trang gốc.</li>
+        <li><b>Build tham khảo</b> (bấm vào tướng): mỗi đường có build riêng, lấy từ trang hướng dẫn build tiếng Việt cho server Việt Nam (chủ yếu AOV-Builds, bản 29/09). Tướng hiện ở cột Rừng (kể cả đường phụ) luôn có món đồ rừng và Trừng Trị; tướng đi đường không mang đồ rừng; tướng đi Trợ thủ có đồ trợ thủ. Khi nguồn có nhiều build cho cùng một đường, bảng lấy build nguồn ghi đầu tiên. Phù hiệu (nhánh chính 3 phù hiệu, 2 phù hiệu phụ) lấy cùng trang nguồn, ưu tiên bộ ghi cho đúng đường, không có thì lấy bộ ghi đầu tiên. Tên đồ, phù hiệu bản Việt và mô tả theo dữ liệu AoV-IndeX. Mỗi bảng có link tới trang gốc.</li>
         <li><b>Bộ chiêu thức</b> (bấm vào tướng, dưới phần Vì sao tier): tên và ảnh chiêu theo trang Học viện của Garena, kèm tóm tắt ngắn tác dụng chính của từng chiêu. Mô tả và chỉ số đầy đủ xem ở trang Garena (có link trong bảng).</li>
         <li>Bảng thống kê giải dùng tên bản quốc tế/Thái; đã quy đổi sang tên Việt (Riktor = Richter, Zanis = Triệu Vân, Wukong = Ngộ Không, Lu Bu = Lữ Bố, Diao Chan = Điêu Thuyền, Jinnar = Jinna).</li>
         <li>Số liệu ĐTDV lấy từ bảng thống kê Liquipedia: đủ 214 trận, 80 tướng có pick tính đến 11/10. Sikong Zhen có 6 pick nhưng chưa có trong danh sách tướng Liên Quân Việt Nam nên chưa đưa vào bảng.</li>
@@ -907,8 +922,8 @@ html.lock{overflow:hidden}
         <li>Liquipedia: bảng thống kê mùa trước (299 trận), ảnh chụp do người biên tập cung cấp</li>
         <li><a href="https://rovmeta.com/stats" target="_blank" rel="noopener">ROV META: Pro stats RoV Pro League (bản 1.64)</a></li>
         <li>Tier list rank cộng đồng: người biên tập tổng hợp từ @darkiaov9126 và @blvkhanhhy, cập nhật 15/10</li>
-        <li><a href="https://aov-builds.com/" target="_blank" rel="noopener">AOV-Builds: Build theo đường, server Việt (bản 29/09)</a></li>
-        <li><a href="https://github.com/AoV-IndeX/avix-data" target="_blank" rel="noopener">AoV-IndeX: Tên đồ, ngọc, phép bổ trợ bản Việt</a></li>
+        <li><a href="https://aov-builds.com/" target="_blank" rel="noopener">AOV-Builds: Build và phù hiệu theo đường, server Việt (bản 29/09)</a></li>
+        <li><a href="https://github.com/AoV-IndeX/avix-data" target="_blank" rel="noopener">AoV-IndeX: Tên đồ, ngọc, phép bổ trợ, phù hiệu bản Việt</a></li>
         <li><a href="https://lienquan.garena.vn/hoc-vien/tuong-skin/" target="_blank" rel="noopener">Garena Liên Quân · Học viện: Bộ chiêu thức và ảnh chiêu</a></li>
         <li><a href="https://fptshop.com.vn/tin-tuc/giai-tri/tier-list-tuong-lien-quan-mua-moi-210149" target="_blank" rel="noopener">FPT Shop: Tier list tướng Liên Quân S3-2026</a></li>
         <li><a href="https://lienquan.garena.vn/dieu-chinh-giua-mua-pb-vet-nut-thoi-khong-15-10-2026/" target="_blank" rel="noopener">Garena: Điều chỉnh giữa mùa Vết Nứt Thời Không 15.10.2026</a></li>
@@ -929,7 +944,7 @@ html.lock{overflow:hidden}
 <div class="pickbar" id="pickbar" role="status" hidden><span id="pickTxt"></span><button class="btn" id="pickX" type="button">Huỷ</button></div>
 <div id="modalRoot"></div>
 <div class="toast" id="toast" role="status" hidden></div>
-<script src="assets/data.js?v=202610170900"></script>
-<script src="assets/app.js?v=202610170900"></script>
+<script src="assets/data.js?v=202610172230"></script>
+<script src="assets/app.js?v=202610172230"></script>
 </body>
 </html>

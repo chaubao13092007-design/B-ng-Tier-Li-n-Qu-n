@@ -229,6 +229,14 @@ function waitBuilds(){if(waitBuilds.on)return;waitBuilds.on=true;
   if(typeof BUILDS!=="undefined")return redo(true);
   const s=loadBuilds();s.addEventListener("load",()=>redo(true),{once:true});s.addEventListener("error",()=>redo(false),{once:true})}
 const COLVI={red:"đỏ",purple:"tím",teal:"xanh"};
+/* Phù hiệu: nhánh chính (cấp I–III) + 2 phù hiệu phụ, dữ liệu BENCH/BENCHB trong builds.js (tên, mô tả bản Việt từ AoV-IndeX) */
+const ROM=["","I","II","III"];
+function enchHTML(b){if(!b.e||typeof BENCH==="undefined")return "";
+  const br=id=>BENCHB[BENCH[id][1]],main=b.e.slice(0,3),sub=b.e.slice(3);
+  const pick=id=>{const [n,,l]=BENCH[id];return `<li><button type="button" class="en-b" data-ench="${id}" aria-describedby="itip"><img src="b/e-${id}.webp" alt="" loading="lazy" decoding="async" width="40" height="40"><span class="en-n">${esc(n)}</span><em>Cấp ${ROM[l]}</em></button></li>`};
+  const subs=[...new Set(sub.map(br))],subBr=subs.length===1?"Phụ · "+subs[0]:"Phụ";
+  const alt=b.el?`<p class="en-src">Nguồn build không ghi phù hiệu nên lấy theo <a href="${b.el}" target="_blank" rel="noopener">${BSRC[new URL(b.el).hostname]||new URL(b.el).hostname}</a>.</p>`:"";
+  return `<div class="bld-en"><h5>Phù hiệu</h5><div class="en-row"><div class="en-g"><span class="en-br">${br(main[0])}</span><ul>${main.map(pick).join("")}</ul></div><div class="en-g sub"><span class="en-br">${subBr}</span><ul>${sub.map(pick).join("")}</ul></div></div>${alt}</div>`}
 function buildHTML(h){
   if(typeof BUILDS==="undefined"){waitBuilds();return `<section class="bld" data-wait="${h.id}"><p class="bld-note">Đang tải build…</p></section>`}
   // Build riêng cho đường đang xem, nguồn tiếng Việt (server Việt Nam)
@@ -240,24 +248,25 @@ function buildHTML(h){
   const notes=b.n?[b.n]:[];
   const items=`<ol class="bld-items">${b.i.map((id,k)=>{const [vi,cat,ic,en]=BITEM[id],jg=cat==="jg";
       return `<li class="bi${jg?" jg":""}"><button type="button" class="bi-b" data-item="${id}" aria-describedby="itip"><span class="bi-ic"><img src="b/i-${ic}.webp" alt="" loading="lazy" decoding="async" width="56" height="56"><b>${k+1}</b></span><span class="bi-n">${vi}</span>${jg?"<em>Đồ rừng</em>":cat==="sup"?"<em>Đồ trợ thủ</em>":""}</button></li>`}).join("")}</ol>
-    <p class="bld-hint">${mq.matches?"Chạm":"Trỏ hoặc bấm"} vào món đồ hay phép bổ trợ để xem chỉ số.</p>`;
+    <p class="bld-hint">${mq.matches?"Chạm":"Trỏ hoặc bấm"} vào món đồ, phép bổ trợ hay phù hiệu để xem chỉ số.</p>`;
   const ar=b.r.map(([a,n])=>{const [c,t]=BARC[a];return `<li><img src="b/a-${a}.webp" alt="" loading="lazy" width="30" height="30"><span><b>Ngọc ${COLVI[c]} ×${n}</b>${t}</span></li>`}).join("");
   const sp=b.s.map(s=>`<li><button type="button" class="sp-b" data-spell="${s}" aria-describedby="itip"><img src="b/t-${s}.webp" alt="" loading="lazy" width="36" height="36"><span><b>${BSPELL[s][0]}</b>${(b.o||[]).includes(s)?"<em>Phương án thêm</em>":""}</span></button></li>`).join("");
   return `<section class="bld" aria-label="${title}">${head}${notes.map(n=>`<p class="bld-note">${n}</p>`).join("")}${items}
-    <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ${b.s.length>1?" (chọn một)":""}</h5><ul class="bld-sp">${sp}</ul></div></div></section>`;
+    <div class="bld-row"><div><h5>Bảng ngọc</h5><ul class="bld-ar">${ar}</ul></div><div><h5>Phép bổ trợ${b.s.length>1?" (chọn một)":""}</h5><ul class="bld-sp">${sp}</ul></div></div>${enchHTML(b)}</section>`;
 }
 /* Hộp thông tin khi trỏ (máy tính) hoặc chạm (điện thoại) vào món đồ / phép bổ trợ trong phần build:
    giá, chỉ số và nội tại như trang Học viện · Trang bị của Garena (dữ liệu BINFO trong assets/builds.js) */
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let itipFor=null,itipPin=false;
 function itipEl(){let t=$("itip");if(!t){t=document.createElement("div");t.id="itip";t.className="itip";t.setAttribute("role","tooltip");t.hidden=true;document.body.appendChild(t)}return t}
-function showItip(el,pin){const t=itipEl(),id=el.dataset.item,sp=el.dataset.spell;let html="";
+function showItip(el,pin){const t=itipEl(),id=el.dataset.item,sp=el.dataset.spell,en=el.dataset.ench;let html="";
   if(id&&typeof BITEM!=="undefined"){const [vi,cat]=BITEM[id],f=(typeof BINFO!=="undefined"&&BINFO[id])||{s:[],n:[]};
     const tag=cat==="jg"?"Đồ rừng · cần Trừng Trị":cat==="sup"?"Đồ trợ thủ":"";
     html=`<div class="it-h"><b>${esc(vi)}</b>${f.p?`<span class="it-p">${f.p.toLocaleString("vi-VN")} vàng</span>`:""}</div>${tag?`<p class="it-tag">${tag}</p>`:""}
       ${f.s.length?`<ul class="it-s">${f.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${f.n.length?`<ul class="it-n">${f.n.map(([n,d])=>`<li><b>${esc(n)}:</b> ${esc(d)}</li>`).join("")}</ul>`:""}`}
   else if(sp&&typeof BSPELL!=="undefined"){const [n,d]=BSPELL[sp];html=`<div class="it-h"><b>${esc(n)}</b><span class="it-p">Phép bổ trợ</span></div><p class="it-d">${esc(d)}</p>`}
+  else if(en&&typeof BENCH!=="undefined"&&BENCH[en]){const [n,c,l,d]=BENCH[en];html=`<div class="it-h"><b>${esc(n)}</b><span class="it-p">Cấp ${ROM[l]}</span></div><p class="it-tag">Phù hiệu · ${esc(BENCHB[c])}</p><p class="it-d">${esc(d)}</p>`}
   if(!html)return;
   t.innerHTML=html;t.hidden=false;itipFor=el;itipPin=!!pin;el.setAttribute("aria-expanded","true");
   // đặt hộp ngay dưới (hoặc trên) món đồ, không tràn khỏi màn hình
@@ -266,7 +275,7 @@ function showItip(el,pin){const t=itipEl(),id=el.dataset.item,sp=el.dataset.spel
   t.style.left=Math.max(12,Math.min(innerWidth-w-12,r.left+r.width/2-w/2))+"px";
   t.style.top=(below?Math.min(innerHeight-hgt-8,r.bottom+8):Math.max(8,r.top-hgt-8))+"px"}
 function hideItip(){const t=$("itip");if(t)t.hidden=true;if(itipFor)itipFor.removeAttribute("aria-expanded");itipFor=null;itipPin=false}
-(function itipEvents(){itipEl();const sel="[data-item],[data-spell]",fine=matchMedia("(hover:hover) and (pointer:fine)");
+(function itipEvents(){itipEl();const sel="[data-item],[data-spell],[data-ench]",fine=matchMedia("(hover:hover) and (pointer:fine)");
   document.addEventListener("pointerover",e=>{if(!fine.matches||itipPin)return;const el=e.target.closest&&e.target.closest(".modal "+sel);if(el&&el!==itipFor)showItip(el)});
   document.addEventListener("pointerout",e=>{if(!fine.matches||itipPin||!itipFor)return;const to=e.relatedTarget;if(!to||!itipFor.contains(to))hideItip()});
   document.addEventListener("click",e=>{const el=e.target.closest&&e.target.closest(".modal "+sel);
