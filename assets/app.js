@@ -59,7 +59,7 @@ const pKey=h=>{const k=h.key==="flowborn"?"flowborn-"+h.lane:h.key;return P_KEYS
 function portrait(h){
   const b=TR[h.trend];
   const src=imgOf(h);
-  return `<div class="por${src?" has":""}" style="--lc:var(--l-${h.lane})">${src?`<img src="${src}" alt="" loading="lazy" decoding="async" width="88" height="88">`:`<span class="ini">${initials(h.name)}</span>`}<span class="cls" title="${CLASSES[h.cls]}">${ICON[h.cls]}</span>${b?`<span class="bdg ${b[1]}">${h.trend==="new"?"MỚI":b[0].split(" ")[0]}</span>`:""}${h.sec?`<span class="secl">Phụ</span>`:""}</div>`;
+  return `<div class="por${src?" has":""}" aria-hidden="true" style="--lc:var(--l-${h.lane})">${src?`<img src="${src}" alt="" loading="lazy" decoding="async" width="88" height="88">`:`<span class="ini">${initials(h.name)}</span>`}<span class="cls" title="${CLASSES[h.cls]}">${ICON[h.cls]}</span>${b?`<span class="bdg ${b[1]}">${h.trend==="new"?"MỚI":b[0].split(" ")[0]}</span>`:""}${h.sec?`<span class="secl">Phụ</span>`:""}</div>`;
 }
 const tierOf=h=>mode==="mine"?mine[h.id]:h.tier;
 const uniq=new Set(HEROES.map(h=>h.key)).size;
@@ -121,7 +121,7 @@ function render(){
     html+=`<div class="trow${mode==="mine"&&selected?" target":""}" data-t="${t}"><div class="tl" aria-label="Tier ${t==="X"?"chưa xếp":t}, ${inTier.length} tướng"><span class="L">${t==="X"?"–":t}</span><small>${t==="X"?"Chưa xếp":TNAME[t]}</small><em>${TDESC[t]}</em><span class="cnt">${inTier.length} tướng</span></div>`;
     lanes.forEach(l=>{
       const items=inTier.filter(h=>h.lane===l);
-      html+=`<div class="cell" data-t="${t}">${items.map(h=>`<button class="card${selected===h.id?" sel":""}${q?" hit":""}${h.name.length>10?" ln":""}" data-id="${h.id}" data-t="${tierOf(h)}" style="${vtOn?`view-transition-name:c-${h.id.replace(/[^a-z0-9-]/g,"")};`:""}--d:${(h.score*7)%4}" aria-label="${h.name}, ${LANES[h.lane]}${h.sec?" (đường phụ)":""}, tier ${tierOf(h)}" ${mode==="mine"?'draggable="true"':""}>${portrait(h).replace('</div>',tierOf(h)==="S"?'<span class="sweep"></span></div>':'</div>')}<span class="nm">${h.name}</span></button>`).join("")||'<span class="none" aria-hidden="true">—</span>'}</div>`;
+      html+=`<div class="cell" data-t="${t}">${items.map(h=>`<button class="card${selected===h.id?" sel":""}${q?" hit":""}${h.name.length>10?" ln":""}" data-id="${h.id}" data-t="${tierOf(h)}" style="${vtOn?`view-transition-name:c-${h.id.replace(/[^a-z0-9-]/g,"")};`:""}--d:${(h.score*7)%4}" aria-label="${h.name}, ${LANES[h.lane]}${h.sec?" (đường phụ)":""}, tier ${tierOf(h)}${TR[h.trend]?", "+TR[h.trend][2].toLowerCase()+" ở bản mới":""}" ${mode==="mine"?'draggable="true"':""}>${portrait(h).replace('</div>',tierOf(h)==="S"?'<span class="sweep"></span></div>':'</div>')}<span class="nm">${h.name}</span></button>`).join("")||'<span class="none" aria-hidden="true">—</span>'}</div>`;
     });
     html+=`</div>`;
   });
@@ -283,7 +283,8 @@ function openModal(id,dir){
   const h=HEROES.find(x=>x.id===id);if(!h)return;const b=TR[h.trend];
   const nav=!!$("veil");if(!nav)lastFocus=document.activeElement;
   const others=HEROES.filter(x=>x.key===h.key&&x.id!==h.id);
-  const order=visibleOrder(),i=order.indexOf(id);
+  // Tướng không có trên bảng đang hiện (điện thoại đang xem đường khác, hoặc bị bộ lọc ẩn): ‹ › đi theo thứ tự đường của tướng đó
+  const vis=visibleOrder(),order=vis.includes(id)?vis:TIERS.flatMap(t=>HEROES.filter(x=>x.lane===h.lane&&x.tier===t)).map(x=>x.id),i=order.indexOf(id);
   $("modalRoot").innerHTML=`<div class="veil${nav?" nav":""}" id="veil"><div class="modal${dir>0?" from-r":dir<0?" from-l":""}" role="dialog" aria-modal="true" aria-label="${h.name}">
     <div class="mtop"><button id="mshare" aria-label="Chia sẻ tướng này" title="Chia sẻ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg></button><button id="mprev" aria-label="Tướng trước" ${i<=0?"disabled":""}>‹</button><button id="mnext" aria-label="Tướng sau" ${i<0||i>=order.length-1?"disabled":""}>›</button><button id="mx" aria-label="Đóng">×</button></div>
     <div class="m-ban${splOf(h)?"":" noimg"}">${splOf(h)?`<img src="${splOf(h)}" alt="" decoding="async">`:""}</div>
@@ -376,7 +377,7 @@ function buildStage(){
         <h3>${h.name}</h3>
         <div class="slide-meta"><span class="tier"><b>${h.tier}</b>Tier</span><span><b>${a?a[3]:0}</b>Pick ĐTDV</span><span><b>${a?a[4]:0}</b>Lượt cấm</span><span><b>${h.score.toFixed(2)}</b>Điểm / 5</span></div>
         <div class="slide-acts"><button class="cta" data-open="${h.id}">Xem chi tiết<i></i></button>
-          <div class="runners">${top.slice(1).map((x,j)=>`<button data-open="${x.id}" aria-label="Hạng ${j+2}: ${x.name}, tier ${x.tier}"><img data-src="${imgOf(x)}" alt="" decoding="async"><small>0${j+2}</small>${x.name}</button>`).join("")}</div></div>
+          <div class="runners">${top.slice(1).map((x,j)=>`<button data-open="${x.id}" aria-label="${x.name}, hạng ${j+2}, tier ${x.tier}"><img data-src="${imgOf(x)}" alt="" decoding="async"><small aria-hidden="true">0${j+2}</small>${x.name}</button>`).join("")}</div></div>
       </div></div>`}).join("");
   const tabs=`<div class="tabs" role="tablist" aria-label="Chọn đường">${lanes.map((l,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}">${LANES[l]}<b>${(laneTop(l)[0]||{}).name||""}</b><span class="pg"></span></button>`).join("")}</div>`;
   const pp=reduce.matches?"":`<button class="stage-pp" id="stagePP" aria-label="Tạm dừng trình chiếu"></button>`;

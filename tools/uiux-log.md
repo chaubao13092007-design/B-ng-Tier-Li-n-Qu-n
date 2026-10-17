@@ -35,3 +35,19 @@ Mỗi mục: ngày, đã sửa gì và vì sao, đã kiểm tra gì, ý tưởng
 - Trỏ chuột (máy tính) hoặc chạm (điện thoại) vào món đồ / phép bổ trợ trong phần build hiện hộp thông tin như trang Học viện · Trang bị
   của Garena: giá, chỉ số, nội tại. Bấm để ghim, Esc hoặc chạm ra ngoài để đóng; bàn phím Tab tới món đồ cũng hiện.
 - Dữ liệu từ avix-data bản Việt (khớp trang Garena); Giáp Thống Khổ sửa theo ghi chú bản 29/09 vì nguồn chưa cập nhật chỉ số.
+
+## 2026-10-17 (việc định kỳ Thứ Bảy)
+- Sửa: trên điện thoại, mở tướng của đường khác đường đang xem (link `#tuong-…`, slide "Mạnh nhất mỗi đường", danh sách thay đổi)
+  thì nút ‹ › và vuốt ngang trong bảng chi tiết bị khoá. Nay ‹ › đi theo thứ tự tier của đường tướng đó (cũng áp dụng khi bộ lọc đang ẩn tướng).
+  Đo lại: ở 390px trước chỉ 39/146 bảng chi tiết có ‹ › dùng được, nay 146/146.
+- Trình đọc màn hình: tên thẻ tướng thêm thay đổi ở bản mới ("…, tier S, bị giảm sức mạnh ở bản mới"); khối ảnh chân dung (huy hiệu PHỤ/MỚI, chữ cái đầu)
+  ẩn khỏi trình đọc vì đã có trong tên thẻ. Nút hạng 2–3 trên sân khấu đọc tên tướng trước ("Edras, hạng 2, tier S").
+- Không đổi gì nhìn thấy được (so ảnh trước/sau giống nhau, chỉ khác hiệu ứng chuyển động).
+- Kiểm tra: 1440/390/360, sáng/tối; 146 bảng chi tiết mở không lỗi (phần build và Bộ chiêu thức tải đủ), 5 slide, không tràn ngang, không ảnh 404, không vi phạm CSP.
+- axe-core 4.14: còn `label-content-name-mismatch` (20 nút ở 1440, 8 ở 390, có từ trước, không tăng). Luật này tính cả chữ chỉ để trang trí
+  (số "02", huy hiệu "PHỤ"/"MỚI") nên báo dù tên tướng đã nằm trong tên nút; không sửa. Màn sáng báo tương phản tên tướng trên ảnh bìa
+  trong bảng chi tiết là báo nhầm (axe lấy nền ảnh đen, thực tế chữ đen trên nền sáng).
+- Ý tưởng để lần sau:
+  - Bảng chi tiết trên máy tính: chữ tên đồ trong phần build khá nhỏ (12.5px), cân nhắc tăng nhẹ.
+  - Cột Tà Thần dài hơn hẳn các cột khác trên máy tính, xem có cách đỡ trống ở cột ngắn.
+  - Link "trang Học viện của Garena" cuối Bộ chiêu thức chỉ cao 15px trên điện thoại, cân nhắc nới vùng chạm.
